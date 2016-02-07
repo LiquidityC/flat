@@ -1,15 +1,15 @@
 cmake_minimum_required (VERSION 3.0.2)
+include(cmake/macros.cmake)
 
 SET(CMAKE_COLOR_MAKEFILE ON)
 
 project (flat)
 
-set (PROJECT_INCLUDE_DIR include)
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY bin)
 set (CMAKE_LIBRARY_OUTPUT_DIRECTORY lib)
 set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY lib)
 
-set (HEADERS src/Button.h src/Camera.h src/CollisionDetector.h src/CollisionProperty.h src/Database.h
+set (HEADERS src/flat.h src/Button.h src/Camera.h src/CollisionDetector.h src/CollisionProperty.h src/Database.h
 	src/DeltatimeMonitor.h src/Entity.h src/EntityContainer.h src/EntityProperties.h src/EntityShape.h
 	src/FlatBuilder.h src/GameController.h src/GameControllerContainer.h src/GameData.h
 	src/GameEngine.h src/MapArea.h src/MediaUtil.h src/Mixer.h src/RenderData.h src/SpinLock.h
@@ -48,13 +48,12 @@ set_target_properties(flat PROPERTIES
 	SOVERSION 0)
 
 add_custom_command(TARGET flat flat_static
-	POST_BUILD
-	COMMAND rm -f ${CMAKE_CURRENT_SOURCE_DIR}/src/flat.h
-	COMMAND cat ${CMAKE_CURRENT_SOURCE_DIR}/src/*.h > ${CMAKE_CURRENT_SOURCE_DIR}/src/flat.h
+	COMMENT "Build unified header"
+	COMMAND ${CMAKE_COMMAND} -DDIR_ROOT=${CMAKE_CURRENT_SOURCE_DIR} -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/build_header.cmake
 	)
 
 install(TARGETS test_flat flat flat_static
 	RUNTIME DESTINATION bin
 	LIBRARY DESTINATION lib
 	ARCHIVE DESTINATION lib)
-install (FILES src/flat.h DESTINATION include/flat)
+install (FILES ${HEADERS} DESTINATION include/flat)
