@@ -7,7 +7,7 @@ macro(build_header)
 	foreach(header ${headers})
 		file(APPEND ${DIR_ROOT}/src/flat.h "#include <flat/${header}>\n")
 	endforeach()
-	file(APPEND ${DIR_ROOT}/src/flat.h "#endif\n")
+	file(APPEND ${DIR_ROOT}/src/flat.h "#endif // FLAT_H_\n")
 endmacro(build_header)
 
 build_header()

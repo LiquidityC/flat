@@ -57,11 +57,8 @@ add_custom_target(lint
 	COMMAND python2.7 lint/cpplint.py --linelength=120 --root=src --extensions=cpp,h --filter=-whitespace/tab,-whitespace/indent,-whitespace/parens,-whitespace/braces,-whitespace/comments,-runtime/indentation_namespace,-legal src/*
 	)
 
-add_custom_target(check
-	COMMENT "Running tests"
-	DEPENDS test_flat
-	COMMAND bin/test_flat
-	)
+enable_testing()
+add_test(NAME catch COMMAND test_flat)
 
 install(TARGETS test_flat flat flat_static
 	RUNTIME DESTINATION bin
