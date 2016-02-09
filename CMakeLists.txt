@@ -51,6 +51,18 @@ add_custom_command(TARGET flat flat_static
 	COMMAND ${CMAKE_COMMAND} -DDIR_ROOT=${CMAKE_CURRENT_SOURCE_DIR} -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/build_header.cmake
 	)
 
+add_custom_target(lint
+	COMMENT "Running cpp-lint"
+	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+	COMMAND python2.7 lint/cpplint.py --linelength=120 --root=src --extensions=cpp,h --filter=-whitespace/tab,-whitespace/indent,-whitespace/parens,-whitespace/braces,-whitespace/comments,-runtime/indentation_namespace,-legal src/*
+	)
+
+add_custom_target(check
+	COMMENT "Running tests"
+	DEPENDS test_flat
+	COMMAND bin/test_flat
+	)
+
 install(TARGETS test_flat flat flat_static
 	RUNTIME DESTINATION bin
 	LIBRARY DESTINATION lib
