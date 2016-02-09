@@ -31,7 +31,7 @@ add_library(flat_static STATIC  src/Button.cpp src/Camera.cpp src/CollisionDetec
 	src/FlatBuilder.cpp src/GameController.cpp src/GameControllerContainer.cpp src/GameEngine.cpp
 	src/MediaUtil.cpp src/Mixer.cpp src/Square.cpp src/Texture.cpp src/Timer.cpp src/UID.cpp src/Window.cpp)
 
-target_link_libraries(flat_static -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf)
+target_link_libraries(flat_static -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lsqlite3)
 target_compile_options(flat_static PRIVATE -std=c++11 -g -Wall)
 set_target_properties(flat_static PROPERTIES OUTPUT_NAME flat)
 
@@ -40,7 +40,7 @@ add_library(flat SHARED  src/Button.cpp src/Camera.cpp src/CollisionDetector.cpp
 	src/FlatBuilder.cpp src/GameController.cpp src/GameControllerContainer.cpp src/GameEngine.cpp
 	src/MediaUtil.cpp src/Mixer.cpp src/Square.cpp src/Texture.cpp src/Timer.cpp src/UID.cpp src/Window.cpp)
 
-target_link_libraries(flat -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf)
+target_link_libraries(flat -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lsqlite3)
 target_compile_options(flat PRIVATE -std=c++11 -g -Wall)
 set_target_properties(flat PROPERTIES
 	VERSION 0.0.0
