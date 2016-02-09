@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 3.0.2)
 
 SET(CMAKE_COLOR_MAKEFILE ON)
 
-project (flat)
+project (flat CXX)
 
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY bin)
 set (CMAKE_LIBRARY_OUTPUT_DIRECTORY lib)
