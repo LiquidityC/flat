@@ -6,7 +6,7 @@ compiler:
 script:
     - mkdir build
     - cd build
-    - cmake
+    - cmake ..
     - make
     - ctest -V
     - make lint
