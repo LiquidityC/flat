@@ -342,9 +342,9 @@ namespace flat2d
 
 				float distance;
 				if (sx == tx) {
-					distance = abs(sy - ty);
+					distance = std::abs(sy - ty);
 				} else if (sy == ty) {
-					distance = abs(sx - tx);
+					distance = std::abs(sx - tx);
 				} else {
 					distance = sqrt(pow(sx - tx, 2) + pow(sy - ty, 2));
 				}
