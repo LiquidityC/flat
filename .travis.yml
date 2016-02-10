@@ -1,3 +1,5 @@
+sudo: required
+dist: trusty
 language: cpp
 compiler:
     - gcc
@@ -36,7 +38,7 @@ install:
     - if [ "$CXX" = "g++" ]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
 
       #clang 3.6
-    - if [ "$CXX" == "clang++" ]; then sudo apt-get install --allow-unauthenticated llvm-toolchain-3.6; fi
+    - if [ "$CXX" == "clang++" ]; then sudo apt-get install --allow-unauthenticated clang-3.6; fi
     - if [ "$CXX" == "clang++" ]; then export CXX="clang++-3.6"; fi
 
 before_script:
