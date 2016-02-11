@@ -67,6 +67,16 @@ namespace flat2d
 		}
 	}
 
+	void EntityProperties::setDepth(int depth)
+	{
+		this->z = depth;
+	}
+
+	int EntityProperties::getDepth() const
+	{
+		return z;
+	}
+
 	float EntityProperties::getYvel() const
 	{
 		return yvel;

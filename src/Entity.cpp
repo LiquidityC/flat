@@ -27,6 +27,11 @@ namespace flat2d
 		}
 
 		SDL_Rect box = entityProperties.getBoundingBox();
+		int z = entityProperties.getDepth();
+		if (z > 0) {
+			box.x = box.x / (z * 1.5);
+			box.y = box.y / (z * 5);
+		}
 		if (data->getCamera() != nullptr && !fixedPosition) {
 			Camera* camera = data->getCamera();
 			if (!camera->isVisibleOnCamera(box)) {

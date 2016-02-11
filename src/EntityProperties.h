@@ -20,6 +20,8 @@ namespace flat2d
 			typedef std::vector<MapArea> Areas;
 
 		private:
+			int z = 0;
+
 			float xvel = 0.0f;
 			float yvel = 0.0f;
 
@@ -58,6 +60,9 @@ namespace flat2d
 			void setYpos(int pos);
 			void setYvel(float yvel);
 			float getYvel() const;
+
+			void setDepth(int depth);
+			int getDepth() const;
 
 			void setCollisionProperty(CollisionProperty);
 			CollisionProperty getCollisionProperty() const;
