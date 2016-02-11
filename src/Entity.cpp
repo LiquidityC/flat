@@ -30,7 +30,7 @@ namespace flat2d
 		if (data->getCamera() != nullptr && !fixedPosition) {
 			int z = entityProperties.getDepth();
 			Camera* camera = data->getCamera();
-			if (!camera->isVisibleOnCamera(box)) {
+			if (!camera->isVisibleOnCamera(box, z)) {
 				return;
 			}
 			box.x = camera->getScreenXposFor(box.x, z);
