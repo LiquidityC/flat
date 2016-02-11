@@ -28,6 +28,16 @@ namespace flat2d
 		mapHeight = h;
 	}
 
+	int Camera::getMapHeight()
+	{
+		return mapHeight;
+	}
+
+	int Camera::getMapWidth()
+	{
+		return mapWidth;
+	}
+
 	SDL_Rect Camera::getBox()
 	{
 		SDL_Rect box = { xpos, ypos, width, height };

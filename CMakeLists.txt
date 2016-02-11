@@ -21,7 +21,7 @@ add_executable(test_flat src/Button.cpp src/Camera.cpp src/CollisionDetector.cpp
 	src/Window.cpp
 	testsrc/ButtonTest.cpp testsrc/CollisionDetectorTest.cpp testsrc/EntityContainerTest.cpp
 	testsrc/EntityPropertiesTest.cpp testsrc/Flat2dTest.cpp testsrc/SquareTest.cpp
-	testsrc/UIDTest.cpp)
+	testsrc/UIDTest.cpp testsrc/CameraTest.cpp)
 
 target_link_libraries(test_flat -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lsqlite3)
 target_compile_options(test_flat PRIVATE -std=c++11 -g -Wall)
@@ -55,6 +55,12 @@ add_custom_target(lint
 	COMMENT "Running cpp-lint"
 	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 	COMMAND python2.7 lint/cpplint.py --linelength=120 --root=src --extensions=cpp,h --filter=-whitespace/tab,-whitespace/indent,-whitespace/parens,-whitespace/braces,-whitespace/comments,-runtime/indentation_namespace,-legal src/*
+	)
+
+add_custom_target(check
+	COMMENT "Running catch tests"
+	DEPENDS test_flat
+	COMMAND test_flat
 	)
 
 enable_testing()

@@ -25,6 +25,8 @@ namespace flat2d
 			int getHeight();
 
 			void setMapDimensions(int, int);
+			int getMapHeight();
+			int getMapWidth();
 
 			SDL_Rect getBox();
 
