@@ -65,11 +65,11 @@ namespace flat2d
 		int xoffset = depth <= 0 ? 1 : depth * 1.5;
 		int yoffset = depth <= 0 ? 1 : depth * 5;
 
-		if (box.x > (xpos + width) / xoffset) {
+		if (box.x > (xpos / xoffset) + width) {
 			return false;
 		} else if (box.x + box.w < xpos / xoffset) {
 			return false;
-		} else if (box.y > (ypos + height) / yoffset) {
+		} else if (box.y > (ypos / yoffset) + height) {
 			return false;
 		} else if (box.y + box.h < ypos / yoffset) {
 			return false;
