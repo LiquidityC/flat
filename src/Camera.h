@@ -34,8 +34,8 @@ namespace flat2d
 
 			bool isVisibleOnCamera(const SDL_Rect& box);
 
-			int getScreenXposFor(int x) const;
-			int getScreenYposFor(int y) const;
+			int getScreenXposFor(int x, int depth = 0) const;
+			int getScreenYposFor(int y, int depth = 0) const;
 	};
 } // namespace flat2d
 

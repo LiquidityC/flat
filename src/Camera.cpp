@@ -74,13 +74,13 @@ namespace flat2d
 		return true;
 	}
 
-	int Camera::getScreenXposFor(int x) const
+	int Camera::getScreenXposFor(int x, int depth) const
 	{
-		return x - xpos;
+		return x - (xpos / (1.5 * depth));
 	}
 
-	int Camera::getScreenYposFor(int y) const
+	int Camera::getScreenYposFor(int y, int depth) const
 	{
-		return y - ypos;
+		return y - (ypos / (5 * depth));
 	}
 } // namespace flat2d

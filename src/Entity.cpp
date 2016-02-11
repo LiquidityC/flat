@@ -27,18 +27,14 @@ namespace flat2d
 		}
 
 		SDL_Rect box = entityProperties.getBoundingBox();
-		int z = entityProperties.getDepth();
-		if (z > 0) {
-			box.x = box.x / (z * 1.5);
-			box.y = box.y / (z * 5);
-		}
 		if (data->getCamera() != nullptr && !fixedPosition) {
+			int z = entityProperties.getDepth();
 			Camera* camera = data->getCamera();
 			if (!camera->isVisibleOnCamera(box)) {
 				return;
 			}
-			box.x = camera->getScreenXposFor(box.x);
-			box.y = camera->getScreenYposFor(box.y);
+			box.x = camera->getScreenXposFor(box.x, z);
+			box.y = camera->getScreenYposFor(box.y, z);
 		}
 
 		SDL_RenderCopy(data->getRenderer(), texture, &clip, &box);
