@@ -18,10 +18,15 @@ namespace flat2d
 			bool operator==(const Square&) const;
 			bool operator!=(const Square&) const;
 
-			int getXpos() { return x; }
-			int getYpos() { return y; }
-			int getWidth() { return w; }
-			int getHeight() { return h; }
+			int getXpos() const { return x; }
+			int getYpos() const { return y; }
+			int getWidth() const { return w; }
+			int getHeight() const { return h; }
+
+			virtual void setXpos(int pos) { x = pos; }
+			virtual void setYpos(int pos) { y = pos; }
+			virtual void setWidth(int width) { w = width; }
+			virtual void setHeight(int height) { h = height; }
 	};
 } // namespace flat2d
 #endif // SQUARE_H_

@@ -51,14 +51,11 @@ namespace flat2d
 
 			void incrementXpos(int x);
 			void setXpos(int pos);
-			int getXpos() const;
-			void incrementYpos(int y);
-			void setYpos(int pos);
-			int getYpos() const;
-			int getWidth() const;
-			int getHeight() const;
 			void setXvel(float xvel);
 			float getXvel() const;
+
+			void incrementYpos(int y);
+			void setYpos(int pos);
 			void setYvel(float yvel);
 			float getYvel() const;
 

@@ -30,11 +30,6 @@ namespace flat2d
 		}
 	}
 
-	int EntityProperties::getXpos() const
-	{
-		return x;
-	}
-
 	void EntityProperties::incrementYpos(int y)
 	{
 		this->y += y;
@@ -49,21 +44,6 @@ namespace flat2d
 		if (pos != 0) {
 			setLocationChanged(true);
 		}
-	}
-
-	int EntityProperties::getYpos() const
-	{
-		return y;
-	}
-
-	int EntityProperties::getWidth() const
-	{
-		return w;
-	}
-
-	int EntityProperties::getHeight() const
-	{
-		return h;
 	}
 
 	void EntityProperties::setXvel(float v)
