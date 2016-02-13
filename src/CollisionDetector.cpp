@@ -41,19 +41,21 @@ namespace flat2d
 
 		float xvel = props1.getXvel() * deltatime;
 		if (xvel != 0 && AABB(props1.getXVelocityColliderShape(deltatime), colliderShape)) {
-			if (!o1->onCollision(o2, data)) {
+			if (!o1->onCollision(o2, data) && !o1->onHorizontalCollision(o2, data)) {
 				handleHorizontalCollisions(&props1, &props2);
 			}
 			o2->onCollision(o1, data);
+			o2->onHorizontalCollision(o1, data);
 			collided = true;
 		}
 
 		float yvel = props1.getYvel() * deltatime;
 		if (yvel != 0 && AABB(props1.getYVelocityColliderShape(deltatime), colliderShape)) {
-			if (!o1->onCollision(o2, data)) {
+			if (!o1->onCollision(o2, data) && !o1->onVerticalCollision(o2, data)) {
 				handleVerticalCollisions(&props1, &props2);
 			}
 			o2->onCollision(o1, data);
+			o2->onVerticalCollision(o1, data);
 			collided = true;
 		}
 

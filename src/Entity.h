@@ -81,6 +81,8 @@ namespace flat2d
 			virtual EntityProperties& getEntityProperties();
 			virtual const EntityProperties& getEntityProperties() const;
 			virtual bool onCollision(Entity *collider, const GameData*);
+			virtual bool onVerticalCollision(Entity *collider, const GameData*);
+			virtual bool onHorizontalCollision(Entity *collider, const GameData*);
 
 			/* Empty methods */
 			virtual void init(const GameData*) { }

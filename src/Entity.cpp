@@ -105,6 +105,16 @@ namespace flat2d
 		return false;
 	}
 
+	bool Entity::onVerticalCollision(Entity* collider, const GameData *data)
+	{
+		return false;
+	}
+
+	bool Entity::onHorizontalCollision(Entity* collider, const GameData *data)
+	{
+		return false;
+	}
+
 	const EntityProperties& Entity::getEntityProperties() const
 	{
 		return entityProperties;
