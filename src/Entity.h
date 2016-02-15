@@ -54,12 +54,20 @@ namespace flat2d
 				return *this;
 			}
 
+			virtual int getId() const {
+				return static_cast<int>(id);
+			}
+
 			virtual std::string getStringId() const {
 				std::string number;
 				std::stringstream ss;
 				ss << id;
 				ss >> number;
 				return number;
+			}
+
+			virtual bool operator<(const Entity& o) const {
+				return id < o.id;
 			}
 
 			virtual int getType() const {

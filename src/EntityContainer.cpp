@@ -232,21 +232,21 @@ namespace flat2d
 		float deltatime = dtMonitor->getDeltaTime();
 		CollisionDetector *coldetector = data->getCollisionDetector();
 
-		for (auto it = objects.begin(); it != objects.end(); it++) {
-			it->second->preMove(data);
-			handlePossibleObjectMovement(it->second);
+		for (auto& object : objects) {
+			object.second->preMove(data);
+			handlePossibleObjectMovement(object.second);
 
-			EntityProperties& props = it->second->getEntityProperties();
+			EntityProperties& props = object.second->getEntityProperties();
 			if (props.isMoving()) {
 				if (props.isCollidable()) {
-					coldetector->handlePossibleCollisionsFor(it->second, data);
+					coldetector->handlePossibleCollisionsFor(object.second, data);
 				}
 				props.move(deltatime);
-				handlePossibleObjectMovement(it->second);
+				handlePossibleObjectMovement(object.second);
 			}
 
-			it->second->postMove(data);
-			handlePossibleObjectMovement(it->second);
+			object.second->postMove(data);
+			handlePossibleObjectMovement(object.second);
 		}
 
 		clearDeadObjects();
@@ -324,19 +324,16 @@ namespace flat2d
 		float sy = colliderShape.y + (colliderShape.h / 2);
 
 		// Itterate the objects and sort them according to distance
-		for (auto areaIter = currentAreas.begin(); areaIter != currentAreas.end(); areaIter++) {
-			for (auto objectIter = spatialPartitionMap[*areaIter].begin();
-					objectIter != spatialPartitionMap[*areaIter].end();
-					objectIter++)
-			{
-				if (!objectIter->second->getEntityProperties().isCollidable()) {
+		for (auto& area : currentAreas) {
+			for (auto& object : spatialPartitionMap[area]) {
+				if (!object.second->getEntityProperties().isCollidable()) {
 					continue;
 				}
-				if (*source == *objectIter->second) {
+				if (*source == *object.second) {
 					continue;
 				}
 
-				const EntityShape& targetShape = objectIter->second->getEntityProperties().getColliderShape();
+				const EntityShape& targetShape = object.second->getEntityProperties().getColliderShape();
 				float tx = targetShape.x + (targetShape.w/2);
 				float ty = targetShape.y + (targetShape.h/2);
 
@@ -350,7 +347,7 @@ namespace flat2d
 				}
 
 				if (sortedMap.find(distance) != sortedMap.end()) {
-					if (*sortedMap[distance] == *objectIter->second) {
+					if (*sortedMap[distance] == *object.second) {
 						continue;
 					}
 				}
@@ -359,7 +356,7 @@ namespace flat2d
 					distance += 0.00001f;
 				}
 
-				sortedMap[distance] = objectIter->second;
+				sortedMap[distance] = object.second;
 			}
 		}
 

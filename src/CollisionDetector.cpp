@@ -9,10 +9,11 @@
 #include "EntityContainer.h"
 #include "DeltatimeMonitor.h"
 #include "GameData.h"
+#include "Algorithm.h"
 
 namespace flat2d
 {
-	void CollisionDetector::handlePossibleCollisionsFor(Entity* e, const GameData *data) const
+	void CollisionDetector::handlePossibleCollisionsFor(Entity* e, const GameData *data)
 	{
 		entityContainer->iterateCollidablesFor(e,
 				[this, e, data](Entity* o)
@@ -26,7 +27,7 @@ namespace flat2d
 				});
 	}
 
-	bool CollisionDetector::handlePossibleCollision(Entity* o1, Entity* o2, const GameData *data) const
+	bool CollisionDetector::handlePossibleCollision(Entity* o1, Entity* o2, const GameData *data)
 	{
 		if (*o1 == *o2) {
 			return false;

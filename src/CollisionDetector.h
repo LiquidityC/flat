@@ -18,7 +18,7 @@ namespace flat2d
 			EntityContainer *entityContainer;
 			DeltatimeMonitor *dtMonitor;
 
-			bool handlePossibleCollision(Entity*, Entity*, const GameData *data) const;
+			bool handlePossibleCollision(Entity*, Entity*, const GameData *data);
 
 			void handleHorizontalCollisions(EntityProperties* props1, EntityProperties* props2) const;
 			void handleVerticalCollisions(EntityProperties* props1, EntityProperties* props2) const;
@@ -39,7 +39,7 @@ namespace flat2d
 			CollisionDetector(const CollisionDetector&) = delete;
 			const CollisionDetector& operator=(const CollisionDetector& c) = delete;
 
-			void handlePossibleCollisionsFor(Entity* entity, const GameData *data) const;
+			void handlePossibleCollisionsFor(Entity* entity, const GameData *data);
 
 			/**
 			 * Collision algorithms follow below
