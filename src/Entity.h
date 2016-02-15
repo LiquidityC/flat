@@ -49,6 +49,7 @@ namespace flat2d
 			}
 
 			virtual Entity& operator=(const Entity& o) {
+				// TODO(Linus): This doesn't look right...
 				id = o.id;
 				return *this;
 			}

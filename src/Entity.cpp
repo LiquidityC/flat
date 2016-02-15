@@ -43,6 +43,7 @@ namespace flat2d
 		SDL_RenderCopy(data->getRenderer(), texture, &clip, &box);
 
 #ifdef DEBUG
+		// Draw collider box
 		if (entityProperties.isCollidable()) {
 			SDL_SetRenderDrawColor(data->getRenderer(), 0x00, 0xFF, 0x00, 0xFF );
 			EntityShape bounds = entityProperties.getColliderShape();
@@ -54,6 +55,7 @@ namespace flat2d
 			SDL_RenderDrawRect( data->getRenderer(), &box );
 		}
 
+		// Draw velocity collider box
 		if (entityProperties.isMoving()) {
 			flat2d::EntityShape vShape = entityProperties.getVelocityColliderShape(0.017);
 			SDL_Rect broadphaseShape = { vShape.x, vShape.y, vShape.w, vShape.h };
@@ -61,6 +63,16 @@ namespace flat2d
 			broadphaseShape.y = data->getCamera()->getScreenYposFor(broadphaseShape.y);
 			SDL_SetRenderDrawColor(data->getRenderer(), 0x00, 0xFF, 0xFF, 0xFF );
 			SDL_RenderDrawRect( data->getRenderer(), &broadphaseShape );
+		}
+
+		// Draw spatial partitions
+		SDL_SetRenderDrawColor(data->getRenderer(), 0xFF, 0x00, 0x00, 0xFF );
+		const flat2d::EntityProperties::Areas currentAreas = entityProperties.getCurrentAreas();
+		for(auto it = currentAreas.begin(); it != currentAreas.end(); it++) {
+			SDL_Rect bounds = (*it).asSDLRect();
+			bounds.x = data->getCamera()->getScreenXposFor(bounds.x);
+			bounds.y = data->getCamera()->getScreenYposFor(bounds.y);
+			SDL_RenderDrawRect( data->getRenderer(), &bounds );
 		}
 #endif
 	}
