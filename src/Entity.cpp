@@ -42,7 +42,7 @@ namespace flat2d
 
 		SDL_RenderCopy(data->getRenderer(), texture, &clip, &box);
 
-#ifdef DEBUG
+#ifdef COLLISION_DBG
 		// Draw collider box
 		if (entityProperties.isCollidable()) {
 			SDL_SetRenderDrawColor(data->getRenderer(), 0x00, 0xFF, 0x00, 0xFF );
