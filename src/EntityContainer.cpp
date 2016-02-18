@@ -12,7 +12,7 @@
 #include "EntityProperties.h"
 #include "DeltatimeMonitor.h"
 #include "CollisionDetector.h"
-
+#include "RuntimeAnalyzer.h"
 
 namespace flat2d
 {
@@ -209,6 +209,9 @@ namespace flat2d
 
 	void EntityContainer::handleObjects(const SDL_Event& event, const GameData* gameData)
 	{
+#ifdef FPS_DBG
+		TIME_FUNCTION;
+#endif
 		for (auto it = inputHandlers.begin(); it != inputHandlers.end(); it++) {
 			it->second->preHandle(gameData);
 			it->second->handle(event);
@@ -218,6 +221,9 @@ namespace flat2d
 
 	void EntityContainer::renderObjects(const GameData* data) const
 	{
+#ifdef FPS_DBG
+		TIME_FUNCTION;
+#endif
 		for (auto it1 = layeredObjects.begin(); it1 != layeredObjects.end(); it1++) {
 			for (auto it2 = it1->second.begin(); it2 != it1->second.end(); it2++) {
 				it2->second->preRender(data);
@@ -229,6 +235,9 @@ namespace flat2d
 
 	void EntityContainer::moveObjects(const GameData* data)
 	{
+#ifdef FPS_DBG
+		TIME_FUNCTION;
+#endif
 		float deltatime = dtMonitor->getDeltaTime();
 		CollisionDetector *coldetector = data->getCollisionDetector();
 

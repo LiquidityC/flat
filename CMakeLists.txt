@@ -18,7 +18,8 @@ add_executable(test_flat EXCLUDE_FROM_ALL src/Button.cpp src/Camera.cpp src/Coll
 	src/Window.cpp
 	testsrc/ButtonTest.cpp testsrc/CollisionDetectorTest.cpp testsrc/EntityContainerTest.cpp
 	testsrc/EntityPropertiesTest.cpp testsrc/Flat2dTest.cpp testsrc/SquareTest.cpp
-	testsrc/UIDTest.cpp testsrc/CameraTest.cpp testsrc/AlgorithmTest.cpp)
+	testsrc/UIDTest.cpp testsrc/CameraTest.cpp testsrc/AlgorithmTest.cpp
+	src/RuntimeAnalyzer.cpp)
 
 target_link_libraries(test_flat -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lsqlite3)
 target_compile_options(test_flat PRIVATE -std=c++11 -g -Wall)
@@ -26,7 +27,8 @@ target_compile_options(test_flat PRIVATE -std=c++11 -g -Wall)
 add_library(flat src/Button.cpp src/Camera.cpp src/CollisionDetector.cpp
 	src/Database.cpp src/DeltatimeMonitor.cpp src/Entity.cpp src/EntityContainer.cpp src/EntityProperties.cpp
 	src/FlatBuilder.cpp src/GameController.cpp src/GameControllerContainer.cpp src/GameEngine.cpp
-	src/MediaUtil.cpp src/Mixer.cpp src/Square.cpp src/Texture.cpp src/Timer.cpp src/UID.cpp src/Window.cpp)
+	src/MediaUtil.cpp src/Mixer.cpp src/Square.cpp src/Texture.cpp src/Timer.cpp src/UID.cpp src/Window.cpp
+	src/RuntimeAnalyzer.cpp)
 
 target_link_libraries(flat -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lsqlite3)
 target_compile_options(flat PRIVATE -std=c++11 -Wall)
