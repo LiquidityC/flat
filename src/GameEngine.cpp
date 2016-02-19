@@ -27,12 +27,6 @@ namespace flat2d
 		Timer fpsTimer;
 		Timer drawFpsTimer;
 
-#ifdef DEBUG
-		int countedFrames = 0;
-		int currentFps = 0;
-		float avgFps = 0;
-#endif
-
 		fpsTimer.start();
 		drawFpsTimer.start();
 
@@ -76,22 +70,6 @@ namespace flat2d
 
 			// Update the screen
 			SDL_RenderPresent( renderer );
-
-#ifdef DEBUG
-			avgFps = countedFrames / (fpsTimer.getTicks() / 1000.f);
-			if (avgFps > 20000) {
-				avgFps = 0;
-			}
-			if (static_cast<int>((drawFpsTimer.getTicks() / 1000.f)) > 1) {
-				std::cout << "AVG FPS: " << avgFps << " FPS: " << currentFps
-					<< " DT: " << gameData->getDeltatimeMonitor()->getDeltaTime() << std::endl;
-				currentFps = 0;
-				drawFpsTimer.stop();
-				drawFpsTimer.start();
-			}
-			countedFrames++;
-			currentFps++;
-#endif
 
 			int tickCount = fpsCapTimer.getTicks();
 			if (tickCount < screenTicksPerFrame) {

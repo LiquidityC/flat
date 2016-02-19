@@ -11,8 +11,9 @@ namespace flat2d
 {
 	class RuntimeAnalyzer
 	{
-		using IntMap 	= std::map<std::string, int>;
-		using FloatMap 	= std::map<std::string, float>;
+		public:
+			using IntMap 	= std::map<std::string, int>;
+			using FloatMap 	= std::map<std::string, float>;
 
 		private:
 			static IntMap 	callCount;
@@ -21,6 +22,8 @@ namespace flat2d
 
 		public:
 			static void addCall(std::string func, int time);
+			static const IntMap* getTotalTimes();
+			static const FloatMap* getAvgTimes();
 	};
 
 	class ExecutionTimer

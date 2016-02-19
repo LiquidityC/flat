@@ -1,6 +1,5 @@
 #include <string>
 #include <iostream>
-#include <iomanip>
 #include "RuntimeAnalyzer.h"
 
 namespace flat2d
@@ -24,11 +23,16 @@ namespace flat2d
 
 		callCount[func] = callCount[func] + 1;
 		totalTime[func] = totalTime[func] + time;
-		avgTime[func] = static_cast<float>(totalTime[func]) / static_cast<float>(callCount[func]);
+		avgTime[func] = (static_cast<float>(totalTime[func]) / static_cast<float>(callCount[func])) / 1000;
+	}
 
-		if (callCount[func] % 100 == 0) {
-			std::cout << func << ": " << std::fixed << std::setprecision(5)
-				<< avgTime[func]/1000 << std::endl;
-		}
+	const RuntimeAnalyzer::IntMap* RuntimeAnalyzer::getTotalTimes()
+	{
+		return &totalTime;
+	}
+
+	const RuntimeAnalyzer::FloatMap* RuntimeAnalyzer::getAvgTimes()
+	{
+		return &avgTime;
 	}
 } // namespace flat2d
