@@ -33,6 +33,7 @@ namespace flat2d
 			void centerOn(int x, int y);
 
 			bool isVisibleOnCamera(const SDL_Rect& box, int depth = 0);
+			bool isOutOfMapBounds(const SDL_Rect& rect);
 
 			int getScreenXposFor(int x, int depth = 0) const;
 			int getScreenYposFor(int y, int depth = 0) const;

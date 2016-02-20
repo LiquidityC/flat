@@ -77,6 +77,14 @@ namespace flat2d
 		return true;
 	}
 
+	bool Camera::isOutOfMapBounds(const SDL_Rect& rect)
+	{
+		return rect.x + rect.w < 0
+			|| rect.y + rect.h < 0
+			|| rect.y > mapHeight
+			|| rect.x > mapWidth;
+	}
+
 	int Camera::getScreenXposFor(int x, int depth) const
 	{
 		if (depth > 0) {
