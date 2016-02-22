@@ -222,9 +222,9 @@ namespace flat2d
 		handleVerticalSolidCollision(props1, props2);
 
 		if (yvel > 0) {
-			yvel -= 200;
+			yvel -= 50;
 		}
-		if (std::abs(yvel) <= 100) {
+		if (std::abs(yvel) <= 300) {
 			yvel = 0;
 		}
 
@@ -237,9 +237,9 @@ namespace flat2d
 		handleHorizontalSolidCollision(props1, props2);
 
 		if (xvel > 0) {
-			xvel -= 200;
+			xvel -= 50;
 		}
-		if (std::abs(xvel) <= 100) {
+		if (std::abs(xvel) <= 300) {
 			xvel = 0;
 		}
 
