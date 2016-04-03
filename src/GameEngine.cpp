@@ -42,6 +42,7 @@ namespace flat2d
 			gameData->getDeltatimeMonitor()->updateDeltaTime();
 
 			if (gameStateController) {
+				quit = gameStateController->quit();
 				if (gameStateController->gameStateCheck(gameData)) {
 					continue;
 				}
