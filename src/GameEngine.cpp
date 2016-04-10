@@ -31,7 +31,7 @@ namespace flat2d
 		drawFpsTimer.start();
 
 		// Loop stuff
-		flat2d::Timer fpsCapTimer;;
+		flat2d::Timer fpsCapTimer;
 		SDL_Event e;
 		bool quit = false;
 
