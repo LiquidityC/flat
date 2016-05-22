@@ -13,9 +13,6 @@ namespace flat2d
 		private:
 			GameData *gameData;
 
-			int screenWidth = 800;
-			int screenHeight = 600;
-			int screenFps = 60;
 			int screenTicksPerFrame = 1000/60;
 
 			GameEngine(const GameEngine&); // Don't implement
@@ -25,7 +22,7 @@ namespace flat2d
 			explicit GameEngine(GameData *data) : gameData(data) { }
 			~GameEngine() { }
 
-			void init(int screenWidth, int screenHeight, int fps);
+			void init(int fps);
 
 			void run(VirtualGameStateController *gameStateController) const;
 	};

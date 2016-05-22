@@ -31,11 +31,10 @@ namespace flat2d
 			int z = entityProperties.getDepth();
 			Camera* camera = data->getCamera();
 
-			// TODO(Linus): This is disabled until I get it working with depth
-			//if (!camera->isVisibleOnCamera(box, z)) {
-			//return;
-			//}
-			//
+			if (!camera->isVisibleOnCamera(box, z)) {
+				return;
+			}
+			
 			box.x = camera->getScreenXposFor(box.x, z);
 			box.y = camera->getScreenYposFor(box.y, z);
 		}

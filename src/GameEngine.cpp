@@ -11,11 +11,8 @@
 
 namespace flat2d
 {
-	void GameEngine::init(int screenWidth, int screenHeight, int fps)
+	void GameEngine::init(int fps)
 	{
-		this->screenWidth = screenWidth;
-		this->screenHeight = screenHeight;
-		this->screenFps = fps;
 		this->screenTicksPerFrame = 1000 / fps;
 	}
 
@@ -23,12 +20,6 @@ namespace flat2d
 	{
 		SDL_Renderer *renderer = gameData->getRenderData()->getRenderer();
 		EntityContainer *entityContainer = gameData->getEntityContainer();
-
-		Timer fpsTimer;
-		Timer drawFpsTimer;
-
-		fpsTimer.start();
-		drawFpsTimer.start();
 
 		// Loop stuff
 		flat2d::Timer fpsCapTimer;
