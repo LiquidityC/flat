@@ -34,7 +34,7 @@ namespace flat2d
 			if (!camera->isVisibleOnCamera(box, z)) {
 				return;
 			}
-			
+
 			box.x = camera->getScreenXposFor(box.x, z);
 			box.y = camera->getScreenYposFor(box.y, z);
 		}
