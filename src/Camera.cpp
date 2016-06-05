@@ -62,16 +62,16 @@ namespace flat2d
 
 	bool Camera::isVisibleOnCamera(const SDL_Rect& box, int depth)
 	{
-		int xoffset = depth <= 0 ? 1 : depth * 1.5;
-		int yoffset = depth <= 0 ? 1 : depth * 5;
+		int bx = getScreenXposFor(box.x, depth);
+		int by = getScreenYposFor(box.y, depth);
 
-		if (box.x > (xpos / xoffset) + width) {
+		if (bx > width) {
 			return false;
-		} else if (box.x + box.w < xpos / xoffset) {
+		} else if (bx + box.w < 0) {
 			return false;
-		} else if (box.y > (ypos / yoffset) + height) {
+		} else if (by > height) {
 			return false;
-		} else if (box.y + box.h < ypos / yoffset) {
+		} else if (by + box.h < 0) {
 			return false;
 		}
 		return true;
