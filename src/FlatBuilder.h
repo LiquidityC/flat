@@ -30,6 +30,8 @@ namespace flat2d
 			GameControllerContainer *controllerContainer = nullptr;
 			GameEngine *gameEngine = nullptr;
 
+			bool hidpi = false;
+
 		public:
 			~FlatBuilder();
 
@@ -38,6 +40,10 @@ namespace flat2d
 
 			GameData* getGameData() const;
 			GameEngine* getGameEngine() const;
+
+			void setHiDPI(bool hidpi) {
+				this->hidpi = hidpi;
+			}
 	};
 } // namespace flat2d
 

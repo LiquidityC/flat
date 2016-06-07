@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 #include <map>
+#include <vector>
 #include <string>
 #include <functional>
 
@@ -67,6 +68,7 @@ namespace flat2d
 			~EntityContainer();
 
 			void addLayer(unsigned int);
+			std::vector<int> getLayerKeys() const;
 
 			void registerObject(Entity*, Layer = DEFAULT_LAYER);
 			void unregisterObject(Entity *entity);
@@ -74,10 +76,13 @@ namespace flat2d
 			void unregisterAllObjects();
 			void unregisterAllObjectsFor(Layer);
 
-			size_t getObjectCount();
+			size_t getObjectCount() const;
 			size_t getObjectCountFor(Layer);
 
+			size_t getCollidablesCount() const;
+
 			size_t getSpatialPartitionCount() const;
+			void repopulateCollidables();
 
 			void handleObjects(const SDL_Event&, const GameData*);
 
@@ -86,6 +91,8 @@ namespace flat2d
 			void renderObjects(const GameData*) const;
 
 			void setSpatialPartitionDimension(unsigned int);
+
+			void iterateCollidablesIn(Layer, EntityIter);
 
 			void iterateAllMovingObjects(EntityIter) const;
 			void iterateCollidablesFor(const Entity*, EntityIter);

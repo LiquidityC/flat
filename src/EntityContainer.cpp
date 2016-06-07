@@ -31,6 +31,15 @@ namespace flat2d
 		layeredObjects[newLayer] = list;
 	}
 
+	std::vector<int> EntityContainer::getLayerKeys() const
+	{
+		std::vector<int> keys;
+		for (auto& it : layeredObjects) {
+			keys.push_back(it.first);
+		}
+		return keys;
+	}
+
 	void EntityContainer::registerObject(Entity* object, Layer layer)
 	{
 		std::string objId = object->getStringId();
@@ -54,6 +63,16 @@ namespace flat2d
 		}
 	}
 
+	void EntityContainer::repopulateCollidables()
+	{
+		collidableObjects.clear();
+		for (auto& it : objects) {
+			if (it.second->getEntityProperties().isCollidable()) {
+				collidableObjects[it.first] = it.second;
+			}
+		}
+	}
+
 	EntityShape EntityContainer::createBoundingBoxFor(const EntityProperties& props) const
 	{
 		EntityShape vShape = props.getVelocityColliderShape(dtMonitor->getDeltaTime());
@@ -74,18 +93,30 @@ namespace flat2d
 		EntityProperties& props = o->getEntityProperties();
 		EntityShape boundingBox = createBoundingBoxFor(props);
 
-		if (static_cast<unsigned int>(boundingBox.w) > spatialPartitionDimension ||
-				static_cast<unsigned int>(boundingBox.h) > spatialPartitionDimension)
-		{
-			std::cout << "Warning: Spatial partitions are to small in size"
-				<< " " << boundingBox.w << "x" << boundingBox.h << ">"
-				<< spatialPartitionDimension << std::endl;
-		}
-
 		addObjectToSpatialPartitionFor(o, boundingBox.x, boundingBox.y);
 		addObjectToSpatialPartitionFor(o, boundingBox.x, boundingBox.y + boundingBox.h);
 		addObjectToSpatialPartitionFor(o, boundingBox.x + boundingBox.w, boundingBox.y);
 		addObjectToSpatialPartitionFor(o, boundingBox.x + boundingBox.w, boundingBox.y + boundingBox.h);
+
+		if (boundingBox.w > static_cast<int>(spatialPartitionDimension)) {
+			for (int i = boundingBox.x + spatialPartitionDimension;
+					i < boundingBox.x + boundingBox.w;
+					i += spatialPartitionDimension)
+			{
+				addObjectToSpatialPartitionFor(o, i, boundingBox.y);
+				addObjectToSpatialPartitionFor(o, i, boundingBox.y + boundingBox.h);
+			}
+		}
+
+		if (boundingBox.h > static_cast<int>(spatialPartitionDimension)) {
+			for (int i = boundingBox.y + spatialPartitionDimension;
+					i < boundingBox.h + boundingBox.h;
+					i += spatialPartitionDimension)
+			{
+				addObjectToSpatialPartitionFor(o, boundingBox.x, i);
+				addObjectToSpatialPartitionFor(o, boundingBox.x + boundingBox.w, i);
+			}
+		}
 
 		props.setLocationChanged(false);
 	}
@@ -274,7 +305,7 @@ namespace flat2d
 		}
 	}
 
-	size_t EntityContainer::getObjectCount()
+	size_t EntityContainer::getObjectCount() const
 	{
 		return objects.size();
 	}
@@ -286,6 +317,11 @@ namespace flat2d
 		}
 
 		return layeredObjects[layer].size();
+	}
+
+	size_t EntityContainer::getCollidablesCount() const
+	{
+		return collidableObjects.size();
 	}
 
 	void EntityContainer::clearDeadObjects()
@@ -409,5 +445,18 @@ namespace flat2d
 			}
 		}
 		return nullptr;
+	}
+
+	void EntityContainer::iterateCollidablesIn(Layer layer, EntityIter func)
+	{
+		if (layeredObjects.find(layer) == layeredObjects.end()) {
+			return;
+		}
+
+		for (auto it = layeredObjects[layer].begin(); it != layeredObjects[layer].end(); it++) {
+			if (it->second->getEntityProperties().isCollidable()) {
+				func(it->second);
+			}
+		}
 	}
 } // namespace flat2d

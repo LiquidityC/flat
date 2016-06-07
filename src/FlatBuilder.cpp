@@ -48,9 +48,20 @@ namespace flat2d
 			std::cerr << "Warning: Linear texture filtering not enabled" << std::endl;
 		}
 
-		window = new Window(title, screenWidth, screenHeight);
+		if (hidpi) {
+			window = new Window(title, screenWidth*2, screenHeight*2);
+		} else {
+			window = new Window(title, screenWidth, screenHeight);
+		}
 		if (!window->init()) {
 			return false;
+		}
+
+		if (hidpi) {
+			if (SDL_RenderSetLogicalSize(window->getRenderer(), screenWidth, screenHeight)) {
+				std::cerr << "Unable to change render logical size: " << IMG_GetError() << std::endl;
+				return -1;
+			}
 		}
 
 		int imgFlags = IMG_INIT_PNG;
