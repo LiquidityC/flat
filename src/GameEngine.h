@@ -1,12 +1,22 @@
 #ifndef GAMEENGINE_H_
 #define GAMEENGINE_H_
 
+#include <functional>
+
 namespace flat2d
 {
 	class GameData;
 	class RenderData;
 	class EntityContainer;
-	class VirtualGameStateController;
+
+	enum GameStateAction {
+		NOOP,
+		RESET,
+		QUIT
+	};
+
+	typedef std::function<void (const SDL_Event&)> HandleCallback;
+	typedef std::function<GameStateAction (GameData*)> StateCallback;
 
 	class GameEngine
 	{
@@ -24,7 +34,7 @@ namespace flat2d
 
 			void init(int fps);
 
-			void run(VirtualGameStateController *gameStateController) const;
+			void run(StateCallback, HandleCallback) const;
 	};
 } // namespace flat2d
 

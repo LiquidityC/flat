@@ -7,7 +7,6 @@
 #include "RenderData.h"
 #include "Timer.h"
 #include "DeltatimeMonitor.h"
-#include "VirtualGameStateController.h"
 
 namespace flat2d
 {
@@ -16,7 +15,7 @@ namespace flat2d
 		this->screenTicksPerFrame = 1000 / fps;
 	}
 
-	void GameEngine::run(VirtualGameStateController *gameStateController) const
+	void GameEngine::run(StateCallback stateCallback, HandleCallback handleCallback) const
 	{
 		SDL_Renderer *renderer = gameData->getRenderData()->getRenderer();
 		EntityContainer *entityContainer = gameData->getEntityContainer();
@@ -32,10 +31,16 @@ namespace flat2d
 			fpsCapTimer.start();
 			gameData->getDeltatimeMonitor()->updateDeltaTime();
 
-			if (gameStateController) {
-				quit = gameStateController->quit();
-				if (gameStateController->gameStateCheck(gameData)) {
-					continue;
+			if (stateCallback) {
+				switch (stateCallback(gameData)) {
+					case RESET:
+						continue;
+					case QUIT:
+						quit = true;
+						break;
+					case NOOP:
+					default:
+						break;
 				}
 			}
 
@@ -45,8 +50,8 @@ namespace flat2d
 					quit = true;
 					break;
 				}
-				if (gameStateController) {
-					gameStateController->handle(e);
+				if (handleCallback) {
+					handleCallback(e);
 				}
 				entityContainer->handleObjects(e, gameData);
 			}
