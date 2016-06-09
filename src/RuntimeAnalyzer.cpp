@@ -17,7 +17,7 @@ namespace flat2d
 	{
 		if (callCount.find(func) == callCount.end()) {
 			callCount[func] = 0;
-			totalTime[func] = time;
+			totalTime[func] = 0;
 			avgTime[func] = 0;
 		}
 
