@@ -34,7 +34,7 @@ namespace flat2d
 
 			void init(int fps);
 
-			void run(StateCallback, HandleCallback) const;
+			void run(StateCallback = nullptr, HandleCallback = nullptr) const;
 	};
 } // namespace flat2d
 
