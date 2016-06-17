@@ -64,6 +64,16 @@ add_custom_target(lint_flat
 	COMMAND python2.7 lint/cpplint.py --linelength=120 --root=src --extensions=cpp,h --filter=-whitespace/tab,-whitespace/indent,-whitespace/parens,-whitespace/braces,-whitespace/comments,-runtime/indentation_namespace,-legal src/*
 	)
 
+add_custom_target(copy-doc ALL
+	COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/doxygen.conf ${PROJECT_BINARY_DIR}/.
+	)
+
+add_custom_target(doc
+	COMMENT "Creating documentation"
+	DEPENDS copy-doc
+	COMMAND doxygen doxygen.conf
+	)
+
 add_custom_target(check_flat
 	COMMENT "Running catch tests"
 	DEPENDS test_flat

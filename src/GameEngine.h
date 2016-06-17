@@ -9,6 +9,9 @@ namespace flat2d
 	class RenderData;
 	class EntityContainer;
 
+	/**
+	 * Available returns for the StateCallback
+	 */
 	enum GameStateAction {
 		NOOP,
 		RESET,
@@ -18,6 +21,9 @@ namespace flat2d
 	typedef std::function<void (const SDL_Event&)> HandleCallback;
 	typedef std::function<GameStateAction (GameData*)> StateCallback;
 
+	/**
+	 * The game engine. Use this to start the game loop
+	 */
 	class GameEngine
 	{
 		private:
@@ -29,11 +35,30 @@ namespace flat2d
 			void operator=(const GameEngine&); // Don't implement
 
 		public:
+			/**
+			 * Construct the GameEngine
+			 * @param data The GameData*
+			 */
 			explicit GameEngine(GameData *data) : gameData(data) { }
+
+			/**
+			 * Empty destructor. Currently destroying the game engine has
+			 * no additional impact on flat. You shouldn't call this though.
+			 */
 			~GameEngine() { }
 
+			/**
+			 * Init the GameEngine with the provded fps
+			 * @param fps Game fps
+			 */
 			void init(int fps);
 
+			/**
+			 * Start the game loop
+			 *
+			 * @param stateCallback Optional callback to handle the game loop
+			 * @param handleCallback Optional callback to handle SDL_Events
+			 */
 			void run(StateCallback = nullptr, HandleCallback = nullptr) const;
 	};
 } // namespace flat2d
