@@ -36,4 +36,4 @@ namespace flat2d
 
 		return &clips[clipIndex];
 	}
-}
+} // namespace flat2d

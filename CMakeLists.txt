@@ -38,6 +38,7 @@ add_executable(test_flat EXCLUDE_FROM_ALL
 	src/Timer.cpp
 	src/UID.cpp
 	src/Window.cpp
+	src/Animation.cpp
 	testsrc/ButtonTest.cpp
 	testsrc/CollisionDetectorTest.cpp
 	testsrc/EntityContainerTest.cpp

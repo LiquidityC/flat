@@ -18,7 +18,7 @@ namespace flat2d
 			Clips clips;
 			uint32_t timestep;
 			int clipIndex = 0;
-	
+
 		public:
 			Animation(Clips c, uint32_t t) : clips(c), timestep(t) { }
 
