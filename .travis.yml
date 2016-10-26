@@ -32,9 +32,9 @@ install:
     - sudo apt-get install -y python2.7
     - sudo apt-get install -y cmake cmake-data
 
-      #g++4.9
-    - if [ "$CXX" = "g++" ]; then sudo apt-get install -y g++-4.9; fi
-    - if [ "$CXX" = "g++" ]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
+      #g++6
+    - if [ "$CXX" = "g++" ]; then sudo apt-get install -y g++-6; fi
+    - if [ "$CXX" = "g++" ]; then export CXX="g++-6" CC="gcc-6"; fi
 
       #clang 3.6
     - if [ "$CXX" == "clang++" ]; then sudo apt-get install -y --allow-unauthenticated clang-3.6; fi

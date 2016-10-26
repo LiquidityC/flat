@@ -50,7 +50,7 @@ add_executable(test_flat EXCLUDE_FROM_ALL
 	src/RuntimeAnalyzer.cpp)
 
 target_link_libraries(test_flat -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf)
-target_compile_options(test_flat PRIVATE -std=c++11 -g -Wall)
+target_compile_options(test_flat PRIVATE -std=c++14 -g -Wall)
 
 add_library(flat
 	src/Button.cpp
@@ -75,7 +75,7 @@ add_library(flat
 	src/RuntimeAnalyzer.cpp)
 
 target_link_libraries(flat -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf)
-target_compile_options(flat PRIVATE -std=c++11 -Wall)
+target_compile_options(flat PRIVATE -std=c++14 -Wall)
 set_target_properties(flat PROPERTIES
 	VERSION 0.0.0
 	SOVERSION 0)
