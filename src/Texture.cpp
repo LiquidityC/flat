@@ -80,11 +80,17 @@ namespace flat2d
 		return texture != nullptr;
 	}
 
-	void Texture::render(SDL_Renderer *renderer) const
+	void Texture::render(SDL_Renderer *renderer, const SDL_Rect* clip, const SDL_Rect* pos) const
 	{
-		if (texture != nullptr) {
-			SDL_Rect box = { x, y, w, h };
-			SDL_RenderCopy(renderer, texture, NULL, &box);
+		if (texture == nullptr) {
+			return;
 		}
+
+		if (pos == nullptr) {
+			SDL_Rect box = { x, y, w, h };
+			pos = &box;
+		}
+
+		SDL_RenderCopy(renderer, texture, clip, pos);
 	}
 } // namespace flat2d

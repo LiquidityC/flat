@@ -2,17 +2,14 @@
 #include "Entity.h"
 #include "Camera.h"
 #include "RenderData.h"
+#include "Animation.h"
+#include "Texture.h"
 
 namespace flat2d
 {
 	void Entity::setDead(bool dead)
 	{
 		this->dead = dead;
-	}
-
-	void Entity::setClip(SDL_Rect& rect)
-	{
-		clip = rect;
 	}
 
 	bool Entity::isDead() const
@@ -39,7 +36,14 @@ namespace flat2d
 			box.y = camera->getScreenYposFor(box.y, z);
 		}
 
-		SDL_RenderCopy(data->getRenderer(), texture, &clip, &box);
+		const SDL_Rect *renderClip = nullptr;
+		if (auto spAnimation = animation.lock()) {
+			renderClip = (*spAnimation).run();
+		} else {
+			renderClip = &clip;
+		}
+
+		texture.get()->render(data->getRenderer(), renderClip, &box);
 
 #ifdef COLLISION_DBG
 		// Draw collider box
@@ -76,14 +80,24 @@ namespace flat2d
 #endif
 	}
 
-	const SDL_Texture* Entity::getTexture() const
+	void Entity::setClip(SDL_Rect& clip)
 	{
-		return texture;
+		this->clip = clip;
 	}
 
-	void Entity::setTexture(SDL_Texture* texture)
+	const Texture* Entity::getTexture() const
+	{
+		return texture.get();
+	}
+
+	void Entity::setSharedTexture(std::shared_ptr<Texture> texture)
 	{
 		this->texture = texture;
+	}
+
+	void Entity::setTexture(Texture *texture)
+	{
+		this->texture = std::shared_ptr<Texture>(texture);
 	}
 
 	bool Entity::isFixedPosition()
@@ -104,6 +118,11 @@ namespace flat2d
 	void Entity::setInputHandler(bool inputHandler)
 	{
 		this->inputHandler = inputHandler;
+	}
+
+	void Entity::setAnimation(std::shared_ptr<Animation> animation)
+	{
+		this->animation = animation;
 	}
 
 	EntityProperties& Entity::getEntityProperties()

@@ -4,6 +4,8 @@
 #include <SDL2/SDL.h>
 #include <string>
 #include <sstream>
+#include <memory>
+#include <map>
 
 #include "EntityProperties.h"
 #include "UID.h"
@@ -13,6 +15,8 @@ namespace flat2d
 	class Camera;
 	class RenderData;
 	class GameData;
+	class Texture;
+	class Animation;
 
 	class Entity
 	{
@@ -20,24 +24,29 @@ namespace flat2d
 			size_t id;
 			bool fixedPosition = false;
 			bool inputHandler = false;
+			SDL_Rect clip;
 
 		protected:
 			EntityProperties entityProperties;
+			std::shared_ptr<Texture> texture = nullptr;
+
+			std::weak_ptr<Animation> animation;
+
 			bool dead = false;
-			SDL_Texture *texture = nullptr;
-			SDL_Rect clip;
 
 		public:
 			Entity(int x, int y, int w, int h) :
 				entityProperties(x, y, w, h),
 				dead(false) {
 					id = UID::generate();
-
-					entityProperties.setColliderShape({ 0, 0, w, h });
 					clip = { 0, 0, w, h };
 				}
 
-			virtual ~Entity() { }
+			virtual ~Entity() {
+				if (texture != nullptr) {
+					texture.reset();
+				}
+			}
 
 			/* Operators */
 			virtual bool operator==(const Entity& o) const {
@@ -81,12 +90,14 @@ namespace flat2d
 			void setFixedPosition(bool isFixed);
 			bool isInputHandler();
 			void setInputHandler(bool inputHandler);
+			void setAnimation(std::shared_ptr<Animation>);
 
 			/* Implemented override methods */
 			virtual bool isDead() const;
 			virtual void render(const RenderData*) const;
-			virtual const SDL_Texture* getTexture() const;
-			virtual void setTexture(SDL_Texture* texture);
+			virtual const Texture* getTexture() const;
+			virtual void setSharedTexture(std::shared_ptr<Texture> texture);
+			virtual void setTexture(Texture *texture);
 			virtual EntityProperties& getEntityProperties();
 			virtual const EntityProperties& getEntityProperties() const;
 			virtual bool onCollision(Entity *collider, const GameData*);

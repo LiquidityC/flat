@@ -9,6 +9,7 @@ namespace flat2d
 			int x, y, w, h;
 
 		public:
+			Square() : x(0), y(0), w(0), h(0) { }
 			Square(int px, int py, int dim) : x(px), y(py), w(dim), h(dim) { }
 			Square(int px, int py, int pw, int ph) : x(px), y(py), w(pw), h(ph) { }
 

@@ -18,10 +18,14 @@ namespace flat2d
 			void freeFont();
 
 		public:
-			Texture(int xpos, int ypos) : Square(xpos, ypos, 0, 0) { }
+			Texture() : Square() { }
+			Texture(int x, int y) : Square(x, y, 0, 0) { }
 			virtual ~Texture();
 
-			void render(SDL_Renderer *renderer) const;
+			void render(SDL_Renderer *renderer,
+					const SDL_Rect* clip = nullptr,
+					const SDL_Rect* pos = nullptr
+					) const;
 
 			bool loadFromFile(std::string path, SDL_Renderer *renderer);
 			bool loadFont(std::string path, size_t size);

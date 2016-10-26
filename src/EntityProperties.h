@@ -36,8 +36,11 @@ namespace flat2d
 			EntityShape getCustomVelocityColliderShape(float dx, float dy) const;
 
 		public:
-			EntityProperties(int x, int y, int dim) : Square(x, y, dim) { }
-			EntityProperties(int x, int y, int w, int h) : Square(x, y, w, h) { }
+			EntityProperties(int x, int y, int w, int h) : Square(x, y, w, h) {
+				setColliderShape({ 0, 0, w, h });
+			}
+
+			EntityProperties(int x, int y, int dim) : EntityProperties(x, y, dim, dim) { }
 
 			SDL_Rect getBoundingBox() const;
 
