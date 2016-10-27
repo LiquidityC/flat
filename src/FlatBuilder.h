@@ -36,12 +36,6 @@ namespace flat2d
 
 			bool hidpi = false;
 
-		public:
-			/**
-			 * Cleanly destroy all related objects and shut down SDL nicely.
-			 */
-			~FlatBuilder();
-
 			/**
 			 * Inits SDL. Creating a window according to provided dimension
 			 * with the provided name.
@@ -61,6 +55,18 @@ namespace flat2d
 			 */
 			bool initContainers();
 
+		public:
+			/**
+			 * Initiate the engine and all included systems.
+			 *
+			 * @return int 0 if success
+			 */
+			int loadSDL(const std::string& name, int fps, int screenWidth, int screenHeight);
+
+			/**
+			 * Cleanly destroy all related objects and shut down SDL nicely.
+			 */
+			~FlatBuilder();
 
 			/**
 			 * Returns the GameData pointer.

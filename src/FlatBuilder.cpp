@@ -107,4 +107,20 @@ namespace flat2d
 	{
 		return gameEngine;
 	}
+
+	int FlatBuilder::loadSDL(const std::string& name, int fps, int screenWidth, int screenHeight)
+	{
+		if (!initSDL(name, screenWidth, screenHeight)) {
+			return -1;
+		}
+
+		SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "nearest");
+		if (!initContainers()) {
+			return -1;
+		}
+
+		gameEngine->init(fps);
+
+		return 0;
+	}
 } // namespace flat2d
