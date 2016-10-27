@@ -18,6 +18,14 @@ namespace flat2d
 	class Texture;
 	class Animation;
 
+	/**
+	 * The Entity class. You can extend this to create your game objects.
+	 * Extend it publicly. To integrate your custom functionality use the
+	 * pre/postHandle, pre/postMove, pre/postRender functions.
+	 * You may override the handle, move and render functions but shouldn't have
+	 * to do this in most cases. The working logic is solid enough most of the time.
+	 * @author Linus Probert <linus.probert@gmail.com>
+	 */
 	class Entity
 	{
 		private:
@@ -63,10 +71,18 @@ namespace flat2d
 				return *this;
 			}
 
+			/**
+			 * Get the Entity id
+			 * @return the Entity id
+			 */
 			virtual int getId() const {
 				return static_cast<int>(id);
 			}
 
+			/**
+			 * Get the id as a string
+			 * @return id as a string
+			 */
 			virtual std::string getStringId() const {
 				std::string number;
 				std::stringstream ss;
@@ -79,25 +95,91 @@ namespace flat2d
 				return id < o.id;
 			}
 
+			/**
+			 * Get the Entity type. You SHOULD override this in your
+			 * derived classes if you want to be able to distinguish between Entity
+			 * objects and static_cast Entity objects to your own derived Entity objects.
+			 * @return The entity type
+			 */
 			virtual int getType() const {
 				return -1;
 			}
 
-			/* Own methods */
+			/**
+			 * Set the clip for the Entity texture
+			 * @param clip The clip to use
+			 */
 			void setClip(SDL_Rect&);
+
+			/**
+			 * Mark the Entity as dead.
+			 */
 			void setDead(bool isDead);
+
+			/**
+			 * Check if this is a fixed position Entity
+			 * @return true or false
+			 */
 			bool isFixedPosition();
+
+			/**
+			 * Mark this Entity as fixed. It will then always render at the same
+			 * position on screen. Useful for 'HUD' graphics.
+			 * @param isFixed boolean value
+			 */
 			void setFixedPosition(bool isFixed);
+
+			/**
+			 * Check if this Entity handles input
+			 * @return true or false
+			 */
 			bool isInputHandler();
+
+			/**
+			 * Mark this Entity as an input handler. If set to false
+			 * the handle method won't be called on this Entity. Mostly
+			 * good for performance to set this.
+			 * @param inputHandler true or false
+			 */
 			void setInputHandler(bool inputHandler);
+
+			/**
+			 * Set an Animation for this Entity. Animations will 
+			 * override clip set through setClip
+			 * This function isn't super well tested. Should work though.
+			 * @param animation A shared pointer to the animation
+			 */
 			void setAnimation(std::shared_ptr<Animation>);
 
-			/* Implemented override methods */
+			/**
+			 * Get the Entity texture
+			 * @return a shared_ptr to the Texture object
+			 */
+			const std::weak_ptr<Texture> getTexture() const;
+
+			/**
+			 * Set a shared Texture for this Entity
+			 */
+			void setSharedTexture(std::shared_ptr<Texture> texture);
+
+			/**
+			 * Set a Texture for this Entity to use
+			 * @param texture The texture to store.
+			 */
+			void setTexture(Texture *texture);
+
+			/**
+			 * Check if the Entity is dead. When this returns true the EntityContainer
+			 * will destroy the object next cycle.
+			 * @return true or false
+			 */
 			virtual bool isDead() const;
+
+			/**
+			 * Render the Entity
+			 * @param data The RenderData object pointer
+			 */
 			virtual void render(const RenderData*) const;
-			virtual const Texture* getTexture() const;
-			virtual void setSharedTexture(std::shared_ptr<Texture> texture);
-			virtual void setTexture(Texture *texture);
 			virtual EntityProperties& getEntityProperties();
 			virtual const EntityProperties& getEntityProperties() const;
 			virtual bool onCollision(Entity *collider, const GameData*);

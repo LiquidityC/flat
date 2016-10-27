@@ -12,6 +12,10 @@ namespace flat2d
 	class Square;
 	class GameData;
 
+	/**
+	 * Checks collisions between objects.
+	 * @author Linus Probert <linus.probert@gmail.com>
+	 */
 	class CollisionDetector
 	{
 		private:
@@ -39,15 +43,27 @@ namespace flat2d
 			CollisionDetector(const CollisionDetector&) = delete;
 			const CollisionDetector& operator=(const CollisionDetector& c) = delete;
 
+			/**
+			 * Check for a possible collision for an Entity. Used by EntityContainer
+			 * avoid using in game code.
+			 * @param entity The entity to work on
+			 * @param data The GameData object
+			 */
 			void handlePossibleCollisionsFor(Entity* entity, const GameData *data);
 
 			/**
-			 * Collision algorithms follow below
-			 *
-			 * These are public for the sake of testing
+			 * AABB Collision detection between two EntityShape objects.
+			 * This is public due to testing. Let the EntityContainer use it alone
+			 * @param b1 The first EntityShape
+			 * @param b2 The second EntityShape
 			 */
 			bool AABB(const EntityShape&, const EntityShape&) const;
 
+			/**
+			 * AABB sweeping collision detection between two EntityShape objects.
+			 * This is public due to testing. Let the EntityContainer use it alone.
+			 * This actually isn't used at the moment because it's a bit broken.
+			 */
 			float sweptAABB(EntityProperties* props1, EntityProperties* props2,
 					float *normalx, float *normaly) const;
 	};

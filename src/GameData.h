@@ -10,6 +10,11 @@ namespace flat2d
 	class Camera;
 	class DeltatimeMonitor;
 
+	/**
+	 * The GameData object acts as a container for the game and it's state.
+	 * From it you can reach the RenderData, EntityContainer, CollisionDetector
+	 * Mixer, DeltatimeMonitor and your custom game data object.
+	 */
 	class GameData
 	{
 		private:

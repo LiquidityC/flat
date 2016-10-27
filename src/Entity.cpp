@@ -85,9 +85,9 @@ namespace flat2d
 		this->clip = clip;
 	}
 
-	const Texture* Entity::getTexture() const
+	const std::weak_ptr<Texture> Entity::getTexture() const
 	{
-		return texture.get();
+		return texture;
 	}
 
 	void Entity::setSharedTexture(std::shared_ptr<Texture> texture)

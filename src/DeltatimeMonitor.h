@@ -3,6 +3,10 @@
 
 namespace flat2d
 {
+	/**
+	 * The DeltatimeMonitor keeps track of deltatimes during engine loops
+	 * @author Linus Probert <linus.probert@gmail.com>
+	 */
 	class DeltatimeMonitor
 	{
 		private:
@@ -11,7 +15,16 @@ namespace flat2d
 			int oldTime = 0;
 
 		public:
+			/**
+			 * Update the deltatime. This is used by the GameEngine and 
+			 * it's most likely a bad idea calling this from game code.
+			 */
 			void updateDeltaTime();
+
+			/**
+			 * Get the current deltatime. You can use this to correctly move
+			 * your objects during update steps.
+			 */
 			float getDeltaTime() const;
 	};
 } // namespace flat2d
