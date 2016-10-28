@@ -51,7 +51,7 @@ namespace flat2d
 			 * @param h The height
 			 */
 			EntityProperties(int x, int y, int w, int h) : Square(x, y, w, h) {
-				setColliderShape({ 0, 0, w, h });
+				setColliderShape({ 1, 1, w-2, h-2 });
 			}
 
 			/**

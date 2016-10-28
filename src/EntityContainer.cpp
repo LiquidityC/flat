@@ -53,6 +53,7 @@ namespace flat2d
 		}
 
 		objects[objId] = object;
+		uninitiatedEntities[objId] = object;
 		layeredObjects[layer][objId] = object;
 		registerObjectToSpatialPartitions(object);
 		if (object->isInputHandler()) {
@@ -189,6 +190,7 @@ namespace flat2d
 		std::string objId = object->getStringId();
 		objects.erase(objId);
 		inputHandlers.erase(objId);
+		uninitiatedEntities.erase(objId);
 		if (object->getEntityProperties().isCollidable()) {
 			collidableObjects.erase(objId);
 		}
@@ -212,6 +214,7 @@ namespace flat2d
 		for(auto it = objects.begin(); it != objects.end(); it++) {
 			delete it->second;
 		}
+		uninitiatedEntities.clear();
 		objects.clear();
 		collidableObjects.clear();
 		spatialPartitionMap.clear();
@@ -229,6 +232,7 @@ namespace flat2d
 			std::string objId = it->second->getStringId();
 			objects.erase(objId);
 			inputHandlers.erase(objId);
+			uninitiatedEntities.erase(objId);
 			if (it->second->getEntityProperties().isCollidable()) {
 				collidableObjects.erase(objId);
 			}
@@ -238,11 +242,21 @@ namespace flat2d
 		layeredObjects[layer].clear();
 	}
 
+	void EntityContainer::initiateEntities(const GameData *gameData)
+	{
+		for (auto it = uninitiatedEntities.begin(); it != uninitiatedEntities.end(); it++) {
+			it->second->init(gameData);
+		}
+		uninitiatedEntities.clear();
+	}
+
 	void EntityContainer::handleObjects(const SDL_Event& event, const GameData* gameData)
 	{
 #ifdef FPS_DBG
 		TIME_FUNCTION;
 #endif
+		initiateEntities(gameData);
+
 		for (auto it = inputHandlers.begin(); it != inputHandlers.end(); it++) {
 			it->second->preHandle(gameData);
 			it->second->handle(event);

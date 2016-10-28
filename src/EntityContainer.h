@@ -49,6 +49,7 @@ namespace flat2d
 			ObjectList inputHandlers;
 			LayerMap layeredObjects;
 			SpatialPartitionMap spatialPartitionMap;
+			ObjectList uninitiatedEntities;
 
 			typedef std::function<bool (Entity*)> EntityProcessor;
 			typedef std::function<void (Entity*)> EntityIter;
@@ -63,7 +64,7 @@ namespace flat2d
 			void clearObjectFromCurrentPartitions(Entity *entity);
 			void clearObjectFromUnattachedPartitions(Entity *entity);
 			EntityShape createBoundingBoxFor(const EntityProperties& props) const;
-
+			void initiateEntities(const GameData *gameData);
 			void handlePossibleObjectMovement(Entity* entity);
 
 			void reinitLayerMap();
