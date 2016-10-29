@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cassert>
 #include "Entity.h"
 #include "Camera.h"
 #include "RenderData.h"
@@ -37,8 +38,8 @@ namespace flat2d
 		}
 
 		const SDL_Rect *renderClip = nullptr;
-		if (auto spAnimation = animation.lock()) {
-			renderClip = (*spAnimation).run();
+		if (!currentAnimation.empty()) {
+			renderClip = animations.at(currentAnimation)->run();
 		} else {
 			renderClip = &clip;
 		}
@@ -120,9 +121,26 @@ namespace flat2d
 		this->inputHandler = inputHandler;
 	}
 
-	void Entity::setAnimation(std::shared_ptr<Animation> animation)
+	void Entity::addAnimation(std::string id, Animation *animation)
 	{
-		this->animation = animation;
+		assert (animations.find(id) != animations.end());
+		animations[id] = animation;
+	}
+
+	void Entity::startAnimation(std::string id)
+	{
+		assert(animations.find(id) != animations.end());
+		if (!currentAnimation.empty()) {
+			animations[currentAnimation]->stop();
+		}
+		currentAnimation = id;
+		animations[currentAnimation]->start();
+	}
+
+	void Entity::stopAnimations()
+	{
+		animations[currentAnimation]->stop();
+		currentAnimation = "";
 	}
 
 	EntityProperties& Entity::getEntityProperties()

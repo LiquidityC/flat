@@ -8,6 +8,7 @@
 #include <map>
 
 #include "EntityProperties.h"
+#include "Animation.h"
 #include "UID.h"
 
 namespace flat2d
@@ -16,7 +17,6 @@ namespace flat2d
 	class RenderData;
 	class GameData;
 	class Texture;
-	class Animation;
 
 	/**
 	 * The Entity class. You can extend this to create your game objects.
@@ -38,7 +38,8 @@ namespace flat2d
 			EntityProperties entityProperties;
 			std::shared_ptr<Texture> texture = nullptr;
 
-			std::weak_ptr<Animation> animation;
+			std::string currentAnimation = "";
+			std::map<std::string, Animation*> animations;
 
 			bool dead = false;
 
@@ -51,8 +52,8 @@ namespace flat2d
 				}
 
 			virtual ~Entity() {
-				if (texture != nullptr) {
-					texture.reset();
+				for (auto it = animations.begin(); it != animations.end(); it++) {
+					delete it->second;
 				}
 			}
 
@@ -144,12 +145,27 @@ namespace flat2d
 			void setInputHandler(bool inputHandler);
 
 			/**
-			 * Set an Animation for this Entity. Animations will 
-			 * override clip set through setClip
+			 * Add an Animation to this Entity. Animations will 
+			 * override clip set through setClip. Animations that are added
+			 * will be destroyed when the entity is so you don't need to save the pointer.
 			 * This function isn't super well tested. Should work though.
+			 * @param id A string identifier for this animation
 			 * @param animation A shared pointer to the animation
 			 */
-			void setAnimation(std::shared_ptr<Animation>);
+			void addAnimation(std::string id, Animation* animation);
+
+			/**
+			 * Start an animation that was previously added
+			 * This will override the clip setting as long as the animation
+			 * is running.
+			 * @param id The animation identifier
+			 */
+			void startAnimation(std::string id);
+
+			/**
+			 * Stop an animation and return to rendering the clip if one is set
+			 */
+			void stopAnimations();
 
 			/**
 			 * Get the Entity texture
