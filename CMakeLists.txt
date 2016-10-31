@@ -95,7 +95,7 @@ foreach(header ${HEADERS})
 		)
 endforeach()
 
-add_custom_target(lint_flat
+add_custom_target(lint
 	COMMENT "Running cpp-lint"
 	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 	COMMAND python2.7 lint/cpplint.py --linelength=120 --root=src --extensions=cpp,h --filter=-whitespace/tab,-whitespace/indent,-whitespace/parens,-whitespace/braces,-whitespace/comments,-runtime/indentation_namespace,-legal src/*
@@ -111,7 +111,7 @@ add_custom_target(doc
 	COMMAND doxygen doxygen.conf
 	)
 
-add_custom_target(check_flat
+add_custom_target(check
 	COMMENT "Running catch tests"
 	DEPENDS test_flat
 	COMMAND test_flat

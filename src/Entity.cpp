@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cassert>
+#include <string>
 #include "Entity.h"
 #include "Camera.h"
 #include "RenderData.h"

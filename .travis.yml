@@ -10,8 +10,8 @@ script:
     - cd build
     - cmake ..
     - make
-    - make check_flat
-    - make lint_flat
+    - make check
+    - make lint
 
 before_install:
     - sudo add-apt-repository -y ppa:zoogie/sdl2-snapshots
