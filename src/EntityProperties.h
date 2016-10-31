@@ -51,7 +51,7 @@ namespace flat2d
 			 * @param h The height
 			 */
 			EntityProperties(int x, int y, int w, int h) : Square(x, y, w, h) {
-				setColliderShape({ 1, 1, w-2, h-2 });
+				setColliderShape({ 0, 0, w, h });
 			}
 
 			/**
@@ -204,7 +204,7 @@ namespace flat2d
 			int getColliderTopOffset() const;
 
 			/**
-			 * Get the distance between Entity bounds and Colldier
+			 * Get the distance between Entity bounds and Collider
 			 * @return an int value
 			 */
 			int getColliderBottomOffset() const;
