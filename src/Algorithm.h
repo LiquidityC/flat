@@ -6,6 +6,11 @@
 
 namespace flat2d
 {
+	/**
+	 * A class containing nice algorithm utils. This one was originally used
+	 * to organize objects in a map by their X,Y positions.
+	 * @author Linus Probert <linus.probert@gmail.com>
+	 */
 	class Algorithm
 	{
 		public:

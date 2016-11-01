@@ -7,6 +7,12 @@ namespace flat2d
 {
 	namespace ui
 	{
+		/**
+		 * This is supposed to be a UI button. The UI hasn't been developed at all and
+		 * this button is very untested. It will be done in the future. But I'm not sure if
+		 * buttons belong here or not.
+		 * @author Linus Probert <linus.probert@gmail.com>
+		 */
 		class Button : public flat2d::Entity
 		{
 			private:
