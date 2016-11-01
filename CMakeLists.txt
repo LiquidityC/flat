@@ -102,13 +102,13 @@ add_custom_target(lint
 	)
 
 add_custom_target(copy-doc ALL
-	COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/doxygen.conf ${PROJECT_BINARY_DIR}/.
+	COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile ${PROJECT_BINARY_DIR}/.
 	)
 
 add_custom_target(doc
 	COMMENT "Creating documentation"
 	DEPENDS copy-doc
-	COMMAND doxygen doxygen.conf
+	COMMAND doxygen
 	)
 
 add_custom_target(check
