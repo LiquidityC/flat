@@ -124,13 +124,15 @@ namespace flat2d
 
 	void Entity::addAnimation(std::string id, Animation *animation)
 	{
-		assert (animations.find(id) != animations.end());
+		assert (animations.find(id) == animations.end());
+
 		animations[id] = animation;
 	}
 
 	void Entity::startAnimation(std::string id)
 	{
 		assert(animations.find(id) != animations.end());
+
 		if (!currentAnimation.empty()) {
 			animations[currentAnimation]->stop();
 		}
