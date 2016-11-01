@@ -8,6 +8,10 @@
 
 namespace flat2d
 {
+	/**
+	 * A Texture object
+	 * @author Linus Probert <linus.probert@gmail.com>
+	 */
 	class Texture : public Square
 	{
 		private:
@@ -22,13 +26,39 @@ namespace flat2d
 			Texture(int x, int y) : Square(x, y, 0, 0) { }
 			virtual ~Texture();
 
+			/**
+			 * Render the texture
+			 * @param renderer The SDL_Renderer
+			 * @param clip The texture clip to render
+			 * @param pos Position and dimension to render at
+			 */
 			void render(SDL_Renderer *renderer,
 					const SDL_Rect* clip = nullptr,
 					const SDL_Rect* pos = nullptr
 					) const;
 
+			/**
+			 * Load a texture resource from file
+			 * @param path The resource path
+			 * @param renderer The SDL_Renderer
+			 * @return success or fail
+			 */
 			bool loadFromFile(std::string path, SDL_Renderer *renderer);
+
+			/**
+			 * Load a font resource into the Texture
+			 * @param path The resource path
+			 * @param size The font size
+			 * @return success or fail
+			 */
 			bool loadFont(std::string path, size_t size);
+
+			/**
+			 * Create a texture from the loaded font
+			 * @param text The message to render
+			 * @param color The color to render font with
+			 * @param renderer The SDL_Renderer
+			 */
 			bool loadFromRenderedText(std::string text, SDL_Color color, SDL_Renderer *renderer);
 	};
 } // namespace flat2d

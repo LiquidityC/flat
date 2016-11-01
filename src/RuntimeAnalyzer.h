@@ -9,6 +9,12 @@
 
 namespace flat2d
 {
+	/**
+	 * Helper class to benchmark and time game execution.
+	 * Put the macro TIME_FUNCTION at the top of any recurring function
+	 * and it will have it's average execution time analyzed.
+	 * @author Linus Probert <linus.probert@gmail.com>
+	 */
 	class RuntimeAnalyzer
 	{
 		public:
@@ -26,6 +32,10 @@ namespace flat2d
 			static const FloatMap* getAvgTimes();
 	};
 
+	/**
+	 * Timer to monitor game performance
+	 * @author Linus Probert <linus.probert@gmail.com>
+	 */
 	class ExecutionTimer
 	{
 		private:

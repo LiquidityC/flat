@@ -94,3 +94,15 @@ namespace flat2d
 } // namespace flat2d
 
 #endif // FLATBUILDER_H_
+
+/*! \mainpage The Flat library
+ *	\section Intro
+ *	Flat is a 2D game engine wrapping SDL2.0. It's a work in progress but the basic 2D
+ *	engine is more or less fully functional.
+ *	\section Features
+ *	- Simple collision handling
+ *	- Parallax scrolling
+ *	- Music and soundeffects
+ *	- Gamecontroller input (xbox/ps4/etc)
+ *	- hiDPI screens
+ */

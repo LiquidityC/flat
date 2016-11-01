@@ -6,6 +6,10 @@
 
 namespace flat2d
 {
+	/**
+	 * A Unique id object heavily used by the Entity class
+	 * @author Linus Probert <linus.probert@gmail.com>
+	 */
 	class UID
 	{
 		private:
@@ -13,6 +17,11 @@ namespace flat2d
 			static SpinLock lock;
 
 		public:
+			/**
+			 * Generate a new unique id. These are all sequential and
+			 * their life only spans runtime
+			 * @return a new uid
+			 */
 			static size_t generate();
 	};
 } // namespace flat2d

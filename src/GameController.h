@@ -7,6 +7,10 @@ namespace flat2d
 {
 	class GameControllerContainer;
 
+	/**
+	 * A helper class to add game controllers/pads to your game
+	 * @author Linus Probert <linus.probert@gmail.com>
+	 */
 	class GameController
 	{
 		private:

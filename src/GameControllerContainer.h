@@ -6,6 +6,10 @@
 
 namespace flat2d
 {
+	/**
+	 * Container for connected game controllers
+	 * @author Linus Probert <linus.probert@gmail.com>
+	 */
 	class GameControllerContainer
 	{
 		private:
@@ -17,7 +21,17 @@ namespace flat2d
 			GameControllerContainer();
 			virtual ~GameControllerContainer();
 
+			/**
+			 * Check if any controllers exist
+			 * @return true or false
+			 */
 			bool hasControllers();
+
+			/**
+			 * Get a controller object
+			 * @param index the GameControllers index
+			 * @return A GameController object
+			 */
 			GameController* getController(int index);
 	};
 } // namespace flat2d

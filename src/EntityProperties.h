@@ -175,7 +175,7 @@ namespace flat2d
 			/**
 			 * Set the collision property of the Entity. This affects
 			 * how Entities behave when default collision handling is used
-			 * @param property The CollisionProperty
+			 * @param prop The CollisionProperty
 			 */
 			void setCollisionProperty(CollisionProperty);
 

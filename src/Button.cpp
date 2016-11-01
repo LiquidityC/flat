@@ -1,9 +1,12 @@
 #include "Button.h"
 #include "RenderData.h"
 
-
 namespace flat2d
 {
+	/**
+	 * The UI is more or less untested and far from completed. You should most likely
+	 * avoid the contained objects until it's completed.
+	 */
 	namespace ui
 	{
 		void Button::handle(const SDL_Event& e)

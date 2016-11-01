@@ -7,6 +7,10 @@
 
 namespace flat2d
 {
+	/**
+	 * The window class. A game can run multiple windows
+	 * @author Linus Probert <linus.probert@gmail.com>
+	 */
 	class Window
 	{
 		private:
@@ -26,9 +30,21 @@ namespace flat2d
 				renderer = nullptr;
 			}
 
+			/**
+			 * Initiate the window
+			 */
 			bool init();
 
+			/**
+			 * Get the SDL_Window from Window
+			 * @return SDL_Window
+			 */
 			SDL_Window* getWindow() { return window; }
+
+			/**
+			 * Get the SDL_Renderer from Window
+			 * @return SDL_Renderer
+			 */
 			SDL_Renderer* getRenderer() { return renderer; }
 	};
 } // namespace flat2d

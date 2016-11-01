@@ -37,9 +37,13 @@ namespace flat2d
 		protected:
 			EntityProperties entityProperties;
 			std::shared_ptr<Texture> texture = nullptr;
+<<<<<<< Updated upstream
 
 			std::string currentAnimation = "";
 			std::map<std::string, Animation*> animations;
+=======
+			std::weak_ptr<Animation> animation;
+>>>>>>> Stashed changes
 
 			bool dead = false;
 
