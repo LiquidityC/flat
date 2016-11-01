@@ -18,7 +18,7 @@ namespace flat2d
 			static int cantorPairing(int x, int y) {
 				int dx = std::min(x, y);
 				int dy = std::max(x, y);
-	
+
 				return ((dx + dy) * (dx + dy + 1))/2 + dy;
 			}
 	};
