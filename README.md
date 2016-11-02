@@ -1,4 +1,6 @@
-# flat (2D game engine) [![Build Status](https://travis-ci.org/LiquidityC/flat.svg?branch=master)](https://travis-ci.org/LiquidityC/flat)
+[![Build Status](https://travis-ci.org/LiquidityC/flat.svg?branch=master)](https://travis-ci.org/LiquidityC/flat)
+[![Coverity scan](https://scan.coverity.com/projects/10677/badge.svg)](https://scan.coverity.com/projects/liquidityc-flat)
+# flat (2D game engine)
 
 This is my 2D game engine
 
