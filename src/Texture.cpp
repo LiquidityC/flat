@@ -88,9 +88,9 @@ namespace flat2d
 
 		if (pos == nullptr) {
 			SDL_Rect box = { x, y, w, h };
-			pos = &box;
+			SDL_RenderCopy(renderer, texture, clip, &box);
+		} else {
+			SDL_RenderCopy(renderer, texture, clip, pos);
 		}
-
-		SDL_RenderCopy(renderer, texture, clip, pos);
 	}
 } // namespace flat2d

@@ -17,17 +17,21 @@ namespace flat2d
 			std::string title;
 			unsigned int width, height;
 
-			SDL_Window* window;
-			SDL_Renderer* renderer;
+			SDL_Window* window = nullptr;
+			SDL_Renderer* renderer = nullptr;
 
 		public:
 			Window(std::string t, unsigned int w, unsigned int h) : title(t), width(w), height(h) { }
 
 			~Window() {
-				SDL_DestroyWindow(window);
-
-				window = nullptr;
-				renderer = nullptr;
+				if (window) {
+					SDL_DestroyWindow(window);
+					window = nullptr;
+				}
+				if (renderer) {
+					SDL_DestroyRenderer(renderer);
+					renderer = nullptr;
+				}
 			}
 
 			/**
