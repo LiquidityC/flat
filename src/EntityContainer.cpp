@@ -244,7 +244,13 @@ namespace flat2d
 
 	void EntityContainer::initiateEntities(const GameData *gameData)
 	{
+#ifdef FPS_DBG
+		TIME_FUNCTION;
+#endif
 		for (auto it = uninitiatedEntities.begin(); it != uninitiatedEntities.end(); it++) {
+			if (it->second == nullptr) {
+				std::cout << "Initiator is null" << std::endl;
+			}
 			it->second->init(gameData);
 		}
 		uninitiatedEntities.clear();
@@ -255,8 +261,6 @@ namespace flat2d
 #ifdef FPS_DBG
 		TIME_FUNCTION;
 #endif
-		initiateEntities(gameData);
-
 		for (auto it = inputHandlers.begin(); it != inputHandlers.end(); it++) {
 			it->second->preHandle(gameData);
 			it->second->handle(event);

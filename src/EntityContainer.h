@@ -64,7 +64,6 @@ namespace flat2d
 			void clearObjectFromCurrentPartitions(Entity *entity);
 			void clearObjectFromUnattachedPartitions(Entity *entity);
 			EntityShape createBoundingBoxFor(const EntityProperties& props) const;
-			void initiateEntities(const GameData *gameData);
 			void handlePossibleObjectMovement(Entity* entity);
 
 			void reinitLayerMap();
@@ -151,6 +150,14 @@ namespace flat2d
 			 * after they were registered.
 			 */
 			void repopulateCollidables();
+
+			/**
+			 * Initiate recently added entities before continuing with
+			 * main game loop. This is called from the engine and
+			 * should be left untouched in game code
+			 * @param gameData The GameData pointer
+			 */
+			void initiateEntities(const GameData *gameData);
 
 			/**
 			 * Check for input events and notify all registered Entity objects.

@@ -3,6 +3,7 @@ var searchData=
   ['incrementxpos',['incrementXpos',['../classflat2d_1_1_entity_properties.html#a434f30b7898577a9aad5576e7213cbf1',1,'flat2d::EntityProperties']]],
   ['incrementypos',['incrementYpos',['../classflat2d_1_1_entity_properties.html#a1cdf937386d9a01bcaa4a9d89c3b1f0d',1,'flat2d::EntityProperties']]],
   ['init',['init',['../classflat2d_1_1_entity.html#a63c2cdb1c031b89b87bf16a731e5f1fd',1,'flat2d::Entity::init()'],['../classflat2d_1_1_game_engine.html#ad93f52dd91cc2ca53f8e4b39fbc03240',1,'flat2d::GameEngine::init()'],['../classflat2d_1_1_window.html#a47386bbb46b33be46a46734156a5ad5f',1,'flat2d::Window::init()']]],
+  ['initiateentities',['initiateEntities',['../classflat2d_1_1_entity_container.html#a229a570224d6d0c183a0d422f7f61fad',1,'flat2d::EntityContainer']]],
   ['intmap',['IntMap',['../classflat2d_1_1_runtime_analyzer.html#aa4fd6292133862f3eee29e5908984d92',1,'flat2d::RuntimeAnalyzer']]],
   ['iscollidable',['isCollidable',['../classflat2d_1_1_entity_properties.html#a38c69c93192e5ec2b4538f5df1ba9233',1,'flat2d::EntityProperties']]],
   ['isdead',['isDead',['../classflat2d_1_1_entity.html#a1c80354e62e6410de6b9c569fb39e8bf',1,'flat2d::Entity']]],

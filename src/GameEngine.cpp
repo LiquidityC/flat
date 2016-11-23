@@ -44,6 +44,8 @@ namespace flat2d
 				}
 			}
 
+			entityContainer->initiateEntities(gameData);
+
 			// Handle events
 			while (SDL_PollEvent (&e) != 0) {
 				if (e.type == SDL_QUIT) {
