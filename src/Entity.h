@@ -33,10 +33,10 @@ namespace flat2d
 			bool fixedPosition = false;
 			bool inputHandler = false;
 			SDL_Rect clip;
+			std::shared_ptr<Texture> texture = nullptr;
 
 		protected:
 			EntityProperties entityProperties;
-			std::shared_ptr<Texture> texture = nullptr;
 
 			std::string currentAnimation = "";
 			std::map<std::string, Animation*> animations;
