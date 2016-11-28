@@ -259,7 +259,7 @@ namespace flat2d
 		TIME_FUNCTION;
 #endif
 		for (auto it = inputHandlers.begin(); it != inputHandlers.end(); it++) {
-			if (uninitiatedEntities.find(it->first) == uninitiatedEntities.end()) {
+			if (uninitiatedEntities.find(it->first) != uninitiatedEntities.end()) {
 				continue;
 			}
 			it->second->preHandle(gameData);
@@ -275,7 +275,7 @@ namespace flat2d
 #endif
 		for (auto it1 = layeredObjects.begin(); it1 != layeredObjects.end(); it1++) {
 			for (auto it2 = it1->second.begin(); it2 != it1->second.end(); it2++) {
-				if (uninitiatedEntities.find(it2->first) == uninitiatedEntities.end()) {
+				if (uninitiatedEntities.find(it2->first) != uninitiatedEntities.end()) {
 					continue;
 				}
 				it2->second->preRender(data);
@@ -294,7 +294,7 @@ namespace flat2d
 		CollisionDetector *coldetector = data->getCollisionDetector();
 
 		for (auto& object : objects) {
-			if (uninitiatedEntities.find(object.first) == uninitiatedEntities.end()) {
+			if (uninitiatedEntities.find(object.first) != uninitiatedEntities.end()) {
 				continue;
 			}
 			object.second->preMove(data);
