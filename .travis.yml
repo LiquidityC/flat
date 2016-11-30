@@ -47,7 +47,7 @@ before_script:
 script:
     - mkdir build
     - cd build
-    - cmake ..
+    - cmake -DCMAKE_BUILD_TYPE=travis ..
     - make
     - make check
     - make lint
