@@ -9,18 +9,11 @@ env:
     global:
         - secure: "wVlHl1Ye7Tx5cFXM8f5pVEcG9R3DwN3cXrtSY84cUPcKsn5gW5wo8njDDRsZ3FzHYIhS/tVvmOBDgoWZg1bO6nUXF9qJ37HUzWkFVw7cG1aL3dhIzbJDCoo19JfZ04DC9+5nYaJhhHC/yJfjjzV0dDtyISivyFljKcJCjbRm06xCLDhzaMG74OV6b3m7W3cBk5uiYqufqBuonsvoocUHoUwK/KlPUAGUoXEJAuaurj/VBZG8/vvuxznYIlOQldQwhvkFOh2zLtHrZmD4NVb7FEX5pkjMIl4yUxbZ1StRkrQdQIJrhQ8vIK05x11yonAW4FUs1/IoAh5TxCQdk27oEwvMcJzqwWlnJwLHFqnP3mQhSu58foZgk2iLZi9IeHSozONRjwJORgal2MuoO4+LN5zWiex/sIbPEynpfp605eSJ7P3+trABIxOmUYWCgbI4ZB3gAgyLeZXOc9mW/ghfVVtp7wyn7iTbaw7Orcw4Q+B+pYIrCLhlCmfcLMAuhPaUGt2BzNCXGycCsEHkuBHmH7COhm5pXw/UQFByT2KTCYzgqsgaJ09XTyutzuJDvZkt/kJGZT4awQXC/cm7woq4dkVWunD6nt5t0DL2ZYq/F3yvE6G+kl9bsNugDMkKbEB6zkjTmLhnyibuh5jDxaAUbWV0UbTa83Z4onduLUO959o="
 
-script:
-    - mkdir build
-    - cd build
-    - cmake ..
-    - make
-    - make check
-    - make lint
-
 before_install:
     - sudo add-apt-repository -y ppa:zoogie/sdl2-snapshots
     - sudo add-apt-repository -y ppa:george-edison55/cmake-3.x
     - sudo add-apt-repository -y ppa:h-rayflood/llvm
+    - pip install --user cpp-coveralls
 
       #g++4.9
     - if [ "$CXX" = "g++" ]; then sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test; fi
@@ -50,6 +43,17 @@ before_script:
     - sudo dpkg -L libsdl2-image-dev
     - sudo dpkg -L libsdl2-ttf-dev
     - sudo dpkg -L libsdl2-mixer-dev
+
+script:
+    - mkdir build
+    - cd build
+    - cmake ..
+    - make
+    - make check
+    - make lint
+
+after_success:
+    - coveralls -e catch.hpp --gcov-options '\-lp'
 
 addons:
     coverity_scan:

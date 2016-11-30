@@ -16,6 +16,12 @@ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY bin)
 set (CMAKE_LIBRARY_OUTPUT_DIRECTORY lib)
 set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY lib)
 
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+
+if (CMAKE_BUILD_TYPE STREQUAL "travis")
+    SET(CMAKE_CXX_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
+endif()
+
 file(GLOB HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/src/*.h) # Get all header files
 set(HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/src/flat.h ${HEADERS}) # Add the generated header file
 
@@ -39,6 +45,7 @@ add_executable(test_flat EXCLUDE_FROM_ALL
 	src/UID.cpp
 	src/Window.cpp
 	src/Animation.cpp
+	src/RuntimeAnalyzer.cpp
 	testsrc/ButtonTest.cpp
 	testsrc/CollisionDetectorTest.cpp
 	testsrc/EntityContainerTest.cpp
@@ -48,7 +55,7 @@ add_executable(test_flat EXCLUDE_FROM_ALL
 	testsrc/UIDTest.cpp
 	testsrc/CameraTest.cpp
 	testsrc/AlgorithmTest.cpp
-	src/RuntimeAnalyzer.cpp)
+	testsrc/AnimationTest.cpp)
 
 target_link_libraries(test_flat -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf)
 target_compile_options(test_flat PRIVATE -std=c++14 -g -Wall)
@@ -111,14 +118,12 @@ add_custom_target(doc
 	COMMAND doxygen
 	)
 
-add_custom_target(check
-	COMMENT "Running catch tests"
-	DEPENDS test_flat
-	COMMAND test_flat
-	)
-
 enable_testing()
 add_test(NAME catch COMMAND test_flat)
+add_custom_target(check
+	DEPENDS test_flat
+	COMMAND ${CMAKE_CTEST_COMMAND}
+	)
 
 install(TARGETS flat
 	RUNTIME DESTINATION bin
