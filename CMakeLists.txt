@@ -25,7 +25,7 @@ endif()
 file(GLOB HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/src/*.h) # Get all header files
 set(HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/src/flat.h ${HEADERS}) # Add the generated header file
 
-add_executable(test_flat EXCLUDE_FROM_ALL
+set(FLAT_SOURCES
 	src/Button.cpp
 	src/Camera.cpp
 	src/CollisionDetector.cpp
@@ -46,6 +46,9 @@ add_executable(test_flat EXCLUDE_FROM_ALL
 	src/Window.cpp
 	src/Animation.cpp
 	src/RuntimeAnalyzer.cpp
+	)
+
+set(TEST_SOURCES
 	testsrc/ButtonTest.cpp
 	testsrc/CollisionDetectorTest.cpp
 	testsrc/EntityContainerTest.cpp
@@ -57,35 +60,17 @@ add_executable(test_flat EXCLUDE_FROM_ALL
 	testsrc/AlgorithmTest.cpp
 	testsrc/AnimationTest.cpp)
 
+
+add_executable(test_flat EXCLUDE_FROM_ALL ${FLAT_SOURCES} ${TEST_SOURCES})
 target_link_libraries(test_flat -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf)
 target_compile_options(test_flat PRIVATE -std=c++14 -g -Wall)
 
-add_library(flat
-	src/Button.cpp
-	src/Camera.cpp
-	src/CollisionDetector.cpp
-	src/DeltatimeMonitor.cpp
-	src/Entity.cpp
-	src/EntityContainer.cpp
-	src/EntityProperties.cpp
-	src/FlatBuilder.cpp
-	src/GameController.cpp
-	src/GameControllerContainer.cpp
-	src/GameEngine.cpp
-	src/MediaUtil.cpp
-	src/Mixer.cpp
-	src/Square.cpp
-	src/Texture.cpp
-	src/Timer.cpp
-	src/UID.cpp
-	src/Window.cpp
-	src/Animation.cpp
-	src/RuntimeAnalyzer.cpp)
+add_library(flat ${FLAT_SOURCES})
 
 target_link_libraries(flat -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf)
 target_compile_options(flat PRIVATE -std=c++14 -Wall)
 set_target_properties(flat PROPERTIES
-	VERSION 0.0.0
+	VERSION 1.0.0
 	SOVERSION 0)
 
 add_custom_command(TARGET flat
