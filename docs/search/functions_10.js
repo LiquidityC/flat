@@ -1,6 +1,7 @@
 var searchData=
 [
   ['_7ebutton',['~Button',['../classflat2d_1_1ui_1_1_button.html#a10a29c0bea45aacc883962cf61a3df8b',1,'flat2d::ui::Button']]],
+  ['_7ecamera',['~Camera',['../classflat2d_1_1_camera.html#a0a67e985d7899f48eda4564c19f82983',1,'flat2d::Camera']]],
   ['_7eentity',['~Entity',['../classflat2d_1_1_entity.html#aa73f9b8bc80008d47353e07c6ea689cf',1,'flat2d::Entity']]],
   ['_7eentitycontainer',['~EntityContainer',['../classflat2d_1_1_entity_container.html#adf7bf4c9a0a80dc64ac6a8f1066aa604',1,'flat2d::EntityContainer']]],
   ['_7eexecutiontimer',['~ExecutionTimer',['../classflat2d_1_1_execution_timer.html#a79fcb83c6ba8fb68d5bcd1667553a71a',1,'flat2d::ExecutionTimer']]],

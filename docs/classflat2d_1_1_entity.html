@@ -128,9 +128,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a413084d0c8312ad2aa74d966641451c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc4e43fb57a5309e7a8d8bdc53b29c95"><td class="memItemLeft" align="right" valign="top">const std::weak_ptr&lt; <a class="el" href="classflat2d_1_1_texture.html">Texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity.html#abc4e43fb57a5309e7a8d8bdc53b29c95">getTexture</a> () const</td></tr>
 <tr class="separator:abc4e43fb57a5309e7a8d8bdc53b29c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6221261ce03fd7d64bd35ddaf026a7ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity.html#a6221261ce03fd7d64bd35ddaf026a7ad">setSharedTexture</a> (std::shared_ptr&lt; <a class="el" href="classflat2d_1_1_texture.html">Texture</a> &gt; <a class="el" href="classflat2d_1_1_entity.html#aa44a04ce825e6c756fff51f9ec20d4a6">texture</a>)</td></tr>
+<tr class="memitem:a6221261ce03fd7d64bd35ddaf026a7ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity.html#a6221261ce03fd7d64bd35ddaf026a7ad">setSharedTexture</a> (std::shared_ptr&lt; <a class="el" href="classflat2d_1_1_texture.html">Texture</a> &gt; texture)</td></tr>
 <tr class="separator:a6221261ce03fd7d64bd35ddaf026a7ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a866923e064be4a08ea2aa6cd93d95382"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity.html#a866923e064be4a08ea2aa6cd93d95382">setTexture</a> (<a class="el" href="classflat2d_1_1_texture.html">Texture</a> *<a class="el" href="classflat2d_1_1_entity.html#aa44a04ce825e6c756fff51f9ec20d4a6">texture</a>)</td></tr>
+<tr class="memitem:a866923e064be4a08ea2aa6cd93d95382"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity.html#a866923e064be4a08ea2aa6cd93d95382">setTexture</a> (<a class="el" href="classflat2d_1_1_texture.html">Texture</a> *texture)</td></tr>
 <tr class="separator:a866923e064be4a08ea2aa6cd93d95382"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c80354e62e6410de6b9c569fb39e8bf"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity.html#a1c80354e62e6410de6b9c569fb39e8bf">isDead</a> () const</td></tr>
 <tr class="separator:a1c80354e62e6410de6b9c569fb39e8bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,8 +163,6 @@ Public Member Functions</h2></td></tr>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a67f4be326a7640e83caa2250f5598d3a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classflat2d_1_1_entity_properties.html">EntityProperties</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity.html#a67f4be326a7640e83caa2250f5598d3a">entityProperties</a></td></tr>
 <tr class="separator:a67f4be326a7640e83caa2250f5598d3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa44a04ce825e6c756fff51f9ec20d4a6"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classflat2d_1_1_texture.html">Texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity.html#aa44a04ce825e6c756fff51f9ec20d4a6">texture</a> = nullptr</td></tr>
-<tr class="separator:aa44a04ce825e6c756fff51f9ec20d4a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7968f754126a1240601210b4011f8c95"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity.html#a7968f754126a1240601210b4011f8c95">currentAnimation</a> = &quot;&quot;</td></tr>
 <tr class="separator:a7968f754126a1240601210b4011f8c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c8317f9718411a43fe787ff8cc64d08"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="classflat2d_1_1_animation.html">Animation</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity.html#a8c8317f9718411a43fe787ff8cc64d08">animations</a></td></tr>
@@ -1340,30 +1338,6 @@ Protected Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classflat2d_1_1_entity_properties.html">EntityProperties</a> flat2d::Entity::entityProperties</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_entity_8h_source.html#l00038">38</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
-
-</div>
-</div>
-<a id="aa44a04ce825e6c756fff51f9ec20d4a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa44a04ce825e6c756fff51f9ec20d4a6">&sect;&nbsp;</a></span>texture</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="classflat2d_1_1_texture.html">Texture</a>&gt; flat2d::Entity::texture = nullptr</td>
         </tr>
       </table>
   </td>

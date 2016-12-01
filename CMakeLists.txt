@@ -122,7 +122,7 @@ enable_testing()
 add_test(NAME catch COMMAND test_flat)
 add_custom_target(check
 	DEPENDS test_flat
-	COMMAND ${CMAKE_CTEST_COMMAND}
+	COMMAND test_flat
 	)
 
 install(TARGETS flat

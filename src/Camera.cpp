@@ -2,26 +2,6 @@
 
 namespace flat2d
 {
-	int Camera::getXpos()
-	{
-		return xpos;
-	}
-
-	int Camera::getYpos()
-	{
-		return ypos;
-	}
-
-	int Camera::getWidth()
-	{
-		return width;
-	}
-
-	int Camera::getHeight()
-	{
-		return height;
-	}
-
 	void Camera::setMapDimensions(int w, int h)
 	{
 		mapWidth = w;
@@ -40,23 +20,23 @@ namespace flat2d
 
 	SDL_Rect Camera::getBox()
 	{
-		SDL_Rect box = { xpos, ypos, width, height };
+		SDL_Rect box = { x, y, w, h};
 		return box;
 	}
 
 	void Camera::centerOn(int x, int y) {
-		xpos = x - (width/2);
-		ypos = y - (height/2);
+		x = x - (w/2);
+		y = y - (h/2);
 
-		if (xpos > mapWidth - width) {
-			xpos = mapWidth - width;
-		} else if (xpos < 0) {
-			xpos = 0;
+		if (x > mapWidth - w) {
+			x = mapWidth - w;
+		} else if (x < 0) {
+			x = 0;
 		}
-		if (ypos > mapHeight - height) {
-			ypos = mapHeight - height;
-		} else if (ypos < 0) {
-			ypos = 0;
+		if (y > mapHeight - h) {
+			y = mapHeight - h;
+		} else if (y < 0) {
+			y = 0;
 		}
 	}
 
@@ -65,11 +45,11 @@ namespace flat2d
 		int bx = getScreenXposFor(box.x, depth);
 		int by = getScreenYposFor(box.y, depth);
 
-		if (bx > width) {
+		if (bx > w) {
 			return false;
 		} else if (bx + box.w < 0) {
 			return false;
-		} else if (by > height) {
+		} else if (by > h) {
 			return false;
 		} else if (by + box.h < 0) {
 			return false;
@@ -85,19 +65,19 @@ namespace flat2d
 			|| rect.x > mapWidth;
 	}
 
-	int Camera::getScreenXposFor(int x, int depth) const
+	int Camera::getScreenXposFor(int xpos, int depth) const
 	{
 		if (depth > 0) {
-			return x - (xpos / (1.5 * depth));
+			return xpos - (x / (1.5 * depth));
 		}
-		return x - xpos;
+		return xpos - x;
 	}
 
-	int Camera::getScreenYposFor(int y, int depth) const
+	int Camera::getScreenYposFor(int ypos, int depth) const
 	{
 		if (depth > 0) {
-			return y - (ypos / (5 * depth));
+			return ypos - (y / (5 * depth));
 		}
-		return y - ypos;
+		return ypos - y;
 	}
 } // namespace flat2d

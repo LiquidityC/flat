@@ -2,6 +2,7 @@
 #define CAMERA_H_
 
 #include <SDL2/SDL.h>
+#include "Square.h"
 
 namespace flat2d
 {
@@ -13,43 +14,18 @@ namespace flat2d
 	 * "Camera position" for a coordinate for rendering.
 	 * @author Linus Probert <linus.probert@gmail.com>
 	 */
-	class Camera
+	class Camera : public Square
 	{
 		private:
-			int xpos, ypos, width, height, mapWidth, mapHeight;
+			int mapWidth, mapHeight;
 
 		public:
-			Camera(int w, int h) :
-				xpos(0),
-				ypos(0),
-				width(w),
-				height(h),
+			Camera(int width, int height) :
+				Square(0, 0, width, height),
 				mapWidth(1920),
 				mapHeight(1080) { }
 
-			/**
-			 * Get the camera X position
-			 * @return The camera X position
-			 */
-			int getXpos();
-
-			/**
-			 * Get the camera Y position
-			 * @return The camera Y position
-			 */
-			int getYpos();
-
-			/**
-			 * Get the Camera Width
-			 * @return The camera width
-			 */
-			int getWidth();
-
-			/**
-			 * Get the Camera height
-			 * @return The camera height
-			 */
-			int getHeight();
+			virtual ~Camera() { };
 
 			/**
 			 * Tell the camera what the "play space" dimensions are.
