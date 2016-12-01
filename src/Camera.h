@@ -25,7 +25,7 @@ namespace flat2d
 				mapWidth(1920),
 				mapHeight(1080) { }
 
-			virtual ~Camera() { };
+			virtual ~Camera() { }
 
 			/**
 			 * Tell the camera what the "play space" dimensions are.
