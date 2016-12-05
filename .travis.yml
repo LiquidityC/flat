@@ -53,7 +53,7 @@ script:
     - make lint
 
 after_success:
-    - coveralls -e catch.hpp --gcov-options '\-lp'
+    - coveralls -r CMakeFiles/test_flat.dir
 
 addons:
     coverity_scan:

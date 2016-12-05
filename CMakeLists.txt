@@ -19,7 +19,9 @@ set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY lib)
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
 if (CMAKE_BUILD_TYPE STREQUAL "travis")
-    SET(CMAKE_CXX_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
+	SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 --coverage")
+	SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS_DEBUG} --coverage")
+	SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS_DEBUG} --coverage")
 endif()
 
 file(GLOB HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/src/*.h) # Get all header files
@@ -63,12 +65,12 @@ set(TEST_SOURCES
 
 add_executable(test_flat EXCLUDE_FROM_ALL ${FLAT_SOURCES} ${TEST_SOURCES})
 target_link_libraries(test_flat -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf)
-target_compile_options(test_flat PRIVATE -std=c++14 -g -Wall)
+target_compile_options(test_flat PRIVATE -std=c++14)
 
 add_library(flat ${FLAT_SOURCES})
 
 target_link_libraries(flat -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf)
-target_compile_options(flat PRIVATE -std=c++14 -Wall)
+target_compile_options(flat PRIVATE -std=c++14)
 set_target_properties(flat PROPERTIES
 	VERSION 1.0.0
 	SOVERSION 0)
