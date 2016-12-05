@@ -24,9 +24,9 @@ namespace flat2d
 		return box;
 	}
 
-	void Camera::centerOn(int x, int y) {
-		x = x - (w/2);
-		y = y - (h/2);
+	void Camera::centerOn(int xpos, int ypos) {
+		x = xpos - (w/2);
+		y = ypos - (h/2);
 
 		if (x > mapWidth - w) {
 			x = mapWidth - w;
