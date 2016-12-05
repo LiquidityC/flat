@@ -38,12 +38,6 @@ install:
     - if [ "$CXX" == "clang++" ]; then sudo apt-get install -y --allow-unauthenticated clang-3.6; fi
     - if [ "$CXX" == "clang++" ]; then export CXX="clang++-3.6"; fi
 
-before_script:
-    - sudo dpkg -L libsdl2-dev
-    - sudo dpkg -L libsdl2-image-dev
-    - sudo dpkg -L libsdl2-ttf-dev
-    - sudo dpkg -L libsdl2-mixer-dev
-
 script:
     - mkdir build
     - cd build
