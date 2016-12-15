@@ -49,5 +49,9 @@ TEST_CASE( "CameraTests", "[camera]" )
 		camera->centerOn(1000, 1000);
 		REQUIRE(camera->getXpos() == 800);
 		REQUIRE(camera->getYpos() == 900);
+
+		camera->centerOn(10, 10);
+		REQUIRE(camera->getXpos() == 0);
+		REQUIRE(camera->getYpos() == 0);
 	}
 }
