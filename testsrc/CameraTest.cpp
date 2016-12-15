@@ -38,4 +38,12 @@ TEST_CASE( "CameraTests", "[camera]" )
 		box.y = 99;
 		REQUIRE( camera->isVisibleOnCamera(box) );
 	}
+
+	SECTION( "Center camera", "[camera]" )
+	{
+		camera->setMapDimensions(1000, 1000);
+		camera->centerOn(500, 500);
+		REQUIRE(camera->getXpos() == 400);
+		REQUIRE(camera->getYpos() == 450);
+	}
 }
