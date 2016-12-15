@@ -58,8 +58,8 @@ int main(int argc, char* argv[])
 ```
 
 ## Examples
-[Willin](https://github.com/liquidityc/willin) (Demo project)
-[JustDontDie](https://github.com/liquidityc/justdontdie) (My hobby project, utilizes flat)
+- [Willin](https://github.com/liquidityc/willin) (Demo project)
+- [JustDontDie](https://github.com/liquidityc/justdontdie) (My hobby project, utilizes flat)
 
 ## Documentation
 [API](http://liquidityc.github.io/flat)
