@@ -18,9 +18,9 @@ before_install:
       #g++4.9
     - if [ "$CXX" = "g++" ]; then sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test; fi
 
-      #clang 3.6
+      #clang 4.0 
     - if [ "$CXX" == "clang++" ]; then wget -O - http://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -; fi
-    - if [ "$CXX" == "clang++" ]; then sudo add-apt-repository -y "deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty main"; fi
+    - if [ "$CXX" == "clang++" ]; then sudo add-apt-repository -y "deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-4.0 main"; fi
 
     - sudo apt-get update -qq
     - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
@@ -35,9 +35,9 @@ install:
     - if [ "$CXX" = "g++" ]; then sudo apt-get install -y g++-6; fi
     - if [ "$CXX" = "g++" ]; then export CXX="g++-6" CC="gcc-6"; fi
 
-      #clang 3.6
-    - if [ "$CXX" == "clang++" ]; then sudo apt-get install -y --allow-unauthenticated clang-3.6; fi
-    - if [ "$CXX" == "clang++" ]; then export CXX="clang++-3.6"; fi
+      #clang 4.0
+    - if [ "$CXX" == "clang++" ]; then sudo apt-get install -y clang-4.0; fi
+    - if [ "$CXX" == "clang++" ]; then export CXX="clang++-4.0"; fi
 
 script:
     - mkdir build
