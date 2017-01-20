@@ -1,6 +1,7 @@
 # Flat
 [![Build Status](https://travis-ci.org/LiquidityC/flat.svg?branch=master)](https://travis-ci.org/LiquidityC/flat)
 [![Coverity scan](https://scan.coverity.com/projects/10677/badge.svg)](https://scan.coverity.com/projects/liquidityc-flat)
+[![codecov](https://codecov.io/gh/LiquidityC/flat/branch/master/graph/badge.svg)](https://codecov.io/gh/LiquidityC/flat)
 
 ## About
 Flat is a 2D game engine based on SDL2. It's currently in progress with no deadline for completion. It will
