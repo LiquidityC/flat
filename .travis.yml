@@ -32,7 +32,7 @@ install:
     - sudo apt-get install -y cmake cmake-data
 
       # Codecov
-    - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-5 90
+    - sudo update-alternatives --install /usr/bin/gcov gcov 90
 
       #g++6
     - if [ "$CXX" = "g++" ]; then sudo apt-get install -y g++-6; fi
