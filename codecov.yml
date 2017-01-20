@@ -17,6 +17,8 @@ coverage:
     project: true
   ignore:
   - .*/testsrc/.*
+  - .*/include/.*
+  - catch\.hpp
 parsers:
   gcov:
     branch_detection:
