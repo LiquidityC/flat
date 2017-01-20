@@ -100,11 +100,3 @@ comment:
   layout: "header, diff, changes, sunburst, uncovered, tree"
   branches: null
   behavior: default
-
-Learn more about why we use a yaml file for team and project settings.
-
-Please click on a yaml setting to review documentation.
-
-Have a question? Feel free to ask our Support Team
-© 2016 Codecov Terms Privacy Security Changelog
-Pricing Support Docs Enterprise
