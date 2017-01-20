@@ -3,7 +3,7 @@ dist: trusty
 language: cpp
 compiler:
     - gcc
-   #- clang
+    - clang
 
 env:
     global:
@@ -19,7 +19,8 @@ before_install:
     - if [ "$CXX" = "g++" ]; then sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test; fi
 
       #clang 3.6
-    - if [ "$CXX" == "clang++" ]; then sudo add-apt-repository -y ppa:h-rayflood/llvm; fi
+    - if [ "$CXX" == "clang++" ]; then wget -O - http://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -; fi
+    - if [ "$CXX" == "clang++" ]; then sudo add-apt-repository -y "deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty main"; fi
 
     - sudo apt-get update -qq
     - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
