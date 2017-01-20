@@ -16,7 +16,7 @@ coverage:
     patch: true
     project: true
   ignore:
-  - testsrc/.*
+  - .*/testsrc/.*
 parsers:
   gcov:
     branch_detection:
