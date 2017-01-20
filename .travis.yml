@@ -31,6 +31,9 @@ install:
     - sudo apt-get install -y python2.7
     - sudo apt-get install -y cmake cmake-data
 
+      # Codecov
+    - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-5 90
+
       #g++6
     - if [ "$CXX" = "g++" ]; then sudo apt-get install -y g++-6; fi
     - if [ "$CXX" = "g++" ]; then export CXX="g++-6" CC="gcc-6"; fi
@@ -48,6 +51,7 @@ script:
     - make lint
 
 after_success:
+    - bash <(curl -s https://codecov.io/bash)
     - coveralls -e include -e catch -e testsrc -e test --gcov-options '\-lp'
 
 addons:
