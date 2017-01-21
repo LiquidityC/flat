@@ -60,7 +60,9 @@ set(TEST_SOURCES
 	testsrc/UIDTest.cpp
 	testsrc/CameraTest.cpp
 	testsrc/AlgorithmTest.cpp
-	testsrc/AnimationTest.cpp)
+	testsrc/AnimationTest.cpp
+	testsrc/EntityTest.cpp
+	testsrc/DeltatimeMonitorTest.cpp)
 
 
 add_executable(test_flat EXCLUDE_FROM_ALL ${FLAT_SOURCES} ${TEST_SOURCES})
