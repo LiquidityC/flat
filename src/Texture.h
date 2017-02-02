@@ -24,6 +24,7 @@ namespace flat2d
 		public:
 			Texture() : Square() { }
 			Texture(int x, int y) : Square(x, y, 0, 0) { }
+			Texture(SDL_Texture* t) : Square(x, y, 0, 0), texture(t) { }
 			virtual ~Texture();
 
 			/**
