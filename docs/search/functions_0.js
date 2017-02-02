@@ -4,6 +4,8 @@ var searchData=
   ['addanimation',['addAnimation',['../classflat2d_1_1_entity.html#aa3e30fdbd38d4afc6c221b1c61da70d9',1,'flat2d::Entity']]],
   ['addcall',['addCall',['../classflat2d_1_1_runtime_analyzer.html#a1535542c25a791548d9b5c5943f8f810',1,'flat2d::RuntimeAnalyzer']]],
   ['addlayer',['addLayer',['../classflat2d_1_1_entity_container.html#ad1f58a4422bf7551a8c595d7928a406b',1,'flat2d::EntityContainer']]],
+  ['addrenderarea',['addRenderArea',['../classflat2d_1_1_entity_container.html#aa4e587245e61c6fc48b88f63eef60104',1,'flat2d::EntityContainer']]],
   ['animation',['Animation',['../classflat2d_1_1_animation.html#a41a8d2ea5cdb2b2d8cb981f1c3e0d8c7',1,'flat2d::Animation']]],
+  ['asentityshape',['asEntityShape',['../classflat2d_1_1_map_area.html#a3ad3c8f13388fade040e0f795ff4b85e',1,'flat2d::MapArea']]],
   ['assdlrect',['asSDLRect',['../classflat2d_1_1_map_area.html#ab948817f2b24528d90d1513fa19e5868',1,'flat2d::MapArea']]]
 ];

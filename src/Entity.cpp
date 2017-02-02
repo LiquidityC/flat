@@ -21,7 +21,7 @@ namespace flat2d
 
 	void Entity::render(const RenderData *data) const
 	{
-		if (texture == nullptr || dead) {
+		if (texture == nullptr || dead || !entityProperties.isVisible()) {
 			return;
 		}
 

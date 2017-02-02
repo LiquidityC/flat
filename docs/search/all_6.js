@@ -47,6 +47,7 @@ var searchData=
   ['getmixer',['getMixer',['../classflat2d_1_1_game_data.html#ad1e6058b7e6f7325e4f5eb9d91ebddc6',1,'flat2d::GameData']]],
   ['getobjectcount',['getObjectCount',['../classflat2d_1_1_entity_container.html#a6eae26845705c8b0be2268c970521529',1,'flat2d::EntityContainer']]],
   ['getobjectcountfor',['getObjectCountFor',['../classflat2d_1_1_entity_container.html#a57449b22b0350c5f14064d49d4805e81',1,'flat2d::EntityContainer']]],
+  ['getrenderarea',['getRenderArea',['../classflat2d_1_1_entity_container.html#ae8a731dd70bce2c3bebf6eefbe027d3c',1,'flat2d::EntityContainer']]],
   ['getrenderdata',['getRenderData',['../classflat2d_1_1_game_data.html#a8b37707c4c8d397905dee86020546e26',1,'flat2d::GameData']]],
   ['getrenderer',['getRenderer',['../classflat2d_1_1_render_data.html#a4bfa88c19d7087a56c875e5d2053cb9e',1,'flat2d::RenderData::getRenderer()'],['../classflat2d_1_1_window.html#accd81a3fb5c715c2383a9c3a2ad09803',1,'flat2d::Window::getRenderer()']]],
   ['getscreenxposfor',['getScreenXposFor',['../classflat2d_1_1_camera.html#af307b0cc93f5a6a1fd1478025b6be575',1,'flat2d::Camera']]],

@@ -1,7 +1,9 @@
 var searchData=
 [
   ['registerobject',['registerObject',['../classflat2d_1_1_entity_container.html#acda8bcb0fa14c253398d64304858638e',1,'flat2d::EntityContainer']]],
+  ['removerenderarea',['removeRenderArea',['../classflat2d_1_1_entity_container.html#afd05dbeb52d9d7ca8d5acc09ff6b5e48',1,'flat2d::EntityContainer']]],
   ['render',['render',['../classflat2d_1_1ui_1_1_button.html#a561d87ad888d6e6f37969d9c3c39e028',1,'flat2d::ui::Button::render()'],['../classflat2d_1_1_entity.html#a6b4e90ecb8830ac69e7fc5f0defc73a9',1,'flat2d::Entity::render()'],['../classflat2d_1_1_texture.html#ab53586eff1b23e986ff2a55be8f5999a',1,'flat2d::Texture::render()']]],
+  ['renderareas',['RenderAreas',['../namespaceflat2d.html#a4f056c3ee2adc7b0fd53069fa26e8269',1,'flat2d']]],
   ['renderdata',['RenderData',['../classflat2d_1_1_render_data.html#a8b5a8459372cf2a120e0336ac21b6e3c',1,'flat2d::RenderData']]],
   ['renderdata',['RenderData',['../classflat2d_1_1_render_data.html',1,'flat2d']]],
   ['renderdata_2eh',['RenderData.h',['../_render_data_8h.html',1,'']]],

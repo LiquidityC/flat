@@ -34,6 +34,7 @@ namespace flat2d
 
 			bool collidable = false;
 			bool locationChanged = false;
+			bool visible = true;
 
 			CollisionProperty collisionProperty = CollisionProperty::SOLID;
 
@@ -111,6 +112,18 @@ namespace flat2d
 			 * @return true or false
 			 */
 			bool isCollidable() const;
+
+			/**
+			 * Mark this Entity as visible (will render)
+			 * @param visible true or false
+			 */
+			void setVisible(bool visible);
+
+			/**
+			 * Check if Entity is visible (rendering or not)
+			 * @return true or false
+			 */
+			bool isVisible() const;
 
 			/**
 			 * Increment the Entity X postion

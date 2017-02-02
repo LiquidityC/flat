@@ -13,6 +13,7 @@ var searchData=
   ['ispaused',['isPaused',['../classflat2d_1_1_timer.html#a2af8c0cd5407585d4baf3218deb17322',1,'flat2d::Timer']]],
   ['isrunning',['isRunning',['../classflat2d_1_1_animation.html#a44aa6331ac7a928101ec6f5bd92e56fa',1,'flat2d::Animation']]],
   ['isstarted',['isStarted',['../classflat2d_1_1_timer.html#a7671becd5591297bdf1500d4e29c6c02',1,'flat2d::Timer']]],
+  ['isvisible',['isVisible',['../classflat2d_1_1_entity_properties.html#afa9ce28f01bdac5fec841b1ec167d93d',1,'flat2d::EntityProperties']]],
   ['isvisibleoncamera',['isVisibleOnCamera',['../classflat2d_1_1_camera.html#aa173c3ba4dc088db4e586b952c203350',1,'flat2d::Camera']]],
   ['iterateallmovingobjects',['iterateAllMovingObjects',['../classflat2d_1_1_entity_container.html#afd3725c3aa395fc376da2009f878acc5',1,'flat2d::EntityContainer']]],
   ['iteratecollidablesfor',['iterateCollidablesFor',['../classflat2d_1_1_entity_container.html#a910077fffa664309c14f9a293227bcd0',1,'flat2d::EntityContainer']]],

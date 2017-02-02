@@ -6,6 +6,7 @@
 #include "../src/CollisionDetector.h"
 #include "../src/DeltatimeMonitor.h"
 #include "../src/Mixer.h"
+#include "../src/MapArea.h"
 
 TEST_CASE( "Object container tests", "[objectcontainer]" )
 {
@@ -217,6 +218,14 @@ TEST_CASE( "Object container tests", "[objectcontainer]" )
 		container.registerObject(o2);
 
 		REQUIRE ( 4 == container.getSpatialPartitionCount() );
+	}
+
+	SECTION( "Test RenderArea retrieval", "[objectcontainer][rendering]" )
+	{
+		flat2d::MapArea area(0, 0, 300);
+		container.addRenderArea("key", &area);
+		REQUIRE( container.getRenderArea("key") != nullptr );
+		REQUIRE( container.getRenderArea("nokey") == nullptr );
 	}
 
 	delete dtm;

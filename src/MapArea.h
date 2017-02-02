@@ -2,6 +2,7 @@
 #define MAPAREA_H_
 
 #include "Square.h"
+#include "EntityShape.h"
 
 namespace flat2d
 {
@@ -23,6 +24,10 @@ namespace flat2d
 			 * @return an SDL_Rect
 			 */
 			SDL_Rect asSDLRect() const {
+				return { x, y, w, h };
+			}
+
+			EntityShape asEntityShape() const {
 				return { x, y, w, h };
 			}
 	};

@@ -102,6 +102,16 @@ namespace flat2d
 		return collidable;
 	}
 
+	void EntityProperties::setVisible(bool visible)
+	{
+		this->visible = visible;
+	}
+
+	bool EntityProperties::isVisible() const
+	{
+		return visible;
+	}
+
 	EntityShape EntityProperties::getColliderShape() const
 	{
 		return {

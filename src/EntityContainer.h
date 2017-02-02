@@ -24,6 +24,7 @@ namespace flat2d
 	typedef std::map<std::string, Entity*> ObjectList;
 	typedef std::map<Layer, ObjectList> LayerMap;
 	typedef std::map<MapArea, ObjectList> SpatialPartitionMap;
+	typedef std::map<std::string, MapArea*> RenderAreas;
 
 	/**
 	 * Holds every Entity in the game. Entities registered into the
@@ -50,6 +51,7 @@ namespace flat2d
 			LayerMap layeredObjects;
 			SpatialPartitionMap spatialPartitionMap;
 			ObjectList uninitiatedEntities;
+			RenderAreas renderAreas;
 
 			typedef std::function<bool (Entity*)> EntityProcessor;
 			typedef std::function<void (Entity*)> EntityIter;
@@ -67,6 +69,8 @@ namespace flat2d
 			void handlePossibleObjectMovement(Entity* entity);
 
 			void reinitLayerMap();
+			bool isUninitiated(const std::string& id) const;
+			bool isInRenderArea(Entity*, const GameData*) const;
 
 		public:
 			static const int DEFAULT_LAYER = -1;
@@ -241,6 +245,27 @@ namespace flat2d
 			 * @return The first Entity that the EntityProcessor validated
 			 */
 			Entity* checkCollidablesFor(const Entity*, EntityProcessor);
+
+			/**
+			 * Add a rendering area to the EntityContainer, only Entity objects
+			 * within this area will be rendered during rendering.
+			 * @param key A string to identify the area for retrieval
+			 * @param area A MapArea object representing the render area
+			 */
+			void addRenderArea(const std::string& key, MapArea*);
+
+			/**
+			 * Retrieve a rendering area from the EntityContainer
+			 * @param key The string key identifying the area
+			 * @return The requested MapArea or null if none exists
+			 */
+			MapArea* getRenderArea(const std::string& key);
+
+			/**
+			 * Remove a rendering area from the EntityContainer
+			 * @param key The key identifier for the area to remove
+			 */
+			void removeRenderArea(const std::string& key);
 	};
 } // namespace flat2d
 

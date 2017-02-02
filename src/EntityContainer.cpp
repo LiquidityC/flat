@@ -209,6 +209,11 @@ namespace flat2d
 		layeredObjects[-1] = list;
 	}
 
+	bool EntityContainer::isUninitiated(const std::string& id) const
+	{
+		return uninitiatedEntities.find(id) != uninitiatedEntities.end();
+	}
+
 	void EntityContainer::unregisterAllObjects()
 	{
 		for(auto it = objects.begin(); it != objects.end(); it++) {
@@ -220,6 +225,10 @@ namespace flat2d
 		spatialPartitionMap.clear();
 		inputHandlers.clear();
 		reinitLayerMap();
+		for (auto it = renderAreas.begin(); it != renderAreas.end(); it++) {
+			delete it->second;
+		}
+		renderAreas.clear();
 	}
 
 	void EntityContainer::unregisterAllObjectsFor(Layer layer)
@@ -259,7 +268,7 @@ namespace flat2d
 		TIME_FUNCTION;
 #endif
 		for (auto it = inputHandlers.begin(); it != inputHandlers.end(); it++) {
-			if (uninitiatedEntities.find(it->first) != uninitiatedEntities.end()) {
+			if (isUninitiated(it->first)) {
 				continue;
 			}
 			it->second->preHandle(gameData);
@@ -275,12 +284,28 @@ namespace flat2d
 #endif
 		for (auto it1 = layeredObjects.begin(); it1 != layeredObjects.end(); it1++) {
 			for (auto it2 = it1->second.begin(); it2 != it1->second.end(); it2++) {
-				if (uninitiatedEntities.find(it2->first) != uninitiatedEntities.end()) {
+				if (isUninitiated(it2->first)) {
 					continue;
 				}
 				it2->second->preRender(data);
-				it2->second->render(data->getRenderData());
+				if (isInRenderArea(it2->second, data)) {
+					it2->second->render(data->getRenderData());
+				}
 				it2->second->postRender(data);
+			}
+		}
+	}
+
+	bool EntityContainer::isInRenderArea(Entity *e, const GameData* data) const
+	{
+		if (renderAreas.empty()) {
+			return true;
+		}
+
+		for (const auto& it : renderAreas) {
+			if (data->getCollisionDetector()->AABB(it.second->asEntityShape(),
+						e->getEntityProperties().getColliderShape())) {
+				return true;
 			}
 		}
 	}
@@ -294,7 +319,7 @@ namespace flat2d
 		CollisionDetector *coldetector = data->getCollisionDetector();
 
 		for (auto& object : objects) {
-			if (uninitiatedEntities.find(object.first) != uninitiatedEntities.end()) {
+			if (isUninitiated(object.first)) {
 				continue;
 			}
 			object.second->preMove(data);
@@ -481,6 +506,24 @@ namespace flat2d
 			if (it->second->getEntityProperties().isCollidable()) {
 				func(it->second);
 			}
+		}
+	}
+
+	void EntityContainer::addRenderArea(const std::string& key, MapArea *area)
+	{
+		renderAreas[key] = area;
+	}
+
+	MapArea* EntityContainer::getRenderArea(const std::string& key)
+	{
+		return renderAreas[key];
+	}
+
+	void EntityContainer::removeRenderArea(const std::string& key)
+	{
+		MapArea *area = renderAreas[key];
+		if (area != nullptr) {
+			delete area;
 		}
 	}
 } // namespace flat2d

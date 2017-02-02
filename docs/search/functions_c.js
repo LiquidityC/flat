@@ -17,6 +17,7 @@ var searchData=
   ['setsharedtexture',['setSharedTexture',['../classflat2d_1_1_entity.html#a6221261ce03fd7d64bd35ddaf026a7ad',1,'flat2d::Entity']]],
   ['setspatialpartitiondimension',['setSpatialPartitionDimension',['../classflat2d_1_1_entity_container.html#a09fd8075dee2e4e0c04ba127e55f7bf7',1,'flat2d::EntityContainer']]],
   ['settexture',['setTexture',['../classflat2d_1_1_entity.html#a866923e064be4a08ea2aa6cd93d95382',1,'flat2d::Entity']]],
+  ['setvisible',['setVisible',['../classflat2d_1_1_entity_properties.html#ad66901b453283da808d6bb7fdddfb795',1,'flat2d::EntityProperties']]],
   ['setwidth',['setWidth',['../classflat2d_1_1_square.html#ae549312e81d5bf0ef8af1993a911d66e',1,'flat2d::Square']]],
   ['setxpos',['setXpos',['../classflat2d_1_1_entity_properties.html#a984a278badf9fb24fca77cc6233f2598',1,'flat2d::EntityProperties::setXpos()'],['../classflat2d_1_1_square.html#a47ba0b0234b415b4f045545214f517b1',1,'flat2d::Square::setXpos()']]],
   ['setxvel',['setXvel',['../classflat2d_1_1_entity_properties.html#aa181c8f5dabe58aa20dc260a65593147',1,'flat2d::EntityProperties']]],
