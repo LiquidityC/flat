@@ -48,6 +48,7 @@ set(FLAT_SOURCES
 	src/Window.cpp
 	src/Animation.cpp
 	src/RuntimeAnalyzer.cpp
+	src/QuadTree.cpp
 	)
 
 set(TEST_SOURCES
@@ -62,6 +63,7 @@ set(TEST_SOURCES
 	testsrc/AlgorithmTest.cpp
 	testsrc/AnimationTest.cpp
 	testsrc/EntityTest.cpp
+	testsrc/QuadTreeTest.cpp
 	testsrc/DeltatimeMonitorTest.cpp)
 
 
