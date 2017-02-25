@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['maparea',['MapArea',['../classflat2d_1_1_map_area.html',1,'flat2d']]],
-  ['maparea',['MapArea',['../classflat2d_1_1_map_area.html#a72c5e47e421aa39e6d19e3c4533c1f69',1,'flat2d::MapArea::MapArea(int px, int py, int dim)'],['../classflat2d_1_1_map_area.html#a26616acbb4eb6118eaafeb280cd0a3a0',1,'flat2d::MapArea::MapArea(int px, int py, int pw, int ph)']]],
+  ['maparea',['MapArea',['../classflat2d_1_1_map_area.html',1,'flat2d::MapArea'],['../classflat2d_1_1_map_area.html#a72c5e47e421aa39e6d19e3c4533c1f69',1,'flat2d::MapArea::MapArea(int px, int py, int dim)'],['../classflat2d_1_1_map_area.html#a26616acbb4eb6118eaafeb280cd0a3a0',1,'flat2d::MapArea::MapArea(int px, int py, int pw, int ph)']]],
   ['maparea_2eh',['MapArea.h',['../_map_area_8h.html',1,'']]],
   ['mediautil',['MediaUtil',['../classflat2d_1_1_media_util.html',1,'flat2d']]],
   ['mediautil_2ecpp',['MediaUtil.cpp',['../_media_util_8cpp.html',1,'']]],

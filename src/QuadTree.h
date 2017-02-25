@@ -7,6 +7,12 @@
 
 namespace flat2d
 {
+	/**
+	 * A QuadTree for organizing collidable Entity objects in the world. Used be the
+	 * EntityContainer and CollisionDetector.
+	 *
+	 * @author Linus Probert <linus.probert@gmail.com>
+	 */
 	class QuadTree
 	{
 		private:

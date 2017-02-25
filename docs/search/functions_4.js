@@ -22,7 +22,7 @@ var searchData=
   ['getcustomgamedata',['getCustomGameData',['../classflat2d_1_1_game_data.html#a66b1296238a0c2eef4d79281f5b53e80',1,'flat2d::GameData']]],
   ['getdeltatime',['getDeltaTime',['../classflat2d_1_1_deltatime_monitor.html#a3bad858d816d195a8507e0be1120f637',1,'flat2d::DeltatimeMonitor']]],
   ['getdeltatimemonitor',['getDeltatimeMonitor',['../classflat2d_1_1_game_data.html#a0fa434a6d8ff02d9b0a0f5c838068303',1,'flat2d::GameData']]],
-  ['getdepth',['getDepth',['../classflat2d_1_1_entity_properties.html#a8033d6c9f55bb37b036240cf43c8dc49',1,'flat2d::EntityProperties']]],
+  ['getdepth',['getDepth',['../classflat2d_1_1_entity_properties.html#a8033d6c9f55bb37b036240cf43c8dc49',1,'flat2d::EntityProperties::getDepth()'],['../classflat2d_1_1_quad_tree.html#a81d0c56eb4572c17317d693b15c8c344',1,'flat2d::QuadTree::getDepth()']]],
   ['getentitycontainer',['getEntityContainer',['../classflat2d_1_1_game_data.html#a213967e1655591b7ea42a0d61d545979',1,'flat2d::GameData']]],
   ['getentityproperties',['getEntityProperties',['../classflat2d_1_1_entity.html#a5559366c6e766f74042340725b966313',1,'flat2d::Entity::getEntityProperties()'],['../classflat2d_1_1_entity.html#a413084d0c8312ad2aa74d966641451c5',1,'flat2d::Entity::getEntityProperties() const']]],
   ['getgamedata',['getGameData',['../classflat2d_1_1_flat_builder.html#a59961cf4042c2c02709bfba91a293c1f',1,'flat2d::FlatBuilder']]],

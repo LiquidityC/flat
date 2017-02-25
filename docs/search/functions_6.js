@@ -4,6 +4,7 @@ var searchData=
   ['incrementypos',['incrementYpos',['../classflat2d_1_1_entity_properties.html#a1cdf937386d9a01bcaa4a9d89c3b1f0d',1,'flat2d::EntityProperties']]],
   ['init',['init',['../classflat2d_1_1_entity.html#a63c2cdb1c031b89b87bf16a731e5f1fd',1,'flat2d::Entity::init()'],['../classflat2d_1_1_game_engine.html#ad93f52dd91cc2ca53f8e4b39fbc03240',1,'flat2d::GameEngine::init()'],['../classflat2d_1_1_window.html#a47386bbb46b33be46a46734156a5ad5f',1,'flat2d::Window::init()']]],
   ['initiateentities',['initiateEntities',['../classflat2d_1_1_entity_container.html#a229a570224d6d0c183a0d422f7f61fad',1,'flat2d::EntityContainer']]],
+  ['insert',['insert',['../classflat2d_1_1_quad_tree.html#a365c570fb2731cbfaeaf8b8e491f1f21',1,'flat2d::QuadTree']]],
   ['iscollidable',['isCollidable',['../classflat2d_1_1_entity_properties.html#a38c69c93192e5ec2b4538f5df1ba9233',1,'flat2d::EntityProperties']]],
   ['isdead',['isDead',['../classflat2d_1_1_entity.html#a1c80354e62e6410de6b9c569fb39e8bf',1,'flat2d::Entity']]],
   ['isfixedposition',['isFixedPosition',['../classflat2d_1_1_entity.html#acb45cc5adae284077451a473d33aff2b',1,'flat2d::Entity']]],
