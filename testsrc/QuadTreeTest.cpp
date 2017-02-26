@@ -1,3 +1,4 @@
+#include <vector>
 #include "catch.hpp"
 #include "EntityImpl.h"
 #include "../src/QuadTree.h"
@@ -64,6 +65,45 @@ TEST_CASE( "QuadTreeTest", "[animation]" )
 		}
 
 		REQUIRE( tree->getDepth() == 0 );
+	}
+
+	SECTION( "Test retrieval", "[QuadTree]" )
+	{
+		CHECK( tree->getDepth() == 0 );
+
+		std::vector<flat2d::Entity*> objects;
+		for (int i = 0; i < 5; i++) {
+			objects.push_back(new EntityImpl(10, 10));
+		}
+		for (int i = 0; i < 5; i++) {
+			objects.push_back(new EntityImpl(210, 10));
+		}
+		for (int i = 0; i < 5; i++) {
+			objects.push_back(new EntityImpl(10, 210));
+		}
+		for (int i = 0; i < 5; i++) {
+			objects.push_back(new EntityImpl(10, 195));
+		}
+
+		for (auto it = objects.begin(); it != objects.end(); ++it) {
+			tree->insert(*it);
+		}
+
+		CHECK( tree->getDepth() == 1 );
+
+		flat2d::Entity *collider = new EntityImpl(10, 10);
+		std::vector<flat2d::Entity*> collidables;
+		tree->retrieve(&collidables, collider);
+		delete collider;
+
+		REQUIRE ( collidables.size() == 10 );
+
+		tree->clear();
+		for (auto it = objects.begin(); it != objects.end(); ++it) {
+			delete *it;
+		}
+
+		CHECK( tree->getDepth() == 0 );
 	}
 
 	delete tree;

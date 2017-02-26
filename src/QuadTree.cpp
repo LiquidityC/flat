@@ -6,7 +6,7 @@
 
 namespace flat2d
 {
-	int QuadTree::getNodeIndexFor(Entity *e)
+	int QuadTree::getNodeIndexFor(const Entity *e) const
 	{
 		int dw = bounds.getXpos() + (bounds.getWidth()/2);
 		int dh = bounds.getYpos() + (bounds.getHeight()/2);
@@ -127,4 +127,15 @@ namespace flat2d
 
 		return d;
 	}
+
+	void QuadTree::retrieve(std::vector<Entity*> *returnEntities, const Entity *entity) const
+	{
+		int index = getNodeIndexFor(entity);
+		if (index != -1 && !nodes.empty()) {
+			nodes[index]->retrieve(returnEntities, entity);
+		}
+
+		returnEntities->insert(returnEntities->end(), objects.begin(), objects.end());
+	}
+
 } // namespace flat2d

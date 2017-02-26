@@ -25,7 +25,7 @@ namespace flat2d
 
 			void split();
 
-			int getNodeIndexFor(Entity *e);
+			int getNodeIndexFor(const Entity *e) const;
 
 		public:
 			/**
@@ -35,13 +35,16 @@ namespace flat2d
 			 */
 			explicit QuadTree(Square b, unsigned int d = 0) : bounds(b), depth(d) { }
 
+			/**
+			 * Destroy the Tree. This doesn't delete contained Entity objects.
+			 */
 			~QuadTree() {
 				clear();
 			}
 
 			/**
 			 * Insert an entity into the QuadTree
-			 * @param Entity An entity pointer to insert
+			 * @param e An entity pointer to insert
 			 */
 			void insert(Entity *e);
 
@@ -56,6 +59,13 @@ namespace flat2d
 			 * @return The depth of the tree
 			 */
 			int getDepth() const;
+
+			/**
+			 * Return a list of possible collision Entity objects.
+			 * @param returnEntities The prodced list
+			 * @param entity The Entity to collide with
+			 */
+			void retrieve(std::vector<Entity*> *returnEntities, const Entity*) const;
 	};
 } // namespace flat2d
 

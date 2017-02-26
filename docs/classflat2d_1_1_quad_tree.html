@@ -86,6 +86,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad07aaa998fc82dc3758793acd6da6e01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81d0c56eb4572c17317d693b15c8c344"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_quad_tree.html#a81d0c56eb4572c17317d693b15c8c344">getDepth</a> () const</td></tr>
 <tr class="separator:a81d0c56eb4572c17317d693b15c8c344"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b767e07d76026efbb640c939ab01c18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_quad_tree.html#a7b767e07d76026efbb640c939ab01c18">retrieve</a> (std::vector&lt; <a class="el" href="classflat2d_1_1_entity.html">Entity</a> *&gt; *returnEntities, const <a class="el" href="classflat2d_1_1_entity.html">Entity</a> *) const</td></tr>
+<tr class="separator:a7b767e07d76026efbb640c939ab01c18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A <a class="el" href="classflat2d_1_1_quad_tree.html">QuadTree</a> for organizing collidable <a class="el" href="classflat2d_1_1_entity.html">Entity</a> objects in the world. Used be the <a class="el" href="classflat2d_1_1_entity_container.html">EntityContainer</a> and <a class="el" href="classflat2d_1_1_collision_detector.html">CollisionDetector</a>.</p>
@@ -160,8 +162,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Destroy the Tree. This doesn't delete contained <a class="el" href="classflat2d_1_1_entity.html">Entity</a> objects. </p>
 
-<p class="definition">Definition at line <a class="el" href="_quad_tree_8h_source.html#l00038">38</a> of file <a class="el" href="_quad_tree_8h_source.html">QuadTree.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_quad_tree_8h_source.html#l00041">41</a> of file <a class="el" href="_quad_tree_8h_source.html">QuadTree.h</a>.</p>
 
 </div>
 </div>
@@ -223,12 +226,49 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Insert an entity into the <a class="el" href="classflat2d_1_1_quad_tree.html">QuadTree</a> </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="classflat2d_1_1_entity.html">Entity</a></td><td>An entity pointer to insert </td></tr>
+    <tr><td class="paramname">e</td><td>An entity pointer to insert </td></tr>
   </table>
   </dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="_quad_tree_8cpp_source.html#l00081">81</a> of file <a class="el" href="_quad_tree_8cpp_source.html">QuadTree.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a7b767e07d76026efbb640c939ab01c18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b767e07d76026efbb640c939ab01c18">&#9670;&nbsp;</a></span>retrieve()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void flat2d::QuadTree::retrieve </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classflat2d_1_1_entity.html">Entity</a> *&gt; *&#160;</td>
+          <td class="paramname"><em>returnEntities</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classflat2d_1_1_entity.html">Entity</a> *&#160;</td>
+          <td class="paramname"><em>entity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Return a list of possible collision <a class="el" href="classflat2d_1_1_entity.html">Entity</a> objects. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">returnEntities</td><td>The prodced list </td></tr>
+    <tr><td class="paramname">entity</td><td>The <a class="el" href="classflat2d_1_1_entity.html">Entity</a> to collide with </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_quad_tree_8cpp_source.html#l00131">131</a> of file <a class="el" href="_quad_tree_8cpp_source.html">QuadTree.cpp</a>.</p>
 
 </div>
 </div>
