@@ -10,6 +10,7 @@
 
 #include "MapArea.h"
 #include "EntityShape.h"
+#include "QuadTree.h"
 
 namespace flat2d
 {
@@ -23,7 +24,6 @@ namespace flat2d
 	typedef int Layer;
 	typedef std::map<std::string, Entity*> ObjectList;
 	typedef std::map<Layer, ObjectList> LayerMap;
-	typedef std::map<MapArea, ObjectList> SpatialPartitionMap;
 	typedef std::map<std::string, MapArea*> RenderAreas;
 
 	/**
@@ -40,18 +40,15 @@ namespace flat2d
 	{
 		private:
 			// TODO(Linus): Maybe make this editable in the future?
-			const int spatialPartitionExpansion = 0;
-			unsigned int spatialPartitionDimension = 100;
-
 			DeltatimeMonitor *dtMonitor = nullptr;
 
 			ObjectList objects;
 			ObjectList collidableObjects;
 			ObjectList inputHandlers;
 			LayerMap layeredObjects;
-			SpatialPartitionMap spatialPartitionMap;
 			ObjectList uninitiatedEntities;
 			RenderAreas renderAreas;
+			QuadTree *quadTree = nullptr;
 
 			typedef std::function<bool (Entity*)> EntityProcessor;
 			typedef std::function<void (Entity*)> EntityIter;
@@ -61,13 +58,6 @@ namespace flat2d
 			void operator=(const EntityContainer&); // Don't implement
 
 			void clearDeadObjects();
-			void registerObjectToSpatialPartitions(Entity *entity);
-			void addObjectToSpatialPartitionFor(Entity *entity, int x, int y);
-			void clearObjectFromCurrentPartitions(Entity *entity);
-			void clearObjectFromUnattachedPartitions(Entity *entity);
-			EntityShape createBoundingBoxFor(const EntityProperties& props) const;
-			void handlePossibleObjectMovement(Entity* entity);
-
 			void reinitLayerMap();
 			bool isUninitiated(const std::string& id) const;
 			bool isInRenderArea(Entity*, const GameData*) const;
@@ -142,12 +132,6 @@ namespace flat2d
 			 * @return The number of Entities that are collidable.
 			 */
 			size_t getCollidablesCount() const;
-
-			/**
-			 * Get the number of SpatialPartitions created
-			 * @return The number of SpatialPartitions created
-			 */
-			size_t getSpatialPartitionCount() const;
 
 			/**
 			 * Recheck all registered Entity objects and see if any have become collidable

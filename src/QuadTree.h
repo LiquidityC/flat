@@ -7,6 +7,8 @@
 
 namespace flat2d
 {
+	class RenderData;
+
 	/**
 	 * A QuadTree for organizing collidable Entity objects in the world. Used be the
 	 * EntityContainer and CollisionDetector.
@@ -66,6 +68,12 @@ namespace flat2d
 			 * @param entity The Entity to collide with
 			 */
 			void retrieve(std::vector<Entity*> *returnEntities, const Entity*) const;
+
+			/**
+			 * Render the nodes in the QuadTree, can be used to debug your game.
+			 * @param rednerData RenderData object
+			 */
+			void render(const RenderData *renderData) const;
 	};
 } // namespace flat2d
 

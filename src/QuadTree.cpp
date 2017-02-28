@@ -1,4 +1,6 @@
 #include "QuadTree.h"
+#include "RenderData.h"
+#include "Camera.h"
 #include <SDL2/SDL.h>
 #include <iostream>
 #include <algorithm>
@@ -136,6 +138,22 @@ namespace flat2d
 		}
 
 		returnEntities->insert(returnEntities->end(), objects.begin(), objects.end());
+	}
+
+	void QuadTree::render(const RenderData *renderData) const
+	{
+		SDL_Renderer *renderer = renderData->getRenderer();
+		Camera *camera = renderData->getCamera();
+		int xpos = camera->getScreenXposFor(bounds.getXpos());
+		int ypos = camera->getScreenYposFor(bounds.getYpos());
+
+		SDL_SetRenderDrawColor(renderer, 0x00, 0xFF, 0x00, 0xff);
+		SDL_Rect rect = { xpos, ypos, bounds.getWidth(), bounds.getHeight() };
+		SDL_RenderDrawRect(renderer, &rect);
+
+		for (auto it = nodes.begin(); it != nodes.end(); ++it) {
+			(*it)->render(renderData);
+		}
 	}
 
 } // namespace flat2d

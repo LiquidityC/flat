@@ -7,6 +7,8 @@
 #include "../src/DeltatimeMonitor.h"
 #include "../src/Mixer.h"
 #include "../src/MapArea.h"
+#include "../src/Camera.h"
+#include "../src/RenderData.h"
 
 TEST_CASE( "Object container tests", "[objectcontainer]" )
 {
@@ -130,7 +132,9 @@ TEST_CASE( "Object container tests", "[objectcontainer]" )
 
 		flat2d::CollisionDetector detector(&container, dtm);
 		flat2d::Mixer mixer;
-		flat2d::GameData gameData(&container, &detector, &mixer, (flat2d::RenderData*) nullptr,
+		flat2d::Camera camera(100, 100);
+		flat2d::RenderData renderData((SDL_Renderer*) nullptr, &camera);
+		flat2d::GameData gameData(&container, &detector, &mixer, &renderData,
 				(flat2d::DeltatimeMonitor*) nullptr);
 
 		container.registerObject(c1);
@@ -142,82 +146,6 @@ TEST_CASE( "Object container tests", "[objectcontainer]" )
 		container.moveObjects(&gameData);
 
 		REQUIRE ( 1 == container.getObjectCount() );
-	}
-
-	SECTION( "Test partition handling", "[objectcontainer]" )
-	{
-		flat2d::CollisionDetector detector(&container, dtm);
-		flat2d::GameData gameData(&container, &detector, nullptr, (flat2d::RenderData*) nullptr,
-				(flat2d::DeltatimeMonitor*) nullptr);
-
-		flat2d::Entity* o = new EntityImpl(95, 95);
-
-		container.setSpatialPartitionDimension(100);
-		container.registerObject(o);
-		container.initiateEntities(&gameData);
-
-		REQUIRE( 4 == o->getEntityProperties().getCurrentAreas().size() );
-
-		o->getEntityProperties().incrementXpos(35);
-		container.moveObjects(&gameData);
-
-		REQUIRE( 2 == o->getEntityProperties().getCurrentAreas().size() );
-	}
-
-	SECTION( "Test spatial partitions", "[objectcontainer]" )
-	{
-
-		flat2d::Entity* o1 = new EntityImpl(50, 50);
-		flat2d::Entity* o2 = new EntityImpl(150, 150);
-		flat2d::Entity* o3 = new EntityImpl(550, 550);
-		flat2d::Entity* o4 = new EntityImpl(75, 75);
-		flat2d::Entity* o5 = new EntityImpl(1095, 1095);
-
-		container.registerObject(o1);
-		REQUIRE ( 1 == container.getSpatialPartitionCount() );
-
-		container.registerObject(o4);
-		REQUIRE ( 1 == container.getSpatialPartitionCount() );
-
-		container.registerObject(o2);
-		REQUIRE ( 2 == container.getSpatialPartitionCount() );
-
-		container.registerObject(o3);
-		REQUIRE ( 3 == container.getSpatialPartitionCount() );
-
-		container.registerObject(o5);
-		REQUIRE ( 7 == container.getSpatialPartitionCount() );
-	}
-
-	SECTION( "Test spatial partitions with velocity", "[objectcontainer]" )
-	{
-
-		flat2d::Entity* o1 = new EntityImpl(75, 75);
-		flat2d::Entity* o2 = new EntityImpl(125, 125);
-
-		flat2d::EntityProperties& o1props = o1->getEntityProperties();
-		o1props.setXvel(50);
-		o1props.setYvel(50);
-
-		flat2d::EntityProperties& o2props = o2->getEntityProperties();
-		o2props.setXvel(-50);
-		o2props.setYvel(-50);
-
-		REQUIRE ( 1.0 == dtm->getDeltaTime() );
-
-		REQUIRE ( 0 == container.getSpatialPartitionCount() );
-
-		container.registerObject(o1);
-
-		REQUIRE ( 4 == container.getSpatialPartitionCount() );
-
-		container.unregisterAllObjects();
-
-		REQUIRE ( 0 == container.getSpatialPartitionCount() );
-
-		container.registerObject(o2);
-
-		REQUIRE ( 4 == container.getSpatialPartitionCount() );
 	}
 
 	SECTION( "Test RenderArea retrieval", "[objectcontainer]" )

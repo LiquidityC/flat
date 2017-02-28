@@ -6,7 +6,6 @@
 #include <functional>
 
 #include "Square.h"
-#include "MapArea.h"
 #include "EntityShape.h"
 #include "CollisionProperty.h"
 
@@ -23,9 +22,6 @@ namespace flat2d
 	 */
 	class EntityProperties : public Square
 	{
-		public:
-			typedef std::vector<MapArea> Areas;
-
 		private:
 			int z = 0;
 
@@ -39,7 +35,6 @@ namespace flat2d
 			CollisionProperty collisionProperty = CollisionProperty::SOLID;
 
 			EntityShape colliderShape = { 0, 0, 0, 0 };
-			Areas currentAreas;
 
 			EntityShape getCustomVelocityColliderShape(float dx, float dy) const;
 
@@ -239,18 +234,6 @@ namespace flat2d
 			 * @return true or false
 			 */
 			bool containsPoint(int, int) const;
-
-			/**
-			 * Get the spatial partitions the Entity currently inhabits
-			 * @return a list of Areas
-			 */
-			Areas& getCurrentAreas();
-
-			/**
-			 * Get the spatial partitions the Entity currently inhabits
-			 * @return a const list of Areas
-			 */
-			const Areas& getCurrentAreas() const;
 
 			/**
 			 * Mark that the Entity has moved. Used by engine.

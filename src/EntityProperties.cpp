@@ -202,16 +202,6 @@ namespace flat2d
 		return locationChanged;
 	}
 
-	EntityProperties::Areas& EntityProperties::getCurrentAreas()
-	{
-		return currentAreas;
-	}
-
-	const EntityProperties::Areas& EntityProperties::getCurrentAreas() const
-	{
-		return currentAreas;
-	}
-
 	void EntityProperties::move(float deltatime)
 	{
 		int dx = xvel * deltatime;
