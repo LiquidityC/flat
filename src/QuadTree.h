@@ -20,14 +20,27 @@ namespace flat2d
 		private:
 			const unsigned int MAX_OBJECTS = 10;
 
-			int depth;
+			enum Position {
+				CENTER,
+				LEFT,
+				RIGHT,
+				TOP,
+				BOTTOM,
+				TOP_LEFT,
+				TOP_RIGHT,
+				BOTTOM_LEFT,
+				BOTTOM_RIGHT
+			};
+
 			Square bounds;
+			int depth;
 			std::vector<Entity*> objects;
 			std::vector<QuadTree*> nodes;
 
 			void split();
 
-			int getNodeIndexFor(const Entity *e) const;
+			Position getNodePositionFor(const Entity *e) const;
+			void insertInto(Entity* e, Position p);
 
 		public:
 			/**

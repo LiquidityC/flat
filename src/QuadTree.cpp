@@ -8,12 +8,14 @@
 
 namespace flat2d
 {
-	int QuadTree::getNodeIndexFor(const Entity *e) const
+	Position QuadTree::getNodePositionFor(const Entity *e) const
 	{
 		int dw = bounds.getXpos() + (bounds.getWidth()/2);
 		int dh = bounds.getYpos() + (bounds.getHeight()/2);
 		bool left = false;
 		bool right = false;
+		bool top = false;
+		bool bottom = false;
 
 		SDL_Rect box = e->getEntityProperties().getBoundingBox();
 		if (box.x + box.w < dw) {
@@ -22,21 +24,35 @@ namespace flat2d
 			right = true;
 		}
 
-		if (left) {
-			if (box.y + box.h < dh) {
-				return 0;
-			} else if (box.y > dh) {
-				return 2;
-			}
-		} else if (right) {
-			if (box.y + box.h < dh) {
-				return 1;
-			} else if (box.y > dh) {
-				return 3;
-			}
+		if (box.y + box.h < dh) {
+			top = true;
+		} else if (box.y > dh) {
+			bottom = true;
 		}
 
-		return -1;
+		if (left) {
+			if (top) {
+				return TOP_LEFT;
+			} else if (bottom) {
+				return BOTTOM_LEFT;
+			}
+			return LEFT;
+		} else if (right) {
+			if (top) {
+				return TOP_RIGHT;
+			} else if (bottom) {
+				return BOTTOM_RIGHT;
+			}
+			return RIGHT;
+		}
+
+		if (top) {
+			return TOP;
+		} else if (bottom) {
+			return BOTTOM;
+		}
+
+		return CENTER;
 	}
 
 	void QuadTree::split()
@@ -65,18 +81,52 @@ namespace flat2d
 					dw,
 					dh), depth + 1));
 
-		std::vector<Entity*> tempObjects;
 		for (auto it = objects.begin(); it != objects.end(); ++it) {
-			int index = getNodeIndexFor(*it);
-			if (index == -1) {
-				tempObjects.push_back(*it);
-				continue;
-			}
-			nodes[index]->insert(*it);
+			Position pos = getNodePositionFor(*it);
+			insertInto(e, pos);
 		}
 		objects.clear();
-		for (auto it = tempObjects.begin(); it != tempObjects.end(); ++it) {
-			objects.push_back(*it);
+	}
+
+	void QuadTree::insertInto(Entity* e, Position p)
+	{
+		switch (p) {
+			case CENTER:
+				nodes[0].insert(e);
+				nodes[1].insert(e);
+				nodes[2].insert(e);
+				nodes[3].insert(e);
+				break;
+			case LEFT:
+				nodes[0].insert(e);
+				nodes[2].insert(e);
+				break;
+			case RIGHT:
+				nodes[1].insert(e);
+				nodes[3].insert(e);
+				break;
+			case TOP:
+				nodes[0].insert(e);
+				nodes[1].insert(e);
+				break;
+			case BOTTOM:
+				nodes[2].insert(e);
+				nodes[3].insert(e);
+				break;
+			case TOP_LEFT:
+				nodes[0].insert(e);
+				break;
+			case TOP_RIGHT:
+				nodes[1].insert(e);
+				break;
+			case BOTTOM_LEFT:
+				nodes[2].insert(e);
+				break;
+			case BOTTOM_RIGHT:
+				nodes[3].insert(e);
+				break;
+			default:
+				break;
 		}
 	}
 
@@ -88,12 +138,8 @@ namespace flat2d
 				split();
 			}
 		} else {
-			int index = getNodeIndexFor(e);
-			if (index == -1) {
-				objects.push_back(e);
-			} else {
-				nodes[index]->insert(e);
-			}
+			Position pos = getNodePositionFor(e);
+			insertInto(e, pos);
 		}
 	}
 
@@ -132,7 +178,7 @@ namespace flat2d
 
 	void QuadTree::retrieve(std::vector<Entity*> *returnEntities, const Entity *entity) const
 	{
-		int index = getNodeIndexFor(entity);
+		int index = getNodePositionFor(entity);
 		if (index != -1 && !nodes.empty()) {
 			nodes[index]->retrieve(returnEntities, entity);
 		}

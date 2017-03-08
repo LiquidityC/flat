@@ -183,6 +183,9 @@ namespace flat2d
 				it2->second->postRender(data);
 			}
 		}
+#ifdef COLLISION_DBG
+				quadTree->render(data->getRenderData());
+#endif
 	}
 
 	bool EntityContainer::isInRenderArea(Entity *e, const GameData* data) const
@@ -207,10 +210,11 @@ namespace flat2d
 		float deltatime = dtMonitor->getDeltaTime();
 		CollisionDetector *coldetector = data->getCollisionDetector();
 
-		if (quadTree == nullptr) {
-			Camera *camera = data->getRenderData()->getCamera();
-			quadTree = new QuadTree(Square(0, 0, camera->getMapWidth(), camera->getMapHeight()));
+		if (quadTree != nullptr) {
+			delete quadTree;
 		}
+		Camera *camera = data->getRenderData()->getCamera();
+		quadTree = new QuadTree(Square(0, 0, camera->getMapWidth(), camera->getMapHeight()));
 
 		quadTree->clear();
 		for (auto it = collidableObjects.begin(); it != collidableObjects.end(); ++it) {

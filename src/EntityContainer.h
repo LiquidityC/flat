@@ -169,15 +169,6 @@ namespace flat2d
 			void renderObjects(const GameData*) const;
 
 			/**
-			 * Set the dimension for spatial partitions.
-			 * To optimize performance the EntityContainer organizes all
-			 * collidable Entity objects into spatial partitions in the game space.
-			 * This defaults to 100px and can be changed using this method.
-			 * @param i The spatial partition dimension to use.
-			 */
-			void setSpatialPartitionDimension(unsigned int);
-
-			/**
 			 * Iterate all collidables in the engine and call the provided
 			 * callback for each Entity. This is used by the CollisionDetector and
 			 * should probably be avoided in game code.

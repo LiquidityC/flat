@@ -69,7 +69,7 @@ set(TEST_SOURCES
 
 add_executable(test_flat EXCLUDE_FROM_ALL ${FLAT_SOURCES} ${TEST_SOURCES})
 target_link_libraries(test_flat -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf)
-target_compile_options(test_flat PRIVATE -std=c++14)
+target_compile_options(test_flat PRIVATE -std=c++14 -Wall)
 
 add_library(flat ${FLAT_SOURCES})
 

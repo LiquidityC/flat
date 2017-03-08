@@ -21,11 +21,17 @@ namespace flat2d
 
 	void Entity::render(const RenderData *data) const
 	{
+		const SDL_Rect *renderClip = nullptr;
+		SDL_Rect box = entityProperties.getBoundingBox();
+
 		if (texture == nullptr || dead || !entityProperties.isVisible()) {
+#ifdef COLLISION_DBG
+			goto debugdraw;
+#else
 			return;
+#endif
 		}
 
-		SDL_Rect box = entityProperties.getBoundingBox();
 		if (data->getCamera() != nullptr && !fixedPosition) {
 			int z = entityProperties.getDepth();
 			Camera* camera = data->getCamera();
@@ -38,7 +44,6 @@ namespace flat2d
 			box.y = camera->getScreenYposFor(box.y, z);
 		}
 
-		const SDL_Rect *renderClip = nullptr;
 		if (!currentAnimation.empty()) {
 			renderClip = animations.at(currentAnimation)->run();
 		} else {
@@ -48,6 +53,7 @@ namespace flat2d
 		texture.get()->render(data->getRenderer(), renderClip, &box);
 
 #ifdef COLLISION_DBG
+debugdraw:
 		// Draw collider box
 		if (entityProperties.isCollidable()) {
 			SDL_SetRenderDrawColor(data->getRenderer(), 0x00, 0xFF, 0x00, 0xFF );
@@ -68,16 +74,6 @@ namespace flat2d
 			broadphaseShape.y = data->getCamera()->getScreenYposFor(broadphaseShape.y);
 			SDL_SetRenderDrawColor(data->getRenderer(), 0x00, 0xFF, 0xFF, 0xFF );
 			SDL_RenderDrawRect( data->getRenderer(), &broadphaseShape );
-		}
-
-		// Draw spatial partitions
-		SDL_SetRenderDrawColor(data->getRenderer(), 0xFF, 0x00, 0x00, 0xFF );
-		const flat2d::EntityProperties::Areas currentAreas = entityProperties.getCurrentAreas();
-		for(auto it = currentAreas.begin(); it != currentAreas.end(); it++) {
-			SDL_Rect bounds = (*it).asSDLRect();
-			bounds.x = data->getCamera()->getScreenXposFor(bounds.x);
-			bounds.y = data->getCamera()->getScreenYposFor(bounds.y);
-			SDL_RenderDrawRect( data->getRenderer(), &bounds );
 		}
 #endif
 	}
