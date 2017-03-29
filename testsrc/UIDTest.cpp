@@ -1,16 +1,36 @@
 #include <iostream>
+#include <thread>
+#include <set>
 #include "catch.hpp"
 #include "../src/UID.h"
+#include "../src/SpinLock.h"
 
 using namespace flat2d;
 
 TEST_CASE( "UID Generation sequence test", "[UID]")
 {
-	// Generation doesn't start at 10 since other objects have been created
-	// during the test execution
-	size_t index = UID::generate();
+	std::set<int> idSet;
+	flat2d::SpinLock lock;
 
-	for (size_t i = index + 1; i < index + 11; i++) {
-		REQUIRE( i == UID::generate());
+	auto call_from_thread = [&]() {
+		lock.lock();
+		size_t id = UID::generate();
+		REQUIRE( idSet.find(id) == idSet.end() );
+		idSet.insert(id);
+		lock.unlock();
+	};
+
+	REQUIRE( idSet.size() == 0 );
+
+	int thread_count = 20;
+	std::thread threads[thread_count];
+	for (auto i = 0; i < thread_count; i++) {
+		threads[i] = std::thread(call_from_thread);
 	}
+
+	for (auto i = 0; i < thread_count; i++) {
+		threads[i].join();
+	}
+
+	REQUIRE( idSet.size() == thread_count );
 }
