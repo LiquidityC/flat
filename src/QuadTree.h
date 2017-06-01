@@ -48,7 +48,7 @@ namespace flat2d
 			 * @param b The nodes bounds
 			 * @param d The depth (only used internally in the tree)
 			 */
-			explicit QuadTree(Square b, unsigned int d = 0) : bounds(b), depth(d) { }
+			explicit QuadTree(const Square& b, unsigned int d = 0) : bounds(b), depth(d) { }
 
 			/**
 			 * Destroy the Tree. This doesn't delete contained Entity objects.

@@ -16,6 +16,7 @@ namespace flat2d
 			Square() : x(0), y(0), w(0), h(0) { }
 			Square(int px, int py, int dim) : x(px), y(py), w(dim), h(dim) { }
 			Square(int px, int py, int pw, int ph) : x(px), y(py), w(pw), h(ph) { }
+			Square(const Square& s) : x(s.x), y(s.y), w(s.w), h(s.h) { }
 
 			/**
 			 * Check if the Square contains a given point

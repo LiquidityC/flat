@@ -8,7 +8,7 @@
 
 namespace flat2d
 {
-	Position QuadTree::getNodePositionFor(const Entity *e) const
+	QuadTree::Position QuadTree::getNodePositionFor(const Entity *e) const
 	{
 		int dw = bounds.getXpos() + (bounds.getWidth()/2);
 		int dh = bounds.getYpos() + (bounds.getHeight()/2);
@@ -83,7 +83,7 @@ namespace flat2d
 
 		for (auto it = objects.begin(); it != objects.end(); ++it) {
 			Position pos = getNodePositionFor(*it);
-			insertInto(e, pos);
+			insertInto(*it, pos);
 		}
 		objects.clear();
 	}
@@ -92,38 +92,38 @@ namespace flat2d
 	{
 		switch (p) {
 			case CENTER:
-				nodes[0].insert(e);
-				nodes[1].insert(e);
-				nodes[2].insert(e);
-				nodes[3].insert(e);
+				nodes[0]->insert(e);
+				nodes[1]->insert(e);
+				nodes[2]->insert(e);
+				nodes[3]->insert(e);
 				break;
 			case LEFT:
-				nodes[0].insert(e);
-				nodes[2].insert(e);
+				nodes[0]->insert(e);
+				nodes[2]->insert(e);
 				break;
 			case RIGHT:
-				nodes[1].insert(e);
-				nodes[3].insert(e);
+				nodes[1]->insert(e);
+				nodes[3]->insert(e);
 				break;
 			case TOP:
-				nodes[0].insert(e);
-				nodes[1].insert(e);
+				nodes[0]->insert(e);
+				nodes[1]->insert(e);
 				break;
 			case BOTTOM:
-				nodes[2].insert(e);
-				nodes[3].insert(e);
+				nodes[2]->insert(e);
+				nodes[3]->insert(e);
 				break;
 			case TOP_LEFT:
-				nodes[0].insert(e);
+				nodes[0]->insert(e);
 				break;
 			case TOP_RIGHT:
-				nodes[1].insert(e);
+				nodes[1]->insert(e);
 				break;
 			case BOTTOM_LEFT:
-				nodes[2].insert(e);
+				nodes[2]->insert(e);
 				break;
 			case BOTTOM_RIGHT:
-				nodes[3].insert(e);
+				nodes[3]->insert(e);
 				break;
 			default:
 				break;
