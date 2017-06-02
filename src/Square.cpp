@@ -28,4 +28,10 @@ namespace flat2d
 	{
 		return !(*this == s);
 	}
+
+	EntityShape Square::getAsEntityShape() const
+	{
+		EntityShape shape = { x, y, w, h };
+		return shape;
+	}
 } // namespace flat2d

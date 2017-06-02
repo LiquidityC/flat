@@ -1,6 +1,8 @@
 #ifndef SQUARE_H_
 #define SQUARE_H_
 
+#include "EntityShape.h"
+
 namespace flat2d
 {
 	/**
@@ -77,6 +79,8 @@ namespace flat2d
 			 * @param height The new height
 			 */
 			virtual void setHeight(int height) { h = height; }
+
+			EntityShape getAsEntityShape() const;
 	};
 } // namespace flat2d
 #endif // SQUARE_H_

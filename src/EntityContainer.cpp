@@ -216,7 +216,7 @@ namespace flat2d
 			delete quadTree;
 		}
 		Camera *camera = data->getRenderData()->getCamera();
-		quadTree = new QuadTree(Square(0, 0, camera->getMapWidth(), camera->getMapHeight()));
+		quadTree = new QuadTree(Square(0, 0, camera->getMapWidth(), camera->getMapHeight()), dtMonitor);
 
 		quadTree->clear();
 		for (auto it = collidableObjects.begin(); it != collidableObjects.end(); ++it) {

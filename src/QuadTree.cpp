@@ -1,3 +1,4 @@
+#include "CollisionDetector.h"
 #include "QuadTree.h"
 #include "RenderData.h"
 #include "Camera.h"
@@ -19,7 +20,14 @@ namespace flat2d
 		bool top = false;
 		bool bottom = false;
 
-		SDL_Rect box = e->getEntityProperties().getBoundingBox();
+
+		EntityShape box;
+		if (deltatimeMonitor != nullptr) {
+			box = e->getEntityProperties().getVelocityColliderShape(deltatimeMonitor->getDeltaTime());
+		} else {
+			box = e->getEntityProperties().getColliderShape();
+		}
+
 		if (box.x + box.w < dw) {
 			left = true;
 		} else if (box.x > dw) {
@@ -59,31 +67,15 @@ namespace flat2d
 
 	void QuadTree::split()
 	{
-		// TODO(Linus): This isn't safe. If >10 entities appear right in the center of the root node
-		// we will have an infinite loop.
+		int x = bounds.getXpos();
+		int y = bounds.getYpos();
 		int dw = bounds.getWidth()/2;
 		int dh = bounds.getHeight()/2;
 
-		nodes.push_back(new QuadTree(Square(
-					bounds.getXpos(),
-					bounds.getYpos(),
-					dw,
-					dh), depth + 1));
-		nodes.push_back(new QuadTree(Square(
-					bounds.getXpos() + dw,
-					bounds.getYpos(),
-					dw,
-					dh), depth + 1));
-		nodes.push_back(new QuadTree(Square(
-					bounds.getXpos(),
-					bounds.getYpos() + dh,
-					dw,
-					dh), depth + 1));
-		nodes.push_back(new QuadTree(Square(
-					bounds.getXpos() + dw,
-					bounds.getYpos() + dh,
-					dw,
-					dh), depth + 1));
+		nodes.push_back(new QuadTree(Square(x, y, dw, dh), deltatimeMonitor, depth + 1));
+		nodes.push_back(new QuadTree(Square(x + dw, y, dw, dh), deltatimeMonitor, depth + 1));
+		nodes.push_back(new QuadTree(Square(x, y + dh, dw, dh), deltatimeMonitor, depth + 1));
+		nodes.push_back(new QuadTree(Square(x + dw, y + dh, dw, dh), deltatimeMonitor, depth + 1));
 
 		for (auto it = objects.begin(); it != objects.end(); ++it) {
 			Position pos = getNodePositionFor(*it);
@@ -94,41 +86,48 @@ namespace flat2d
 
 	void QuadTree::insertInto(Entity* e, Position p)
 	{
-		// TODO(Linus): Do something about this switch. It occurs in more places
+		distribute(p, [e] (QuadTree *node)
+				   {
+						node->insert(e);
+				   });
+	}
+
+	void QuadTree::distribute(const Position& p, DistributionCallback cb)
+	{
 		switch (p) {
 			case CENTER:
-				nodes[0]->insert(e);
-				nodes[1]->insert(e);
-				nodes[2]->insert(e);
-				nodes[3]->insert(e);
+				cb(nodes[0]);
+				cb(nodes[1]);
+				cb(nodes[2]);
+				cb(nodes[3]);
 				break;
 			case LEFT:
-				nodes[0]->insert(e);
-				nodes[2]->insert(e);
+				cb(nodes[0]);
+				cb(nodes[2]);
 				break;
 			case RIGHT:
-				nodes[1]->insert(e);
-				nodes[3]->insert(e);
+				cb(nodes[1]);
+				cb(nodes[3]);
 				break;
 			case TOP:
-				nodes[0]->insert(e);
-				nodes[1]->insert(e);
+				cb(nodes[0]);
+				cb(nodes[1]);
 				break;
 			case BOTTOM:
-				nodes[2]->insert(e);
-				nodes[3]->insert(e);
+				cb(nodes[2]);
+				cb(nodes[3]);
 				break;
 			case TOP_LEFT:
-				nodes[0]->insert(e);
+				cb(nodes[0]);
 				break;
 			case TOP_RIGHT:
-				nodes[1]->insert(e);
+				cb(nodes[1]);
 				break;
 			case BOTTOM_LEFT:
-				nodes[2]->insert(e);
+				cb(nodes[2]);
 				break;
 			case BOTTOM_RIGHT:
-				nodes[3]->insert(e);
+				cb(nodes[3]);
 				break;
 			default:
 				break;
@@ -137,15 +136,26 @@ namespace flat2d
 
 	void QuadTree::insert(Entity *e)
 	{
-		if (nodes.empty()) {
-			objects.push_back(e);
-			if (objects.size() > MAX_OBJECTS) {
-				split();
-			}
-		} else {
+		if (splitAvailable()) {
+			split();
+		}
+
+		if (!nodes.empty()) {
 			Position pos = getNodePositionFor(e);
 			insertInto(e, pos);
+		} else {
+			objects.push_back(e);
 		}
+	}
+
+	bool QuadTree::splitAvailable()
+	{
+		bool result = true;
+		result = nodes.empty() && result;
+		result = objects.size() > MAX_OBJECTS && result;
+		result = depth < 100 && result;
+		result = (bounds.getWidth() > 10 && bounds.getHeight() > 10) && result;
+		return result;
 	}
 
 	void QuadTree::clear()
@@ -181,55 +191,17 @@ namespace flat2d
 		return d;
 	}
 
-	void QuadTree::retrieve(std::vector<Entity*> *returnEntities, const Entity *entity) const
+	void QuadTree::retrieve(std::vector<Entity*> *returnEntities, const Entity *entity)
 	{
 		if (!nodes.empty()) {
 			Position p = getNodePositionFor(entity);
-			// TODO(Linus): Do something about this switch. It occurs in more places
-			// Idea: Create a function with a callback that does the switch. The callback takes
-			// QuadTree pointers as an argument. That way you can specify what method you want
-			// executed on the child nodes specified by the position.
-			switch (p) {
-				case CENTER:
-					nodes[0]->retrieve(returnEntities, entity);
-					nodes[1]->retrieve(returnEntities, entity);
-					nodes[2]->retrieve(returnEntities, entity);
-					nodes[3]->retrieve(returnEntities, entity);
-					break;
-				case LEFT:
-					nodes[0]->retrieve(returnEntities, entity);
-					nodes[2]->retrieve(returnEntities, entity);
-					break;
-				case RIGHT:
-					nodes[1]->retrieve(returnEntities, entity);
-					nodes[3]->retrieve(returnEntities, entity);
-					break;
-				case TOP:
-					nodes[0]->retrieve(returnEntities, entity);
-					nodes[1]->retrieve(returnEntities, entity);
-					break;
-				case BOTTOM:
-					nodes[2]->retrieve(returnEntities, entity);
-					nodes[3]->retrieve(returnEntities, entity);
-					break;
-				case TOP_LEFT:
-					nodes[0]->retrieve(returnEntities, entity);
-					break;
-				case TOP_RIGHT:
-					nodes[1]->retrieve(returnEntities, entity);
-					break;
-				case BOTTOM_LEFT:
-					nodes[2]->retrieve(returnEntities, entity);
-					break;
-				case BOTTOM_RIGHT:
-					nodes[3]->retrieve(returnEntities, entity);
-					break;
-				default:
-					break;
-			}
+			distribute(p, [returnEntities, entity] (QuadTree *node) -> void
+					   {
+					   		node->retrieve(returnEntities, entity);
+					   });
+		} else {
+			returnEntities->insert(returnEntities->end(), objects.begin(), objects.end());
 		}
-
-		returnEntities->insert(returnEntities->end(), objects.begin(), objects.end());
 	}
 
 	void QuadTree::render(const RenderData *renderData) const
@@ -239,7 +211,7 @@ namespace flat2d
 		int xpos = camera->getScreenXposFor(bounds.getXpos());
 		int ypos = camera->getScreenYposFor(bounds.getYpos());
 
-		SDL_SetRenderDrawColor(renderer, 0x00, 0xFF, 0x00, 0xff);
+		SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0xff, 0xff);
 		SDL_Rect rect = { xpos, ypos, bounds.getWidth(), bounds.getHeight() };
 		SDL_RenderDrawRect(renderer, &rect);
 

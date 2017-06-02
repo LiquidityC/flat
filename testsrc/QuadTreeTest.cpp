@@ -7,7 +7,7 @@
 TEST_CASE( "QuadTreeTest", "[animation]" )
 {
 	flat2d::Square bounds(0, 0, 400, 400);
-	flat2d::QuadTree *tree = new flat2d::QuadTree(bounds);
+	flat2d::QuadTree *tree = new flat2d::QuadTree(bounds, nullptr);
 
 	SECTION( "Test split one level", "[QuadTree]" )
 	{

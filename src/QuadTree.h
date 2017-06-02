@@ -3,6 +3,7 @@
 
 #include "Entity.h"
 #include "Square.h"
+#include "DeltatimeMonitor.h"
 #include <vector>
 
 namespace flat2d
@@ -29,15 +30,22 @@ namespace flat2d
 				TOP_LEFT,
 				TOP_RIGHT,
 				BOTTOM_LEFT,
-				BOTTOM_RIGHT
+				BOTTOM_RIGHT,
+				NO_POSITION
 			};
 
 			Square bounds;
+			DeltatimeMonitor *deltatimeMonitor;
 			int depth;
 			std::vector<Entity*> objects;
 			std::vector<QuadTree*> nodes;
 
 			void split();
+
+			bool splitAvailable();
+
+			typedef std::function<void (QuadTree *e)> DistributionCallback;
+			void distribute(const Position&, DistributionCallback);
 
 			Position getNodePositionFor(const Entity *e) const;
 			void insertInto(Entity* e, Position p);
@@ -48,7 +56,8 @@ namespace flat2d
 			 * @param b The nodes bounds
 			 * @param d The depth (only used internally in the tree)
 			 */
-			explicit QuadTree(const Square& b, unsigned int d = 0) : bounds(b), depth(d) { }
+			explicit QuadTree(const Square& b, DeltatimeMonitor *dtm,  unsigned int d = 0) :
+				bounds(b), deltatimeMonitor(dtm), depth(d) { }
 
 			/**
 			 * Destroy the Tree. This doesn't delete contained Entity objects.
@@ -80,7 +89,7 @@ namespace flat2d
 			 * @param returnEntities The prodced list
 			 * @param entity The Entity to collide with
 			 */
-			void retrieve(std::vector<Entity*> *returnEntities, const Entity*) const;
+			void retrieve(std::vector<Entity*> *returnEntities, const Entity*);
 
 			/**
 			 * Render the nodes in the QuadTree, can be used to debug your game.
