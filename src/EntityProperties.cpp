@@ -24,10 +24,10 @@ namespace flat2d
 
 	void EntityProperties::setXpos(int pos)
 	{
-		x = pos;
-		if (pos != 0) {
+		if (pos != x) {
 			setLocationChanged(true);
 		}
+		x = pos;
 	}
 
 	void EntityProperties::incrementYpos(int y)
@@ -40,18 +40,15 @@ namespace flat2d
 
 	void EntityProperties::setYpos(int pos)
 	{
-		y = pos;
-		if (pos != 0) {
+		if (pos != y) {
 			setLocationChanged(true);
 		}
+		y = pos;
 	}
 
 	void EntityProperties::setXvel(float v)
 	{
 		xvel = v;
-		if (v != 0) {
-			setLocationChanged(true);
-		}
 	}
 
 	float EntityProperties::getXvel() const
@@ -62,9 +59,6 @@ namespace flat2d
 	void EntityProperties::setYvel(float v)
 	{
 		yvel = v;
-		if (v != 0) {
-			setLocationChanged(true);
-		}
 	}
 
 	void EntityProperties::setDepth(int depth)

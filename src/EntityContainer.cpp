@@ -212,13 +212,14 @@ namespace flat2d
 		float deltatime = dtMonitor->getDeltaTime();
 		CollisionDetector *coldetector = data->getCollisionDetector();
 
-		if (quadTree != nullptr) {
-			delete quadTree;
-		}
 		Camera *camera = data->getRenderData()->getCamera();
-		quadTree = new QuadTree(Square(0, 0, camera->getMapWidth(), camera->getMapHeight()), dtMonitor);
 
-		quadTree->clear();
+		if (quadTree == nullptr) {
+			quadTree = new QuadTree(Square(0, 0, camera->getMapWidth(), camera->getMapHeight()), dtMonitor);
+		} else {
+			quadTree->clear();
+		}
+
 		for (auto it = collidableObjects.begin(); it != collidableObjects.end(); ++it) {
 			quadTree->insert(it->second);
 		}

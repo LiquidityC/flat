@@ -106,5 +106,51 @@ TEST_CASE( "QuadTreeTest", "[animation]" )
 		CHECK( tree->getDepth() == 0 );
 	}
 
+	SECTION( "Test moving objects", "[QuadTree]" )
+	{
+		CHECK( tree->getDepth() == 0 );
+
+		// Create 20 Entity objects
+		std::vector<flat2d::Entity*> objects;
+		for (int i = 0; i < 5; i++) {
+			objects.push_back(new EntityImpl(10, 10));
+		}
+		for (int i = 0; i < 5; i++) {
+			objects.push_back(new EntityImpl(210, 10));
+		}
+		for (int i = 0; i < 5; i++) {
+			objects.push_back(new EntityImpl(10, 210));
+		}
+
+		// Insert the objects
+		for (auto it = objects.begin(); it != objects.end(); ++it) {
+			tree->insert(*it);
+		}
+
+		// Confirm count
+		CHECK( tree->count() == objects.size() );
+
+		// Move the first 5
+		for (size_t i = 0; i < 5; ++i) {
+			objects[i]->getEntityProperties().incrementYpos(15);
+		}
+
+		// Purge
+		std::vector<flat2d::Entity*> purgedEntities;
+		tree->purge(&purgedEntities);
+
+		// Confirm 5 purged, 0 depth and 10 remaining
+		CHECK( purgedEntities.size() == 5 );
+		CHECK( tree->getDepth() == 0 );
+		CHECK( tree->count() == 10 );
+
+		tree->clear();
+		for (auto it = objects.begin(); it != objects.end(); ++it) {
+			delete *it;
+		}
+
+		CHECK( tree->getDepth() == 0 );
+	}
+
 	delete tree;
 }

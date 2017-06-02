@@ -6,6 +6,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <cassert>
 
 namespace flat2d
 {
@@ -84,6 +85,53 @@ namespace flat2d
 		objects.clear();
 	}
 
+	void QuadTree::unsplit()
+	{
+		assert (objects.size() == 0);
+		assert (nodes.size() == 4);
+
+		nodes[0]->gather(&objects);
+		nodes[1]->gather(&objects);
+		nodes[2]->gather(&objects);
+		nodes[3]->gather(&objects);
+
+		nodes[0]->clear();
+		nodes[1]->clear();
+		nodes[2]->clear();
+		nodes[3]->clear();
+
+		nodes.clear();
+
+		if (splitAvailable()) {
+			split();
+		}
+	}
+
+	void QuadTree::gather(std::vector<Entity*> *collection) {
+		if (!nodes.empty()) {
+			nodes[0]->gather(collection);
+			nodes[1]->gather(collection);
+			nodes[2]->gather(collection);
+			nodes[3]->gather(collection);
+		} else {
+			collection->insert(collection->end(), objects.begin(), objects.end());
+		}
+	}
+
+	unsigned int QuadTree::count() const
+	{
+		if (!nodes.empty()) {
+			unsigned int count = 0;
+			count += nodes[0]->count();
+			count += nodes[1]->count();
+			count += nodes[2]->count();
+			count += nodes[3]->count();
+			return count;
+		} else {
+			return objects.size();
+		}
+	}
+
 	void QuadTree::insertInto(Entity* e, Position p)
 	{
 		distribute(p, [e] (QuadTree *node)
@@ -148,7 +196,7 @@ namespace flat2d
 		}
 	}
 
-	bool QuadTree::splitAvailable()
+	bool QuadTree::splitAvailable() const
 	{
 		bool result = true;
 		result = nodes.empty() && result;
@@ -217,6 +265,32 @@ namespace flat2d
 
 		for (auto it = nodes.begin(); it != nodes.end(); ++it) {
 			(*it)->render(renderData);
+		}
+	}
+
+	void QuadTree::purge(std::vector<Entity*> *purgedEntities)
+	{
+		if (!nodes.empty()) {
+			unsigned int total = purgedEntities->size();
+			nodes[0]->purge(purgedEntities);
+			nodes[1]->purge(purgedEntities);
+			nodes[2]->purge(purgedEntities);
+			nodes[3]->purge(purgedEntities);
+
+			if (purgedEntities->size() != total && count() <= MAX_OBJECTS) {
+				unsplit();
+			}
+
+		} else {
+			auto it = objects.begin();
+			while (it != objects.end()) {
+				if ((*it)->getEntityProperties().hasLocationChanged()) {
+					purgedEntities->push_back(*it);
+					it = objects.erase(it);
+				} else {
+					++it;
+				}
+			}
 		}
 	}
 

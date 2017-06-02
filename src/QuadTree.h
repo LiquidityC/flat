@@ -42,7 +42,12 @@ namespace flat2d
 
 			void split();
 
-			bool splitAvailable();
+			/* Reverse a split */
+			void unsplit();
+
+			void gather(std::vector<Entity*> *collection);
+
+			bool splitAvailable() const;
 
 			typedef std::function<void (QuadTree *e)> DistributionCallback;
 			void distribute(const Position&, DistributionCallback);
@@ -96,6 +101,19 @@ namespace flat2d
 			 * @param rednerData RenderData object
 			 */
 			void render(const RenderData *renderData) const;
+
+			/**
+			 * Clear Entity objects with locationChanged == true from the tree
+			 * and add the pointers to the provided list.
+			 * @param purgedEntities a pointer to the list to populate
+			 */
+			void purge(std::vector<Entity*> *purgedEntities);
+
+			/**
+			 * Count the entities in the tree
+			 * @return the Entity count
+			 */
+			unsigned int count() const;
 	};
 } // namespace flat2d
 
