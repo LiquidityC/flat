@@ -200,6 +200,8 @@ namespace flat2d
 				return true;
 			}
 		}
+
+		return false;
 	}
 
 	void EntityContainer::moveObjects(const GameData* data)

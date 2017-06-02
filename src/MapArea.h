@@ -18,6 +18,7 @@ namespace flat2d
 		public:
 			MapArea(int px, int py, int dim) : Square(px, py, dim) { }
 			MapArea(int px, int py, int pw, int ph) : Square(px, py, pw, ph) { }
+			virtual ~MapArea() { }
 
 			/**
 			 * Return the MapArea as an SDL_Rect

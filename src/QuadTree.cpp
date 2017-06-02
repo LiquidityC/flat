@@ -10,6 +10,8 @@ namespace flat2d
 {
 	QuadTree::Position QuadTree::getNodePositionFor(const Entity *e) const
 	{
+		// TODO(Linus): This isn't good. We need to handle the "Entity outside root area" case.
+		// Perhaps just exclude these entities from the calculations.
 		int dw = bounds.getXpos() + (bounds.getWidth()/2);
 		int dh = bounds.getYpos() + (bounds.getHeight()/2);
 		bool left = false;
@@ -57,6 +59,8 @@ namespace flat2d
 
 	void QuadTree::split()
 	{
+		// TODO(Linus): This isn't safe. If >10 entities appear right in the center of the root node
+		// we will have an infinite loop.
 		int dw = bounds.getWidth()/2;
 		int dh = bounds.getHeight()/2;
 
@@ -90,6 +94,7 @@ namespace flat2d
 
 	void QuadTree::insertInto(Entity* e, Position p)
 	{
+		// TODO(Linus): Do something about this switch. It occurs in more places
 		switch (p) {
 			case CENTER:
 				nodes[0]->insert(e);
@@ -178,9 +183,50 @@ namespace flat2d
 
 	void QuadTree::retrieve(std::vector<Entity*> *returnEntities, const Entity *entity) const
 	{
-		int index = getNodePositionFor(entity);
-		if (index != -1 && !nodes.empty()) {
-			nodes[index]->retrieve(returnEntities, entity);
+		if (!nodes.empty()) {
+			Position p = getNodePositionFor(entity);
+			// TODO(Linus): Do something about this switch. It occurs in more places
+			// Idea: Create a function with a callback that does the switch. The callback takes
+			// QuadTree pointers as an argument. That way you can specify what method you want
+			// executed on the child nodes specified by the position.
+			switch (p) {
+				case CENTER:
+					nodes[0]->retrieve(returnEntities, entity);
+					nodes[1]->retrieve(returnEntities, entity);
+					nodes[2]->retrieve(returnEntities, entity);
+					nodes[3]->retrieve(returnEntities, entity);
+					break;
+				case LEFT:
+					nodes[0]->retrieve(returnEntities, entity);
+					nodes[2]->retrieve(returnEntities, entity);
+					break;
+				case RIGHT:
+					nodes[1]->retrieve(returnEntities, entity);
+					nodes[3]->retrieve(returnEntities, entity);
+					break;
+				case TOP:
+					nodes[0]->retrieve(returnEntities, entity);
+					nodes[1]->retrieve(returnEntities, entity);
+					break;
+				case BOTTOM:
+					nodes[2]->retrieve(returnEntities, entity);
+					nodes[3]->retrieve(returnEntities, entity);
+					break;
+				case TOP_LEFT:
+					nodes[0]->retrieve(returnEntities, entity);
+					break;
+				case TOP_RIGHT:
+					nodes[1]->retrieve(returnEntities, entity);
+					break;
+				case BOTTOM_LEFT:
+					nodes[2]->retrieve(returnEntities, entity);
+					break;
+				case BOTTOM_RIGHT:
+					nodes[3]->retrieve(returnEntities, entity);
+					break;
+				default:
+					break;
+			}
 		}
 
 		returnEntities->insert(returnEntities->end(), objects.begin(), objects.end());
