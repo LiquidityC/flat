@@ -214,11 +214,13 @@ namespace flat2d
 
 		Camera *camera = data->getRenderData()->getCamera();
 
-		if (quadTree == nullptr) {
-			quadTree = new QuadTree(Square(0, 0, camera->getMapWidth(), camera->getMapHeight()), dtMonitor);
-		} else {
+		if (quadTree) {
 			quadTree->clear();
+			delete quadTree;
+			quadTree = nullptr;
 		}
+
+		quadTree = new QuadTree(Square(0, 0, camera->getMapWidth(), camera->getMapHeight()), dtMonitor);
 
 		for (auto it = collidableObjects.begin(); it != collidableObjects.end(); ++it) {
 			quadTree->insert(it->second);

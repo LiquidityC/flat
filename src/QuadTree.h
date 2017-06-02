@@ -5,6 +5,7 @@
 #include "Square.h"
 #include "DeltatimeMonitor.h"
 #include <vector>
+#include <iostream>
 
 namespace flat2d
 {
