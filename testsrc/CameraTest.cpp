@@ -54,4 +54,6 @@ TEST_CASE( "CameraTests", "[camera]" )
 		REQUIRE(camera->getXpos() == 0);
 		REQUIRE(camera->getYpos() == 0);
 	}
+
+	delete camera;
 }

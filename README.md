@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/LiquidityC/flat.svg?branch=master)](https://travis-ci.org/LiquidityC/flat)
 [![Coverity scan](https://scan.coverity.com/projects/10677/badge.svg)](https://scan.coverity.com/projects/liquidityc-flat)
 [![codecov](https://codecov.io/gh/LiquidityC/flat/branch/master/graph/badge.svg)](https://codecov.io/gh/LiquidityC/flat)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6d04b15a21d646a8acbc5779f5e2bdbe)](https://www.codacy.com/app/LiquidityC/flat?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=LiquidityC/flat&amp;utm_campaign=Badge_Grade)
 
 ## About
 Flat is a 2D game engine based on SDL2. It's currently in progress with no deadline for completion. It will

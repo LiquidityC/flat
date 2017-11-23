@@ -14,8 +14,7 @@ namespace flat2d
 			return nullptr;
 		}
 
-		SDL_Texture* texture = nullptr;
-		texture = SDL_CreateTextureFromSurface(renderer, imgSurface);
+		SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, imgSurface);
 		if (texture == nullptr) {
 			std::cerr << "Unable to create texture from: " << path << std::endl;
 		}
