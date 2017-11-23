@@ -6,7 +6,7 @@
 
 namespace flat2d
 {
-	SDL_Texture* MediaUtil::loadTexture(std::string path, SDL_Renderer* renderer)
+	SDL_Texture* MediaUtil::loadTexture(const std::string& path, SDL_Renderer* renderer)
 	{
 		SDL_Surface* imgSurface = IMG_Load(path.c_str());
 		if (imgSurface == nullptr) {
@@ -23,7 +23,7 @@ namespace flat2d
 		return texture;
 	}
 
-	TTF_Font* MediaUtil::loadFont(std::string ttfPath, size_t size)
+	TTF_Font* MediaUtil::loadFont(const std::string& ttfPath, size_t size)
 	{
 		TTF_Font *font = TTF_OpenFont(ttfPath.c_str(), size);
 		if (font == nullptr) {
@@ -34,7 +34,7 @@ namespace flat2d
 	}
 
 	SDL_Texture*
-		MediaUtil::createTextTexture(std::string text, TTF_Font *font, SDL_Color color, SDL_Renderer *renderer)
+		MediaUtil::createTextTexture(const std::string& text, TTF_Font *font, SDL_Color color, SDL_Renderer *renderer)
 	{
 		SDL_Surface* imgSurface = TTF_RenderText_Solid(font, text.c_str(), color);
 		if (imgSurface == nullptr) {
@@ -53,7 +53,7 @@ namespace flat2d
 	}
 
 	SDL_Texture*
-		MediaUtil::loadTextTexture(std::string text, std::string ttfPath, SDL_Renderer* renderer)
+		MediaUtil::loadTextTexture(const std::string& text, const std::string& ttfPath, SDL_Renderer* renderer)
 	{
 		TTF_Font *font = loadFont(ttfPath);
 		if (font == nullptr) {

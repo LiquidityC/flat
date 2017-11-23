@@ -23,7 +23,7 @@ namespace flat2d
 			 * @param renderer The SDL_Renderer
 			 * @return an SDL_Texture object
 			 */
-			static SDL_Texture* loadTexture(std::string, SDL_Renderer*);
+			static SDL_Texture* loadTexture(const std::string&, SDL_Renderer*);
 
 			/**
 			 * Load a ttf font
@@ -31,7 +31,7 @@ namespace flat2d
 			 * @param size The font size
 			 * @return a TTF_Font object
 			 */
-			static TTF_Font* loadFont(std::string, size_t size = 12);
+			static TTF_Font* loadFont(const std::string&, size_t size = 12);
 
 			/**
 			 * Create a texture from a TTF_Font and some text
@@ -41,7 +41,7 @@ namespace flat2d
 			 * @param renderer The renderer
 			 * @return an SDL_Texture object
 			 */
-			static SDL_Texture* createTextTexture(std::string, TTF_Font*, SDL_Color, SDL_Renderer*);
+			static SDL_Texture* createTextTexture(const std::string&, TTF_Font*, SDL_Color, SDL_Renderer*);
 
 			/**
 			 * This function performs loadFont and createTextTexture in one quick step
@@ -50,7 +50,7 @@ namespace flat2d
 			 * @param renderer The renderer
 			 * @return an SDL_Texture object
 			 */
-			static SDL_Texture* loadTextTexture(std::string, std::string, SDL_Renderer*);
+			static SDL_Texture* loadTextTexture(const std::string&, const std::string&, SDL_Renderer*);
 	};
 } // namespace flat2d
 
