@@ -59,6 +59,13 @@ int main(int argc, char* argv[])
 }
 ```
 
+## Contributing
+If you have some feature idea that you'd like to see added to flat you are most welcome
+to fork the project and create a pull request with your idea in code form or create an issue and
+I'll have a lookt at it. At the moment of writing I'm working on a good old C game project and flat
+isn't getting the frequent updates that one might expect. But I love to code so I don't mind some ideas
+thrown into the mix.
+
 ## Examples
 - [Willin](https://github.com/liquidityc/willin) (Demo project)
 - [JustDontDie](https://github.com/liquidityc/justdontdie) (My hobby project, utilizes flat)

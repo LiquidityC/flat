@@ -1,6 +1,7 @@
 sudo: required
 dist: trusty
 language: cpp
+cache: ccache
 compiler:
     - gcc
     - clang

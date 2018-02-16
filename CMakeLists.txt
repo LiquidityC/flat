@@ -4,13 +4,21 @@ SET(CMAKE_COLOR_MAKEFILE ON)
 #SET(CMAKE_VERBOSE_MAKEFILE ON)
 
 project (flat CXX)
+add_definitions(-std=c++14)
 
-# Look for deps
-INCLUDE(FindPkgConfig)
-PKG_SEARCH_MODULE(SDL2 REQUIRED sdl2)
-PKG_SEARCH_MODULE(SDL2IMAGE REQUIRED SDL2_image>=2.0.0)
-PKG_SEARCH_MODULE(SDL2TTF REQUIRED SDL2_ttf>=2.0.0)
-PKG_SEARCH_MODULE(SDL2MIXER REQUIRED SDL2_mixer>=2.0.0)
+include(cmake/FindSDL2.cmake)
+include(cmake/FindSDL2_image.cmake)
+include(cmake/FindSDL2_ttf.cmake)
+include(cmake/FindSDL2_mixer.cmake)
+include(cmake/FindCCache.cmake)
+
+include_directories(
+	${PROJECT_BINARY_DIR}
+	${SDL2_INCLUDE_DIR}
+	${SDL2_IMAGE_INCLUDE_DIR}
+	${SDL2_TTF_INCLUDE_DIR}
+	${SDL2_MIXER_INCLUDE_DIR}
+	)
 
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY bin)
 set (CMAKE_LIBRARY_OUTPUT_DIRECTORY lib)
@@ -68,13 +76,21 @@ set(TEST_SOURCES
 
 
 add_executable(test_flat EXCLUDE_FROM_ALL ${FLAT_SOURCES} ${TEST_SOURCES})
-target_link_libraries(test_flat -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -pthread)
-target_compile_options(test_flat PRIVATE -std=c++14)
+target_link_libraries(test_flat
+	${SDL2_LIBRARY}
+	${SDL2_IMAGE_LIBRARY}
+	${SDL2_TTF_LIBRARY}
+	${SDL2_MIXER_LIBRARY}
+	)
 
 add_library(flat ${FLAT_SOURCES})
+target_link_libraries(flat
+	${SDL2_LIBRARY}
+	${SDL2_IMAGE_LIBRARY}
+	${SDL2_TTF_LIBRARY}
+	${SDL2_MIXER_LIBRARY}
+	)
 
-target_link_libraries(flat -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf)
-target_compile_options(flat PRIVATE -std=c++14)
 set_target_properties(flat PROPERTIES
 	VERSION 1.0.0
 	SOVERSION 0)
