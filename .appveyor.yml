@@ -61,7 +61,7 @@ before_build:
 
 build_script:
   - |-
-    set Path=%MINGW32%\bin;%Path%
+    set Path=%MINGW32%\mingw32\bin;%Path%
     cd %APPVEYOR_BUILD_FOLDER%
     del "C:\Program Files\Git\usr\bin\sh.exe"
 
