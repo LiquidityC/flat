@@ -1,7 +1,7 @@
 #ifndef MIXER_H_
 #define MIXER_H_
 
-#include <SDL2/SDL_mixer.h>
+#include <SDL_mixer.h>
 #include <map>
 #include <string>
 

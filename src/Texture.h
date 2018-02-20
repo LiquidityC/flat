@@ -2,7 +2,7 @@
 #define TEXTURE_H_
 
 #include <SDL.h>
-#include <SDL2/SDL_ttf.h>
+#include <SDL_ttf.h>
 #include <string>
 #include "Square.h"
 

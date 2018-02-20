@@ -1,5 +1,5 @@
 #include <SDL.h>
-#include <SDL2/SDL_ttf.h>
+#include <SDL_ttf.h>
 
 #include "GameEngine.h"
 #include "GameData.h"
