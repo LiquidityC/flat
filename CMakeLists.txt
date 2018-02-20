@@ -4,7 +4,7 @@ SET(CMAKE_COLOR_MAKEFILE ON)
 #SET(CMAKE_VERBOSE_MAKEFILE ON)
 
 project (flat CXX)
-add_definitions(-std=c++17)
+add_definitions(-std=c++14)
 
 include(cmake/FindSDL2.cmake)
 include(cmake/FindSDL2_image.cmake)
