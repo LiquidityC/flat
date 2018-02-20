@@ -1,0 +1,68 @@
+version: '{branch}.{build}'
+os: Visual Studio 2015
+clone_depth: 1
+cache:
+  - c:\usr -> .appveyor.yml
+before_build:
+  - |-
+    set PREFIX=C:\usr
+    set ARCH=i686-w64-mingw32
+
+  # depends are only fetched where there's no cache
+  - if exist %PREFIX% set DEPENDS=rem
+
+  - |-
+    %DEPENDS% mkdir %PREFIX%\include\SDL2
+    %DEPENDS% mkdir %PREFIX%\lib
+    %DEPENDS% cd %TEMP%
+
+  # SDL2
+  - |-
+    %DEPENDS% appveyor DownloadFile http://www.libsdl.org/release/SDL2-devel-2.0.7-mingw.tar.gz
+    %DEPENDS% 7z x SDL2-devel-2.0.7-mingw.tar.gz > nul
+    %DEPENDS% 7z x SDL2-devel-2.0.7-mingw.tar > nul
+    %DEPENDS% copy SDL2-2.0.7\%ARCH%\include\SDL2\* %PREFIX%\include\SDL2 > nul
+    %DEPENDS% copy SDL2-2.0.7\%ARCH%\lib\*.a %PREFIX%\lib > nul
+    %DEPENDS% copy SDL2-2.0.7\%ARCH%\bin\*.dll %PREFIX%\lib > nul
+
+  # SDL2_image
+  - |-
+    %DEPENDS% appveyor DownloadFile http://www.libsdl.org/projects/SDL_image/release/SDL2_image-devel-2.0.2-mingw.tar.gz
+    %DEPENDS% 7z x SDL2_image-devel-2.0.2-mingw.tar.gz > nul
+    %DEPENDS% 7z x SDL2_image-devel-2.0.2-mingw.tar > nul
+    %DEPENDS% copy SDL2_image-2.0.2\%ARCH%\include\SDL2\* %PREFIX%\include\SDL2 > nul
+    %DEPENDS% copy SDL2_image-2.0.2\%ARCH%\lib\*.a %PREFIX%\lib > nul
+    %DEPENDS% copy SDL2_image-2.0.2\%ARCH%\bin\*.dll %PREFIX%\lib > nul
+
+  # SDL2_ttf
+  - |-
+    %DEPENDS% appveyor DownloadFile https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-devel-2.0.14-mingw.tar.gz
+    %DEPENDS% 7z x SDL2_ttf-devel-2.0.14-mingw.tar.gz > nul
+    %DEPENDS% 7z x SDL2_ttf-devel-2.0.14-mingw.tar > nul
+    %DEPENDS% copy SDL2_ttf-2.0.14\%ARCH%\include\SDL2\* %PREFIX%\include\SDL2 > nul
+    %DEPENDS% copy SDL2_ttf-2.0.14\%ARCH%\lib\*.a %PREFIX%\lib > nul
+    %DEPENDS% copy SDL2_ttf-2.0.14\%ARCH%\bin\*.dll %PREFIX%\lib > nul
+
+  # SDL2_mixer
+  - |-
+    %DEPENDS% appveyor DownloadFile https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-devel-2.0.2-mingw.tar.gz
+    %DEPENDS% 7z x SDL2_mixer-devel-2.0.2-mingw.tar.gz > nul
+    %DEPENDS% 7z x SDL2_mixer-devel-2.0.2-mingw.tar > nul
+    %DEPENDS% copy SDL2_mixer-2.0.2\%ARCH%\include\SDL2\* %PREFIX%\include\SDL2 > nul
+    %DEPENDS% copy SDL2_mixer-2.0.2\%ARCH%\lib\*.a %PREFIX%\lib > nul
+    %DEPENDS% copy SDL2_mixer-2.0.2\%ARCH%\bin\*.dll %PREFIX%\lib > nul
+
+build_script:
+  - |-
+    set Path=C:\MinGW\bin;%Path%
+    cd %APPVEYOR_BUILD_FOLDER%
+    del "C:\Program Files\Git\usr\bin\sh.exe"
+
+  # Build
+  - |-
+    cmake --version
+    cmake -DCMAKE_PREFIX_PATH="%PREFIX%" -DCMAKE_C_COMPILER=mingw32-gcc.exe -DCMAKE_MAKE_PROGRAM=mingw32-make.exe -G "MinGW Makefiles"
+
+  - |-
+    mingw32-make
+    mingw32-make check
