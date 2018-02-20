@@ -72,4 +72,3 @@ build_script:
 
   - |-
     mingw32-make
-    mingw32-make check
