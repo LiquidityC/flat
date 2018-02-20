@@ -1,7 +1,7 @@
 #ifndef MEDIAUTIL_H_
 #define MEDIAUTIL_H_
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include <string>

@@ -1,7 +1,7 @@
 #ifndef ENTITYCONTAINER_H_
 #define ENTITYCONTAINER_H_
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <iostream>
 #include <map>
 #include <vector>

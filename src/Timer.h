@@ -1,7 +1,7 @@
 #ifndef TIMER_H_
 #define TIMER_H_
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 namespace flat2d
 {

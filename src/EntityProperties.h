@@ -1,7 +1,7 @@
 #ifndef ENTITYPROPERTIES_H_
 #define ENTITYPROPERTIES_H_
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <vector>
 #include <functional>
 

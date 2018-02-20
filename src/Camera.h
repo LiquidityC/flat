@@ -1,7 +1,7 @@
 #ifndef CAMERA_H_
 #define CAMERA_H_
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include "Square.h"
 
 namespace flat2d

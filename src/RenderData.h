@@ -1,7 +1,7 @@
 #ifndef RENDERDATA_H_
 #define RENDERDATA_H_
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 namespace flat2d
 {

@@ -1,7 +1,7 @@
 #ifndef ENTITY_H_
 #define ENTITY_H_
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <string>
 #include <sstream>
 #include <memory>

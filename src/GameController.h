@@ -1,7 +1,7 @@
 #ifndef GAMECONTROLLER_H_
 #define GAMECONTROLLER_H_
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 namespace flat2d
 {
