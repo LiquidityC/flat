@@ -64,5 +64,5 @@ build_script:
     cmake -DCMAKE_PREFIX_PATH="%PREFIX%" -DCMAKE_CXX_COMPILER=mingw32-g++.exe -DCMAKE_MAKE_PROGRAM=mingw32-make.exe -G "MinGW Makefiles"
 
   - |-
-    mingw32-make
-    mingw32-make check
+    mingw32-make VERBOSE=1
+    mingw32-make VERBOSE=1 check
