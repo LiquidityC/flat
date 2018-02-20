@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
 	flat2d::GameEngine *engine = flat->getGameEngine();
 
 	flat2d::EntityContainer *container = flat->getGameData()->getEntityContainer();
-    // You can register your objects to the container here. Objects extend the Entity class in flat
+	// You can register your objects to the container here. Objects extend the Entity class in flat
 
 	// Create the callback methods
 	auto stateCallback = [](flat2d::GameData *gameData) -> flat2d::GameStateAction {
@@ -51,7 +51,7 @@ int main(int argc, char* argv[])
 	};
 
 	std::cout << "Starting the engine" << std::endl;
-    // stateCallback and handleCallback can be omitted if you don't need them
+	// stateCallback and handleCallback can be omitted if you don't need them
 	engine->run(stateCallback, handleCallback);
 	std::cout << "Exiting" << std::endl;
 
@@ -62,13 +62,15 @@ int main(int argc, char* argv[])
 ## Contributing
 If you have some feature idea that you'd like to see added to flat you are most welcome
 to fork the project and create a pull request with your idea in code form or create an issue and
-I'll have a lookt at it. At the moment of writing I'm working on a good old C game project and flat
+I'll have a look at it.
+
+At the moment of writing (2018-02-20) I'm working on a good old C game project and flat
 isn't getting the frequent updates that one might expect. But I love to code so I don't mind some ideas
-thrown into the mix.
+thrown into the mix. The project isn't dead is the point I want to make by this.
 
 ## Examples
 - [Willin](https://github.com/liquidityc/willin) (Demo project)
-- [JustDontDie](https://github.com/liquidityc/justdontdie) (My hobby project, utilizes flat)
+- [JustDontDie](https://github.com/liquidityc/justdontdie) (My hobby project/flat testbed)
 
 ## Documentation
 [API](http://liquidityc.github.io/flat)
