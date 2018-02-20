@@ -6,6 +6,8 @@ SET(CMAKE_COLOR_MAKEFILE ON)
 project (flat CXX)
 add_definitions(-std=c++14)
 
+set(SDL2_BUILDING_LIBRARY "ON")
+
 include(cmake/FindSDL2.cmake)
 include(cmake/FindSDL2_image.cmake)
 include(cmake/FindSDL2_ttf.cmake)
