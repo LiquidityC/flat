@@ -3,10 +3,12 @@ os: Visual Studio 2015
 clone_depth: 1
 cache:
   - c:\usr -> .appveyor.yml
+  - c:\freshmingw -> .appveyor.yml
 before_build:
   - |-
     set PREFIX=C:\usr
     set ARCH=i686-w64-mingw32
+    set MINGW32=C:\freshmingw
 
   # depends are only fetched where there's no cache
   - if exist %PREFIX% set DEPENDS=rem
@@ -59,7 +61,7 @@ before_build:
 
 build_script:
   - |-
-    set Path=C:\MinGW\bin;%Path%
+    set Path=%MINGW32%\bin;%Path%
     cd %APPVEYOR_BUILD_FOLDER%
     del "C:\Program Files\Git\usr\bin\sh.exe"
 
