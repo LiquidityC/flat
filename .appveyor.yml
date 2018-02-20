@@ -52,6 +52,11 @@ before_build:
     %DEPENDS% copy SDL2_mixer-2.0.2\%ARCH%\lib\*.a %PREFIX%\lib > nul
     %DEPENDS% copy SDL2_mixer-2.0.2\%ARCH%\bin\*.dll %PREFIX%\lib > nul
 
+  # Newer mingw is required, as older mingw32 does not support std::thread
+  - |-
+    %DEPENDS% appveyor DownloadFile "http://sourceforge.net/projects/mingw-w64/files/Toolchains targetting Win32/Personal Builds/mingw-builds/4.9.3/threads-posix/dwarf/i686-4.9.3-release-posix-dwarf-rt_v4-rev1.7z/download"
+    %DEPENDS%  7z x download -o%MINGW32% > nul
+
 build_script:
   - |-
     set Path=C:\MinGW\bin;%Path%
@@ -65,3 +70,4 @@ build_script:
 
   - |-
     mingw32-make
+    mingw32-make check
