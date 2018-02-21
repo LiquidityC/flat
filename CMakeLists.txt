@@ -124,19 +124,11 @@ add_custom_target(doc
 	)
 
 enable_testing()
-if (WIN32)
-	add_test(NAME catch COMMAND test_flat.exe)
-	add_custom_target(check
-		DEPENDS test_flat
-		COMMAND test_flat.exe
-		)
-else (WIN32)
-	add_test(NAME catch COMMAND test_flat)
-	add_custom_target(check
-		DEPENDS test_flat
-		COMMAND test_flat
-		)
-endif (WIN32)
+add_test(NAME catch COMMAND test_flat)
+add_custom_target(check
+	DEPENDS test_flat
+	COMMAND test_flat
+	)
 
 install(TARGETS flat
 	RUNTIME DESTINATION bin
