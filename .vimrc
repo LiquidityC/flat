@@ -2,7 +2,5 @@
 "match ErrorMsg '\%>110v.\+'
 
 nnoremap <F1> :Make<cr>
-nnoremap <F2> :Make check lint<cr>
-nnoremap <F9> :Make clean<cr>
-
-au FileType cpp,h,txt setl makeprg=make\ -C\ build/
+nnoremap <F2> :Make clean<cr>
+nnoremap <F3> :Make check lint<cr>

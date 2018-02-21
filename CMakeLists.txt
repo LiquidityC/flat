@@ -117,22 +117,26 @@ add_custom_target(lint
 	COMMAND cppcheck src/
 	)
 
-add_custom_target(copy-doc ALL
-	COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile ${PROJECT_BINARY_DIR}/.
-	)
-
 add_custom_target(doc
 	COMMENT "Creating documentation"
-	DEPENDS copy-doc
+	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 	COMMAND doxygen
 	)
 
 enable_testing()
-add_test(NAME catch COMMAND test_flat)
-add_custom_target(check
-	DEPENDS test_flat
-	COMMAND test_flat
-	)
+if (WIN32)
+	add_test(NAME catch COMMAND test_flat.exe)
+	add_custom_target(check
+		DEPENDS test_flat
+		COMMAND test_flat.exe
+		)
+else (WIN32)
+	add_test(NAME catch COMMAND test_flat)
+	add_custom_target(check
+		DEPENDS test_flat
+		COMMAND test_flat
+		)
+endif (WIN32)
 
 install(TARGETS flat
 	RUNTIME DESTINATION bin
