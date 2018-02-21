@@ -10,8 +10,12 @@ clean:
 .PHONY: clean
 
 check:
-	@make check lint -sC build
-.PHONY: test
+	@make check -sC build
+.PHONY: check
+
+lint:
+	@make lint -sC build
+.PHONY: lint
 
 doc:
 	@make doc -sC build
