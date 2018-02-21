@@ -74,4 +74,4 @@ thrown into the mix. The project isn't dead is the point I want to make by this.
 - [JustDontDie](https://github.com/liquidityc/justdontdie) (My hobby project/flat testbed)
 
 ## Documentation
-[API](http://liquidityc.github.io/flat)
+- [Docs](http://liquidityc.github.io/flat)
