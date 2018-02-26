@@ -51,6 +51,14 @@ namespace flat2d
 			LayerMap layeredObjects;
 			SpatialPartitionMap spatialPartitionMap;
 			ObjectList uninitiatedEntities;
+
+			/* This is something I added when building a game where most of
+			 * the game area was in the dark. Question is if there is actually any sense
+			 * in keeping it around? The idea is that the 'developer' specifies render areas
+			 * Entity objects outside the areas don't render. Does that make any sense keeping around?
+			 *
+			 * TODO: This could probably be removed. Seems stupid to have in the engine.
+			 * */
 			RenderAreas renderAreas;
 
 			typedef std::function<bool (Entity*)> EntityProcessor;
