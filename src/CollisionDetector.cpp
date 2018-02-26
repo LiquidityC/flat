@@ -86,19 +86,19 @@ namespace flat2d
 		float yInvEntry, yInvExit;
 
 		if (xvel > 0.0f) {
-			xInvEntry = b2.x - (b1.x + b1.w + 2);
-			xInvExit = (b2.x + b2.w) - (b1.x - 2);
+			xInvEntry = static_cast<float>(b2.x - (b1.x + b1.w + 2));
+			xInvExit = static_cast<float>((b2.x + b2.w) - (b1.x - 2));
 		} else {
-			xInvEntry = (b2.x + b2.w) - (b1.x - 2);
-			xInvExit = b2.x - (b1.x + b1.w + 2);
+			xInvEntry = static_cast<float>((b2.x + b2.w) - (b1.x - 2));
+			xInvExit = static_cast<float>(b2.x - (b1.x + b1.w + 2));
 		}
 
 		if (yvel > 0.0f) {
-			yInvEntry = b2.y - (b1.y + b1.w + 2);
-			yInvExit = (b2.y + b2.w) - (b1.y - 2);
+			yInvEntry = static_cast<float>(b2.y - (b1.y + b1.w + 2));
+			yInvExit = static_cast<float>((b2.y + b2.w) - (b1.y - 2));
 		} else {
-			yInvEntry = (b2.y + b2.w) - (b1.y - 2);
-			yInvExit = b2.y - (b1.y + b1.w + 2);
+			yInvEntry = static_cast<float>((b2.y + b2.w) - (b1.y - 2));
+			yInvExit = static_cast<float>(b2.y - (b1.y + b1.w + 2));
 		}
 
 		// Find the impact time

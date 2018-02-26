@@ -128,17 +128,17 @@ namespace flat2d
 		EntityShape vShape;
 		if (dx > 0) {
 			vShape.x = eShape.x;
-			vShape.w = eShape.w + dx;
+			vShape.w = eShape.w + static_cast<int>(dx);
 		} else {
-			vShape.x = eShape.x + dx;
-			vShape.w = eShape.w - dx;
+			vShape.x = eShape.x + static_cast<int>(dx);
+			vShape.w = eShape.w - static_cast<int>(dx);
 		}
 		if (dy > 0) {
 			vShape.y = eShape.y;
-			vShape.h = eShape.h + dy;
+			vShape.h = eShape.h + static_cast<int>(dy);
 		} else {
-			vShape.y = eShape.y + dy;
-			vShape.h = eShape.h - dy;
+			vShape.y = eShape.y + static_cast<int>(dy);
+			vShape.h = eShape.h - static_cast<int>(dy);
 		}
 		return vShape;
 	}
@@ -214,8 +214,8 @@ namespace flat2d
 
 	void EntityProperties::move(float deltatime)
 	{
-		int dx = xvel * deltatime;
-		int dy = yvel * deltatime;
+		int dx = static_cast<int>(xvel * deltatime);
+		int dy = static_cast<int>(yvel * deltatime);
 
 		incrementXpos(dx);
 		incrementYpos(dy);

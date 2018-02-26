@@ -1,7 +1,6 @@
 cmake_minimum_required (VERSION 3.2.0)
 
 SET(CMAKE_COLOR_MAKEFILE ON)
-#SET(CMAKE_VERBOSE_MAKEFILE ON)
 
 project (flat CXX)
 add_definitions(-std=c++14)
@@ -80,6 +79,7 @@ set(TEST_SOURCES
 add_executable(test_flat EXCLUDE_FROM_ALL ${FLAT_SOURCES} ${TEST_SOURCES})
 target_link_libraries(test_flat
 	${SDL2_LIBRARY}
+	${SDL2MAIN_LIBRARY}
 	${SDL2_IMAGE_LIBRARY}
 	${SDL2_TTF_LIBRARY}
 	${SDL2_MIXER_LIBRARY}

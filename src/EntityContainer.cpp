@@ -308,6 +308,7 @@ namespace flat2d
 				return true;
 			}
 		}
+		return false;
 	}
 
 	void EntityContainer::moveObjects(const GameData* data)
@@ -414,8 +415,8 @@ namespace flat2d
 		const EntityProperties::Areas& currentAreas = source->getEntityProperties().getCurrentAreas();
 		std::map<float, Entity*> sortedMap;
 		EntityShape colliderShape = source->getEntityProperties().getColliderShape();
-		float sx = colliderShape.x + (colliderShape.w / 2);
-		float sy = colliderShape.y + (colliderShape.h / 2);
+		float sx = static_cast<float>(colliderShape.x + (colliderShape.w / 2));
+		float sy = static_cast<float>(colliderShape.y + (colliderShape.h / 2));
 
 		// Itterate the objects and sort them according to distance
 		for (auto& area : currentAreas) {
@@ -428,14 +429,14 @@ namespace flat2d
 				}
 
 				const EntityShape& targetShape = object.second->getEntityProperties().getColliderShape();
-				float tx = targetShape.x + (targetShape.w/2);
-				float ty = targetShape.y + (targetShape.h/2);
+				float tx = static_cast<float>(targetShape.x + (targetShape.w/2));
+				float ty = static_cast<float>(targetShape.y + (targetShape.h/2));
 
 				float distance;
 				if (sx == tx) {
-					distance = std::abs(sy - ty);
+					distance = static_cast<float>(std::abs(sy - ty));
 				} else if (sy == ty) {
-					distance = std::abs(sx - tx);
+					distance = static_cast<float>(std::abs(sx - tx));
 				} else {
 					distance = sqrt(pow(sx - tx, 2) + pow(sy - ty, 2));
 				}

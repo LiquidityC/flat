@@ -60,7 +60,7 @@ namespace flat2d
 		if (hidpi) {
 			if (SDL_RenderSetLogicalSize(window->getRenderer(), screenWidth, screenHeight)) {
 				std::cerr << "Unable to change render logical size: " << IMG_GetError() << std::endl;
-				return -1;
+				return false;
 			}
 		}
 

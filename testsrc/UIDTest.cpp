@@ -9,6 +9,7 @@ using namespace flat2d;
 
 TEST_CASE( "UID Generation sequence test", "[UID]")
 {
+	const int thread_count = 20;
 	std::set<int> idSet;
 	flat2d::SpinLock lock;
 
@@ -22,7 +23,6 @@ TEST_CASE( "UID Generation sequence test", "[UID]")
 
 	REQUIRE( idSet.size() == 0 );
 
-	int thread_count = 20;
 	std::thread threads[thread_count];
 	for (auto i = 0; i < thread_count; i++) {
 		threads[i] = std::thread(call_from_thread);

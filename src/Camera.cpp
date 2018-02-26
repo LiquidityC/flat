@@ -68,7 +68,7 @@ namespace flat2d
 	int Camera::getScreenXposFor(int xpos, int depth) const
 	{
 		if (depth > 0) {
-			return xpos - (x / (1.5 * depth));
+			return xpos - (int)(x / (1.5 * depth));
 		}
 		return xpos - x;
 	}
