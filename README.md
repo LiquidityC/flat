@@ -1,5 +1,4 @@
 # Flat
-
 [![Build Status](https://travis-ci.org/LiquidityC/flat.svg?branch=master)](https://travis-ci.org/LiquidityC/flat)
 [![Build status](https://ci.appveyor.com/api/projects/status/h984w3gprbe7eiel?svg=true)](https://ci.appveyor.com/project/LiquidityC/flat)
 [![Coverity scan](https://scan.coverity.com/projects/10677/badge.svg)](https://scan.coverity.com/projects/liquidityc-flat)
