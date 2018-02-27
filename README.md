@@ -1,4 +1,6 @@
 # Flat
+
+[![Join the chat at https://gitter.im/flat2d/Lobby](https://badges.gitter.im/flat2d/Lobby.svg)](https://gitter.im/flat2d/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/LiquidityC/flat.svg?branch=master)](https://travis-ci.org/LiquidityC/flat)
 [![Build status](https://ci.appveyor.com/api/projects/status/h984w3gprbe7eiel?svg=true)](https://ci.appveyor.com/project/LiquidityC/flat)
 [![Coverity scan](https://scan.coverity.com/projects/10677/badge.svg)](https://scan.coverity.com/projects/liquidityc-flat)
