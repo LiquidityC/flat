@@ -1,11 +1,11 @@
 # Flat
 
-[![Join the chat at https://gitter.im/flat2d/Lobby](https://badges.gitter.im/flat2d/Lobby.svg)](https://gitter.im/flat2d/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/LiquidityC/flat.svg?branch=master)](https://travis-ci.org/LiquidityC/flat)
 [![Build status](https://ci.appveyor.com/api/projects/status/h984w3gprbe7eiel?svg=true)](https://ci.appveyor.com/project/LiquidityC/flat)
 [![Coverity scan](https://scan.coverity.com/projects/10677/badge.svg)](https://scan.coverity.com/projects/liquidityc-flat)
 [![codecov](https://codecov.io/gh/LiquidityC/flat/branch/master/graph/badge.svg)](https://codecov.io/gh/LiquidityC/flat)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6d04b15a21d646a8acbc5779f5e2bdbe)](https://www.codacy.com/app/LiquidityC/flat?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=LiquidityC/flat&amp;utm_campaign=Badge_Grade)
+[![Join the chat at https://gitter.im/flat2d/Lobby](https://badges.gitter.im/flat2d/Lobby.svg)](https://gitter.im/flat2d/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## About
 Flat is a 2D game engine based on SDL2. It's currently in progress with no deadline for completion. It will
