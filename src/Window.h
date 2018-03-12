@@ -21,7 +21,7 @@ namespace flat2d
 			SDL_Renderer* renderer = nullptr;
 
 		public:
-			Window(std::string t, unsigned int w, unsigned int h) : title(t), width(w), height(h) { }
+			Window(std::string &t, unsigned int w, unsigned int h) : title(t), width(w), height(h) { }
 
 			~Window() {
 				if (window) {

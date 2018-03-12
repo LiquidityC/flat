@@ -3,7 +3,7 @@
 
 namespace flat2d
 {
-	typedef struct {
+	typedef struct EntityShape_t {
 		int x;
 		int y;
 		int w;

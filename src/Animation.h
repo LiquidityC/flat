@@ -26,7 +26,7 @@ namespace flat2d
 			int clipIndex = 0;
 
 		public:
-			Animation(Clips c, uint32_t t) : clips(c), timestep(t) { }
+			Animation(Clips &c, uint32_t t) : clips(c), timestep(t) { }
 
 			/**
 			 * Run the animation and get the current clip

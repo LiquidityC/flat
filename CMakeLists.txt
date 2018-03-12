@@ -12,6 +12,7 @@ include(cmake/FindSDL2_image.cmake)
 include(cmake/FindSDL2_ttf.cmake)
 include(cmake/FindSDL2_mixer.cmake)
 include(cmake/FindCCache.cmake)
+include(cmake/FindCCache.cmake)
 
 include_directories(
 	${PROJECT_BINARY_DIR}
@@ -114,7 +115,7 @@ endforeach()
 add_custom_target(lint
 	COMMENT "Running cppcheck"
 	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-	COMMAND cppcheck src/
+	COMMAND cppcheck --language=c++ --error-exitcode=1 --suppress=*:*EntityShape.* --template=gcc --enable=warning,style,performance,portability,information,missingInclude --quiet src/*
 	)
 
 add_custom_target(doc

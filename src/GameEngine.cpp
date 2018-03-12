@@ -12,7 +12,8 @@ namespace flat2d
 {
 	void GameEngine::init(int fps)
 	{
-		this->screenTicksPerFrame = 1000 / fps;
+		int nfps = fps > 0 ? fps : 60;
+		this->screenTicksPerFrame = 1000 / nfps;
 	}
 
 	void GameEngine::run(StateCallback stateCallback, HandleCallback handleCallback) const

@@ -56,7 +56,7 @@ namespace flat2d
 			SDL_RenderDrawRect(renderer, &rect);
 		}
 
-		void Button::setOnClick(std::function<void ()> click)
+		void Button::setOnClick(std::function<void ()> &click)
 		{
 			onClick = click;
 		}

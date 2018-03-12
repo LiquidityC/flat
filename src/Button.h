@@ -20,14 +20,14 @@ namespace flat2d
 				bool mouseIsOver = false;
 
 			public:
-				Button(int x, int y, unsigned int w, unsigned int h, std::function<void ()> click)
+				Button(int x, int y, unsigned int w, unsigned int h, std::function<void ()> &click)
 					: Entity(x, y, w, h), onClick(click) {
 						entityProperties.setCollidable(false);
 					}
 
 				~Button() { }
 
-				void setOnClick(std::function<void ()> click);
+				void setOnClick(std::function<void ()> &click);
 				void triggerClick();
 
 				virtual void render(const RenderData* data) const;

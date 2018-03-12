@@ -51,13 +51,18 @@ namespace flat2d
 					clip = { 0, 0, w, h };
 				}
 
+			Entity(const Entity& e) : entityProperties(e.entityProperties), dead(e.dead) {
+				id = e.id;
+				clip = e.clip;
+			}
+
 			virtual ~Entity() {
 				for (auto it = animations.begin(); it != animations.end(); it++) {
 					delete it->second;
 				}
 			}
 
-			/* Operators */
+			/* srcosrc/Operators */
 			virtual bool operator==(const Entity& o) const {
 				return id == o.id;
 			}
@@ -188,7 +193,7 @@ namespace flat2d
 			/**
 			 * Set a shared Texture for this Entity
 			 */
-			void setSharedTexture(std::shared_ptr<Texture> texture);
+			void setSharedTexture(std::shared_ptr<Texture> &texture);
 
 			/**
 			 * Set a Texture for this Entity to use

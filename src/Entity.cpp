@@ -92,7 +92,7 @@ namespace flat2d
 		return texture;
 	}
 
-	void Entity::setSharedTexture(std::shared_ptr<Texture> texture)
+	void Entity::setSharedTexture(std::shared_ptr<Texture> &texture)
 	{
 		this->texture = texture;
 	}
