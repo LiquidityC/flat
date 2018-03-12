@@ -115,7 +115,7 @@ endforeach()
 add_custom_target(lint
 	COMMENT "Running cppcheck"
 	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-	COMMAND cppcheck --language=c++ --error-exitcode=1 --suppress=*:*EntityShape.* --template=gcc --enable=warning,style,performance,portability,information,missingInclude --quiet src/*
+	COMMAND cppcheck --language=c++ --error-exitcode=1 --template=gcc --enable=warning,performance,portability,information,missingInclude --quiet src/*
 	)
 
 add_custom_target(doc
