@@ -70,6 +70,9 @@ At the moment of writing (2018-02-20) I'm working on a good old C game project a
 isn't getting the frequent updates that one might expect. But I love to code so I don't mind some ideas
 thrown into the mix. The project isn't dead is the point I want to make by this.
 
+## Demos
+![Just Don't Die](https://github.com/liquidityc/flat/raw/master/Demos/just_dont_die_demo.gif)
+
 ## Examples
 - [Willin](https://github.com/liquidityc/willin) (Demo project)
 - [JustDontDie](https://github.com/liquidityc/justdontdie) (My hobby project/flat testbed)
