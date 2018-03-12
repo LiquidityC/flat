@@ -71,7 +71,7 @@ isn't getting the frequent updates that one might expect. But I love to code so 
 thrown into the mix. The project isn't dead is the point I want to make by this.
 
 ## Demos
-![Just Don't Die](https://github.com/liquidityc/flat/raw/master/Demos/just_dont_die_demo.gif)
+![Just Don't Die](https://github.com/liquidityc/flat/raw/master/demos/just_dont_die_demo.gif)
 
 ## Examples
 - [Willin](https://github.com/liquidityc/willin) (Demo project)
