@@ -18,8 +18,8 @@ namespace flat2d
 		private:
 			const unsigned int MAX_OBJECTS = 10;
 
-			int depth;
 			Square bounds;
+			int depth;
 			std::vector<Entity*> objects;
 			std::vector<QuadTree*> nodes;
 
