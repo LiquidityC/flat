@@ -12,7 +12,7 @@ include(cmake/FindSDL2_image.cmake)
 include(cmake/FindSDL2_ttf.cmake)
 include(cmake/FindSDL2_mixer.cmake)
 include(cmake/FindCCache.cmake)
-include(cmake/FindCCache.cmake)
+include(cmake/Findcppcheck.cmake)
 
 include_directories(
 	${PROJECT_BINARY_DIR}
@@ -112,11 +112,14 @@ foreach(header ${HEADERS})
 		)
 endforeach()
 
-add_custom_target(lint
-	COMMENT "Running cppcheck"
-	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-	COMMAND cppcheck --language=c++ --error-exitcode=1 --template=gcc --enable=warning,style,performance,portability,information,missingInclude --quiet src/
-	)
+# LINT:
+if (CPPCHECK_FOUND)
+	add_custom_target(lint
+		COMMAND ${CPPCHECK_EXECUTABLE} --language=c++ --template=gcc --error-exitcode=1 --quiet --enable=warning,style,performance,portability,information,missingInclude src/
+		WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+		COMMENT "Run cppcheck"
+		)
+endif (CPPCHECK_FOUND)
 
 add_custom_target(doc
 	COMMENT "Creating documentation"
