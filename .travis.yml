@@ -44,7 +44,6 @@ script:
     - cmake -DCMAKE_BUILD_TYPE=travis ..
     - make
     - make check
-    - make lint
 
 after_success:
     - bash <(curl -s https://codecov.io/bash)
