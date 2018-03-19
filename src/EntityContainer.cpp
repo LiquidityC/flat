@@ -225,10 +225,6 @@ namespace flat2d
 		spatialPartitionMap.clear();
 		inputHandlers.clear();
 		reinitLayerMap();
-		for (auto it = renderAreas.begin(); it != renderAreas.end(); it++) {
-			delete it->second;
-		}
-		renderAreas.clear();
 	}
 
 	void EntityContainer::unregisterAllObjectsFor(Layer layer)
@@ -288,27 +284,10 @@ namespace flat2d
 					continue;
 				}
 				it2->second->preRender(data);
-				if (isInRenderArea(it2->second, data)) {
-					it2->second->render(data->getRenderData());
-				}
+				it2->second->render(data->getRenderData());
 				it2->second->postRender(data);
 			}
 		}
-	}
-
-	bool EntityContainer::isInRenderArea(Entity *e, const GameData* data) const
-	{
-		if (renderAreas.empty()) {
-			return true;
-		}
-
-		for (const auto& it : renderAreas) {
-			if (data->getCollisionDetector()->AABB(it.second->asEntityShape(),
-						e->getEntityProperties().getColliderShape())) {
-				return true;
-			}
-		}
-		return false;
 	}
 
 	void EntityContainer::moveObjects(const GameData* data)
@@ -507,24 +486,6 @@ namespace flat2d
 			if (it->second->getEntityProperties().isCollidable()) {
 				func(it->second);
 			}
-		}
-	}
-
-	void EntityContainer::addRenderArea(const std::string& key, MapArea *area)
-	{
-		renderAreas[key] = area;
-	}
-
-	MapArea* EntityContainer::getRenderArea(const std::string& key)
-	{
-		return renderAreas[key];
-	}
-
-	void EntityContainer::removeRenderArea(const std::string& key)
-	{
-		MapArea *area = renderAreas[key];
-		if (area != nullptr) {
-			delete area;
 		}
 	}
 } // namespace flat2d

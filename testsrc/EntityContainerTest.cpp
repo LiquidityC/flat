@@ -220,13 +220,5 @@ TEST_CASE( "Object container tests", "[objectcontainer]" )
 		REQUIRE ( 4 == container.getSpatialPartitionCount() );
 	}
 
-	SECTION( "Test RenderArea retrieval", "[objectcontainer]" )
-	{
-		flat2d::MapArea *area = new flat2d::MapArea(0, 0, 300);
-		container.addRenderArea("key", area);
-		REQUIRE( container.getRenderArea("key") != nullptr );
-		REQUIRE( container.getRenderArea("nokey") == nullptr );
-	}
-
 	delete dtm;
 }

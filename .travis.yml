@@ -11,6 +11,7 @@ env:
         - secure: "LIwNXeWbzk2YY7tj8ICDU8IxkKfxbkbX6FPzEA2u66K9FwpXgZALPAFYDeAHRrxq3h8Ta9LfwLxiZYbuwhs3ZwLwevOWEBGfsySlAIU/maALevr0P8nHEY354f4PCkF4ZmQZy+72aGNa+kXeer1QQIpUPLhhACxFB+fqcfFwFTiQQk0qj4/sCHlS/awXrP0YjtIOW9IJm4fLrIaLDZgxIXlBR5Fova8ciNyS7QRJJb8qz15RVjqr6ydD6b+E00FKZ8bZqPKi/MkOmvcQMbjr8lafR5LowybBmfBswTfFHjv34NmOqlqtEFOgI3KNqbehL74D+iObDTu+rvskj49WWpCIzQOQ9mzqteWF6rC/w8fMAdSw87axrmhWRp6b818Q+z4WhKhYjtZchyu8Sc+z7E3nc00fw1HqYU5JLZjOiX3yjwiLKcjtI7nvVaajKA/TT9L4g7j/ZehAbhvmN/sDqpsFncVtYsWQAfdGSVkImtAMrRprAFtbMAk+4fMCQKT/Gqdo/20J2vhoM2yJSKEMEeXqK7o2MaRL0wiytjcaTG+TQiWL3Pb4Q+xwVZ0E3D+I1WquSpgP3qxiv02DbXJyvb+fEn7OjXWjW6Z0Jqda5+6ewTH+NW9D81R8udSAlEhbj85K6sVYYRHQ9QBQ70Q0MZelMDHWmAh28xWOr4H+3xo="
 
 before_install:
+    - echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
     - sudo add-apt-repository -y ppa:zoogie/sdl2-snapshots
     - sudo add-apt-repository -y ppa:george-edison55/cmake-3.x
     - sudo add-apt-repository -y ppa:h-rayflood/llvm
@@ -53,7 +54,7 @@ addons:
         project:
             name: "LiquidityC/flat"
             description: "Build submitted via Travis CI"
-            notification_email: linus.probert@gmail.com
-            build_command_prepend: "mkdir build; cd build; cmake .."
-            build_command: "make -j 4"
-            branch_pattern: coverity_scan
+        notification_email: linus.probert@gmail.com
+        build_command_prepend: "mkdir build; cd build; cmake .."
+        build_command: "make -j 4"
+        branch_pattern: coverity_scan
