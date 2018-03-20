@@ -55,6 +55,6 @@ addons:
             name: "LiquidityC/flat"
             description: "Build submitted via Travis CI"
         notification_email: linus.probert@gmail.com
-        build_command_prepend: "mkdir -p build; cd build; cmake ..; make clean"
+        build_command_prepend: "mkdir -p build; cd build; cmake ..; make clean; ccache -C"
         build_command: "make"
         branch_pattern: coverity_scan
