@@ -4,7 +4,7 @@
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <string>
-#include "Square.h"
+#include "Dimension.h"
 
 namespace flat2d
 {
@@ -12,7 +12,7 @@ namespace flat2d
 	 * A Texture object
 	 * @author Linus Probert <linus.probert@gmail.com>
 	 */
-	class Texture : public Square
+	class Texture : public Dimension
 	{
 		private:
 			SDL_Texture *texture = nullptr;
@@ -22,9 +22,8 @@ namespace flat2d
 			void freeFont();
 
 		public:
-			Texture() : Square() { }
-			Texture(int x, int y) : Square(x, y, 0, 0) { }
-			explicit Texture(SDL_Texture* t) : Square(x, y, 0, 0), texture(t) { }
+			Texture() : Dimension(0, 0) { }
+			explicit Texture(SDL_Texture* t) : Dimension(0, 0), texture(t) { }
 			virtual ~Texture();
 
 			/**
@@ -34,8 +33,8 @@ namespace flat2d
 			 * @param pos Position and dimension to render at
 			 */
 			void render(SDL_Renderer *renderer,
-					const SDL_Rect* clip = nullptr,
-					const SDL_Rect* pos = nullptr
+					const SDL_Rect* clip,
+					const SDL_Rect* pos
 					) const;
 
 			/**

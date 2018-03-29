@@ -1,7 +1,7 @@
 var searchData=
 [
   ['the_20flat_20library',['The Flat library',['../index.html',1,'']]],
-  ['texture',['Texture',['../classflat2d_1_1_texture.html',1,'flat2d::Texture'],['../classflat2d_1_1_texture.html#a1132b5b4412e37371e24c3c472f2f5c3',1,'flat2d::Texture::Texture()'],['../classflat2d_1_1_texture.html#a14a3c31305bcb86bfae3708bda62a97c',1,'flat2d::Texture::Texture(int x, int y)'],['../classflat2d_1_1_texture.html#a701c89e444aaebd0519560e1c9141eda',1,'flat2d::Texture::Texture(SDL_Texture *t)']]],
+  ['texture',['Texture',['../classflat2d_1_1_texture.html',1,'flat2d::Texture'],['../classflat2d_1_1_texture.html#a1132b5b4412e37371e24c3c472f2f5c3',1,'flat2d::Texture::Texture()'],['../classflat2d_1_1_texture.html#a701c89e444aaebd0519560e1c9141eda',1,'flat2d::Texture::Texture(SDL_Texture *t)']]],
   ['texture_2ecpp',['Texture.cpp',['../_texture_8cpp.html',1,'']]],
   ['texture_2eh',['Texture.h',['../_texture_8h.html',1,'']]],
   ['time_5ffunction',['TIME_FUNCTION',['../_runtime_analyzer_8h.html#a95373168ee8264832051d9202d06d4a8',1,'RuntimeAnalyzer.h']]],

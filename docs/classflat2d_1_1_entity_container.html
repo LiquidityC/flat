@@ -128,10 +128,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a89aa00f97e80456502e5d9656e517655"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acce11411930bbdfe0c872ea6388bd69d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classflat2d_1_1_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity_container.html#acce11411930bbdfe0c872ea6388bd69d">checkCollidablesFor</a> (const <a class="el" href="classflat2d_1_1_entity.html">Entity</a> *, EntityProcessor)</td></tr>
 <tr class="separator:acce11411930bbdfe0c872ea6388bd69d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4e587245e61c6fc48b88f63eef60104"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity_container.html#aa4e587245e61c6fc48b88f63eef60104">addRenderArea</a> (const std::string &amp;key, <a class="el" href="classflat2d_1_1_map_area.html">MapArea</a> *)</td></tr>
-<tr class="separator:aa4e587245e61c6fc48b88f63eef60104"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8a731dd70bce2c3bebf6eefbe027d3c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classflat2d_1_1_map_area.html">MapArea</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity_container.html#ae8a731dd70bce2c3bebf6eefbe027d3c">getRenderArea</a> (const std::string &amp;key)</td></tr>
-<tr class="separator:ae8a731dd70bce2c3bebf6eefbe027d3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd05dbeb52d9d7ca8d5acc09ff6b5e48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity_container.html#afd05dbeb52d9d7ca8d5acc09ff6b5e48">removeRenderArea</a> (const std::string &amp;key)</td></tr>
 <tr class="separator:afd05dbeb52d9d7ca8d5acc09ff6b5e48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -170,7 +166,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_entity_container_8h_source.html#l00078">78</a> of file <a class="el" href="_entity_container_8h_source.html">EntityContainer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_container_8h_source.html#l00076">76</a> of file <a class="el" href="_entity_container_8h_source.html">EntityContainer.h</a>.</p>
 
 </div>
 </div>
@@ -221,43 +217,6 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aa4e587245e61c6fc48b88f63eef60104"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa4e587245e61c6fc48b88f63eef60104">&#9670;&nbsp;</a></span>addRenderArea()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void flat2d::EntityContainer::addRenderArea </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>key</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classflat2d_1_1_map_area.html">MapArea</a> *&#160;</td>
-          <td class="paramname"><em>area</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Add a rendering area to the <a class="el" href="classflat2d_1_1_entity_container.html">EntityContainer</a>, only <a class="el" href="classflat2d_1_1_entity.html">Entity</a> objects within this area will be rendered during rendering. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">key</td><td>A string to identify the area for retrieval </td></tr>
-    <tr><td class="paramname">area</td><td>A <a class="el" href="classflat2d_1_1_map_area.html">MapArea</a> object representing the render area </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00512">512</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
-
-</div>
-</div>
 <a id="a33d8c1fc7a3d337ff2f9e61bd24255e4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a33d8c1fc7a3d337ff2f9e61bd24255e4">&#9670;&nbsp;</a></span>checkAllCollidableObjects()</h2>
 
@@ -281,7 +240,7 @@ Static Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The first <a class="el" href="classflat2d_1_1_entity.html">Entity</a> that the EntityProcessor validated </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00473">473</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00453">453</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
 
 </div>
 </div>
@@ -308,7 +267,7 @@ Static Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The first <a class="el" href="classflat2d_1_1_entity.html">Entity</a> that the EntityProcessor validated </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00463">463</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00443">443</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
 
 </div>
 </div>
@@ -346,7 +305,7 @@ Static Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The first <a class="el" href="classflat2d_1_1_entity.html">Entity</a> that the EntityProcessor validated </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00483">483</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00463">463</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
 
 </div>
 </div>
@@ -366,7 +325,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Get the number of Collidable <a class="el" href="classflat2d_1_1_entity.html">Entity</a> objects registerd to the <a class="el" href="classflat2d_1_1_entity_container.html">EntityContainer</a> </p><dl class="section return"><dt>Returns</dt><dd>The number of Entities that are collidable. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00371">371</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00351">351</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
 
 </div>
 </div>
@@ -406,7 +365,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Get the total amount of objects held by the <a class="el" href="classflat2d_1_1_entity_container.html">EntityContainer</a> </p><dl class="section return"><dt>Returns</dt><dd>The number of objects in the <a class="el" href="classflat2d_1_1_entity_container.html">EntityContainer</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00357">357</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00337">337</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
 
 </div>
 </div>
@@ -433,34 +392,7 @@ Static Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of <a class="el" href="classflat2d_1_1_entity.html">Entity</a> objects registered to the provided Layer </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00362">362</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
-
-</div>
-</div>
-<a id="ae8a731dd70bce2c3bebf6eefbe027d3c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8a731dd70bce2c3bebf6eefbe027d3c">&#9670;&nbsp;</a></span>getRenderArea()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classflat2d_1_1_map_area.html">MapArea</a> * flat2d::EntityContainer::getRenderArea </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>key</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Retrieve a rendering area from the <a class="el" href="classflat2d_1_1_entity_container.html">EntityContainer</a> </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">key</td><td>The string key identifying the area </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The requested <a class="el" href="classflat2d_1_1_map_area.html">MapArea</a> or null if none exists </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00517">517</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00342">342</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
 
 </div>
 </div>
@@ -480,7 +412,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Get the number of SpatialPartitions created </p><dl class="section return"><dt>Returns</dt><dd>The number of SpatialPartitions created </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00398">398</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00378">378</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
 
 </div>
 </div>
@@ -511,7 +443,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Check for input events and notify all registered <a class="el" href="classflat2d_1_1_entity.html">Entity</a> objects. This is called by the <a class="el" href="classflat2d_1_1_game_engine.html">GameEngine</a> and should probably not be used by game code. </p>
 
-<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00265">265</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00261">261</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
 
 </div>
 </div>
@@ -537,7 +469,7 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00254">254</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00250">250</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
 
 </div>
 </div>
@@ -563,7 +495,7 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00403">403</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00383">383</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
 
 </div>
 </div>
@@ -600,7 +532,7 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00412">412</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00392">392</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
 
 </div>
 </div>
@@ -637,7 +569,7 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00499">499</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00479">479</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
 
 </div>
 </div>
@@ -658,7 +590,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Call the move related callbacks on all <a class="el" href="classflat2d_1_1_entity.html">Entity</a> objects. This is called by the <a class="el" href="classflat2d_1_1_game_engine.html">GameEngine</a> and should probably not be used by game code. </p>
 
-<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00313">313</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00293">293</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
 
 </div>
 </div>
@@ -721,8 +653,6 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00522">522</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
-
 </div>
 </div>
 <a id="a66376877b17b9d11cf324cd634ffc78f"></a>
@@ -742,7 +672,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Call the render related callbacks on all <a class="el" href="classflat2d_1_1_entity.html">Entity</a> objects. This is called by the <a class="el" href="classflat2d_1_1_game_engine.html">GameEngine</a> and should probably not be used by game code. </p>
 
-<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00280">280</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00276">276</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
 
 </div>
 </div>
@@ -834,7 +764,7 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00234">234</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_container_8cpp_source.html#l00230">230</a> of file <a class="el" href="_entity_container_8cpp_source.html">EntityContainer.cpp</a>.</p>
 
 </div>
 </div>
@@ -885,7 +815,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_entity_container_8h_source.html#l00076">76</a> of file <a class="el" href="_entity_container_8h_source.html">EntityContainer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_container_8h_source.html#l00074">74</a> of file <a class="el" href="_entity_container_8h_source.html">EntityContainer.h</a>.</p>
 
 </div>
 </div>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['handlecallback',['HandleCallback',['../namespaceflat2d.html#ac65d7fdc0e5f3f917cba5b1182c0b8ef',1,'flat2d']]]
+  ['floatmap',['FloatMap',['../classflat2d_1_1_runtime_analyzer.html#ac8596bc99d02651a3a0a807bda8999d4',1,'flat2d::RuntimeAnalyzer']]]
 ];

@@ -91,6 +91,8 @@ Inheritance diagram for flat2d::Entity:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aecef4c30ebdb908355c92c38c2bb5db5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity.html#aecef4c30ebdb908355c92c38c2bb5db5">Entity</a> (int x, int y, int w, int h)</td></tr>
 <tr class="separator:aecef4c30ebdb908355c92c38c2bb5db5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfb41384d99bb7197d14d35ab68fbfe9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity.html#adfb41384d99bb7197d14d35ab68fbfe9">Entity</a> (const <a class="el" href="classflat2d_1_1_entity.html">Entity</a> &amp;e)</td></tr>
+<tr class="separator:adfb41384d99bb7197d14d35ab68fbfe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa73f9b8bc80008d47353e07c6ea689cf"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity.html#aa73f9b8bc80008d47353e07c6ea689cf">~Entity</a> ()</td></tr>
 <tr class="separator:aa73f9b8bc80008d47353e07c6ea689cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ba7050dde6d751523640cb76ee33548"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity.html#a5ba7050dde6d751523640cb76ee33548">operator==</a> (const <a class="el" href="classflat2d_1_1_entity.html">Entity</a> &amp;o) const</td></tr>
@@ -131,8 +133,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a413084d0c8312ad2aa74d966641451c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc4e43fb57a5309e7a8d8bdc53b29c95"><td class="memItemLeft" align="right" valign="top">const std::weak_ptr&lt; <a class="el" href="classflat2d_1_1_texture.html">Texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity.html#abc4e43fb57a5309e7a8d8bdc53b29c95">getTexture</a> () const</td></tr>
 <tr class="separator:abc4e43fb57a5309e7a8d8bdc53b29c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6221261ce03fd7d64bd35ddaf026a7ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity.html#a6221261ce03fd7d64bd35ddaf026a7ad">setSharedTexture</a> (std::shared_ptr&lt; <a class="el" href="classflat2d_1_1_texture.html">Texture</a> &gt; texture)</td></tr>
-<tr class="separator:a6221261ce03fd7d64bd35ddaf026a7ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e89bb183f75d69344dd0711e700cc88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity.html#a7e89bb183f75d69344dd0711e700cc88">setSharedTexture</a> (std::shared_ptr&lt; <a class="el" href="classflat2d_1_1_texture.html">Texture</a> &gt; &amp;texture)</td></tr>
+<tr class="separator:a7e89bb183f75d69344dd0711e700cc88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a866923e064be4a08ea2aa6cd93d95382"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity.html#a866923e064be4a08ea2aa6cd93d95382">setTexture</a> (<a class="el" href="classflat2d_1_1_texture.html">Texture</a> *texture)</td></tr>
 <tr class="separator:a866923e064be4a08ea2aa6cd93d95382"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c80354e62e6410de6b9c569fb39e8bf"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_entity.html#a1c80354e62e6410de6b9c569fb39e8bf">isDead</a> () const</td></tr>
@@ -179,7 +181,7 @@ Protected Attributes</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00029">29</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aecef4c30ebdb908355c92c38c2bb5db5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aecef4c30ebdb908355c92c38c2bb5db5">&#9670;&nbsp;</a></span>Entity()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aecef4c30ebdb908355c92c38c2bb5db5">&#9670;&nbsp;</a></span>Entity() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -228,6 +230,34 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="adfb41384d99bb7197d14d35ab68fbfe9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfb41384d99bb7197d14d35ab68fbfe9">&#9670;&nbsp;</a></span>Entity() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">flat2d::Entity::Entity </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classflat2d_1_1_entity.html">Entity</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00054">54</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
+
+</div>
+</div>
 <a id="aa73f9b8bc80008d47353e07c6ea689cf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa73f9b8bc80008d47353e07c6ea689cf">&#9670;&nbsp;</a></span>~Entity()</h2>
 
@@ -251,7 +281,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00054">54</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00059">59</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
 
 </div>
 </div>
@@ -357,7 +387,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Get the <a class="el" href="classflat2d_1_1_entity.html">Entity</a> id </p><dl class="section return"><dt>Returns</dt><dd>the <a class="el" href="classflat2d_1_1_entity.html">Entity</a> id </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00079">79</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00084">84</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
 
 </div>
 </div>
@@ -385,7 +415,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Get the id as a string </p><dl class="section return"><dt>Returns</dt><dd>id as a string </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00087">87</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00092">92</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
 
 </div>
 </div>
@@ -433,7 +463,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Get the <a class="el" href="classflat2d_1_1_entity.html">Entity</a> type. You SHOULD override this in your derived classes if you want to be able to distinguish between <a class="el" href="classflat2d_1_1_entity.html">Entity</a> objects and static_cast <a class="el" href="classflat2d_1_1_entity.html">Entity</a> objects to your own derived <a class="el" href="classflat2d_1_1_entity.html">Entity</a> objects. </p><dl class="section return"><dt>Returns</dt><dd>The entity type </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00105">105</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00110">110</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
 
 </div>
 </div>
@@ -469,7 +499,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classflat2d_1_1ui_1_1_button.html#a53030cf41e1c3a50abd5a7242cd7be2f">flat2d::ui::Button</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00253">253</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00258">258</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
 
 </div>
 </div>
@@ -503,7 +533,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00241">241</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00246">246</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
 
 </div>
 </div>
@@ -737,7 +767,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00065">65</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00070">70</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
 
 </div>
 </div>
@@ -765,7 +795,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00095">95</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00100">100</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
 
 </div>
 </div>
@@ -793,7 +823,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00069">69</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00074">74</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
 
 </div>
 </div>
@@ -821,7 +851,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00061">61</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00066">66</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
 
 </div>
 </div>
@@ -855,7 +885,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00259">259</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00264">264</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
 
 </div>
 </div>
@@ -889,7 +919,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00283">283</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00288">288</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
 
 </div>
 </div>
@@ -923,7 +953,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00271">271</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00276">276</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
 
 </div>
 </div>
@@ -957,7 +987,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00247">247</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00252">252</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
 
 </div>
 </div>
@@ -991,7 +1021,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00277">277</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00282">282</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
 
 </div>
 </div>
@@ -1025,7 +1055,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00265">265</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_entity_8h_source.html#l00270">270</a> of file <a class="el" href="_entity_8h_source.html">Entity.h</a>.</p>
 
 </div>
 </div>
@@ -1164,8 +1194,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a6221261ce03fd7d64bd35ddaf026a7ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6221261ce03fd7d64bd35ddaf026a7ad">&#9670;&nbsp;</a></span>setSharedTexture()</h2>
+<a id="a7e89bb183f75d69344dd0711e700cc88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e89bb183f75d69344dd0711e700cc88">&#9670;&nbsp;</a></span>setSharedTexture()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1173,7 +1203,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void flat2d::Entity::setSharedTexture </td>
           <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classflat2d_1_1_texture.html">Texture</a> &gt;&#160;</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classflat2d_1_1_texture.html">Texture</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>texture</em></td><td>)</td>
           <td></td>
         </tr>
