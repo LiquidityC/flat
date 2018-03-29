@@ -43,7 +43,7 @@ namespace flat2d
 			std::string func;
 
 		public:
-			explicit ExecutionTimer(std::string &f) : func(f) {
+			explicit ExecutionTimer(const std::string &f) : func(f) {
 				timer.start();
 			}
 

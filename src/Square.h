@@ -15,9 +15,9 @@ namespace flat2d
 			int x, y;
 
 		public:
-			Square() : x(0), y(0), Dimension(0, 0) { }
-			Square(int px, int py, int dim) : x(px), y(py), Dimension(dim, dim) { }
-			Square(int px, int py, int pw, int ph) : x(px), y(py), Dimension(pw, ph) { }
+			Square() : Dimension(0, 0), x(0), y(0) { }
+			Square(int px, int py, int dim) : Dimension(dim, dim), x(px), y(py) { }
+			Square(int px, int py, int pw, int ph) : Dimension(pw, ph), x(px), y(py) { }
 
 			/**
 			 * Check if the Square contains a given point
