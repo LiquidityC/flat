@@ -17,6 +17,9 @@ namespace flat2d
 		private:
 			SDL_Texture *texture = nullptr;
 			TTF_Font *font = nullptr;
+			double rotation = 0.0f;
+			SDL_Point rotationPoint { 0, 0 };
+			SDL_RendererFlip flip = SDL_FLIP_NONE;
 
 			void freeTexture();
 			void freeFont();
@@ -60,6 +63,31 @@ namespace flat2d
 			 * @param renderer The SDL_Renderer
 			 */
 			bool loadFromRenderedText(std::string text, SDL_Color color, SDL_Renderer *renderer);
+
+			/**
+			 * Get current rotation of the texture.
+			 * @return the rotation angle
+			 */
+			double getRotation() const;
+
+			/**
+			 * Set the texture rotation.
+			 * @param angle The rotation angle.
+			 * @param point The point to rotate around
+			 */
+			void setRotation(double rotation, SDL_Point point);
+
+			/**
+			 * Get the texture flip
+			 * @return the texture flip type
+			 */
+			SDL_RendererFlip getFlip() const;
+
+			/**
+			 * Set the rendering flip.
+			 * @param flip The flip type
+			 */
+			void setFlip(SDL_RendererFlip flip);
 	};
 } // namespace flat2d
 

@@ -86,6 +86,31 @@ namespace flat2d
 			return;
 		}
 
-		SDL_RenderCopy(renderer, texture, clip, pos);
+		if (flip != SDL_FLIP_NONE || rotation != 0) {
+			SDL_RenderCopyEx(renderer, texture, clip, pos, rotation, &rotationPoint, flip);
+		} else {
+			SDL_RenderCopy(renderer, texture, clip, pos);
+		}
+	}
+
+	double Texture::getRotation() const
+	{
+		return rotation;
+	}
+
+	void Texture::setRotation(double angle, SDL_Point point)
+	{
+		this->rotation = angle;
+		this->rotationPoint = point;
+	}
+
+	SDL_RendererFlip Texture::getFlip() const
+	{
+		return flip;
+	}
+
+	void Texture::setFlip(SDL_RendererFlip flip)
+	{
+		this->flip = flip;
 	}
 } // namespace flat2d
