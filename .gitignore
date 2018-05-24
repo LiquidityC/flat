@@ -1,4 +1,5 @@
 /build/
+/_build/
 /src/flat.h
 /.vs/
 *.swp

@@ -87,7 +87,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aaeabd267e347d872858f78cf4c965dc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e9b959767f544e00c6bcd2df312096c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_collision_detector.html#a5e9b959767f544e00c6bcd2df312096c">handlePossibleCollisionsFor</a> (<a class="el" href="classflat2d_1_1_entity.html">Entity</a> *entity, const <a class="el" href="classflat2d_1_1_game_data.html">GameData</a> *data)</td></tr>
 <tr class="separator:a5e9b959767f544e00c6bcd2df312096c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c36ef863db10f9e598419ae16cac8f0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_collision_detector.html#a0c36ef863db10f9e598419ae16cac8f0">AABB</a> (const <a class="el" href="structflat2d_1_1_entity_shape.html">EntityShape</a> &amp;, const <a class="el" href="structflat2d_1_1_entity_shape.html">EntityShape</a> &amp;) const</td></tr>
+<tr class="memitem:a0c36ef863db10f9e598419ae16cac8f0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_collision_detector.html#a0c36ef863db10f9e598419ae16cac8f0">AABB</a> (const <a class="el" href="namespaceflat2d.html#a4519a8c3ff99c54d02548bdce9f05cf1">EntityShape</a> &amp;, const <a class="el" href="namespaceflat2d.html#a4519a8c3ff99c54d02548bdce9f05cf1">EntityShape</a> &amp;) const</td></tr>
 <tr class="separator:a0c36ef863db10f9e598419ae16cac8f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfd4e62141d155d727e787e60b85064c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflat2d_1_1_collision_detector.html#adfd4e62141d155d727e787e60b85064c">sweptAABB</a> (<a class="el" href="classflat2d_1_1_entity_properties.html">EntityProperties</a> *props1, <a class="el" href="classflat2d_1_1_entity_properties.html">EntityProperties</a> *props2, float *normalx, float *normaly) const</td></tr>
 <tr class="separator:adfd4e62141d155d727e787e60b85064c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -171,13 +171,13 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">bool flat2d::CollisionDetector::AABB </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structflat2d_1_1_entity_shape.html">EntityShape</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespaceflat2d.html#a4519a8c3ff99c54d02548bdce9f05cf1">EntityShape</a> &amp;&#160;</td>
           <td class="paramname"><em>b1</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structflat2d_1_1_entity_shape.html">EntityShape</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespaceflat2d.html#a4519a8c3ff99c54d02548bdce9f05cf1">EntityShape</a> &amp;&#160;</td>
           <td class="paramname"><em>b2</em>&#160;</td>
         </tr>
         <tr>
@@ -187,10 +187,10 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>AABB Collision detection between two <a class="el" href="structflat2d_1_1_entity_shape.html">EntityShape</a> objects. This is public due to testing. Let the <a class="el" href="classflat2d_1_1_entity_container.html">EntityContainer</a> use it alone </p><dl class="params"><dt>Parameters</dt><dd>
+<p>AABB Collision detection between two EntityShape objects. This is public due to testing. Let the <a class="el" href="classflat2d_1_1_entity_container.html">EntityContainer</a> use it alone </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">b1</td><td>The first <a class="el" href="structflat2d_1_1_entity_shape.html">EntityShape</a> </td></tr>
-    <tr><td class="paramname">b2</td><td>The second <a class="el" href="structflat2d_1_1_entity_shape.html">EntityShape</a> </td></tr>
+    <tr><td class="paramname">b1</td><td>The first EntityShape </td></tr>
+    <tr><td class="paramname">b2</td><td>The second EntityShape </td></tr>
   </table>
   </dd>
 </dl>
@@ -299,7 +299,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>AABB sweeping collision detection between two <a class="el" href="structflat2d_1_1_entity_shape.html">EntityShape</a> objects. This is public due to testing. Let the <a class="el" href="classflat2d_1_1_entity_container.html">EntityContainer</a> use it alone. This actually isn't used at the moment because it's a bit broken. </p>
+<p>AABB sweeping collision detection between two EntityShape objects. This is public due to testing. Let the <a class="el" href="classflat2d_1_1_entity_container.html">EntityContainer</a> use it alone. This actually isn't used at the moment because it's a bit broken. </p>
 
 <p class="definition">Definition at line <a class="el" href="_collision_detector_8cpp_source.html#l00074">74</a> of file <a class="el" href="_collision_detector_8cpp_source.html">CollisionDetector.cpp</a>.</p>
 

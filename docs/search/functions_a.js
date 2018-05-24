@@ -1,15 +1,10 @@
 var searchData=
 [
-  ['pause',['pause',['../classflat2d_1_1_timer.html#a7b2b9af321ed65a49b426f42259cee86',1,'flat2d::Timer']]],
-  ['pausedmusic',['pausedMusic',['../classflat2d_1_1_mixer.html#a7c45b3ff86224c242ad8ab40fbdf8e06',1,'flat2d::Mixer']]],
-  ['pausemusic',['pauseMusic',['../classflat2d_1_1_mixer.html#a39401801f8f425b30a909ad1641c61f9',1,'flat2d::Mixer']]],
-  ['playeffect',['playEffect',['../classflat2d_1_1_mixer.html#a7f9c131457d5eff71e29be8e3a1e2e9d',1,'flat2d::Mixer']]],
-  ['playingmusic',['playingMusic',['../classflat2d_1_1_mixer.html#aec75276f544db6be93599a5aff87a26f',1,'flat2d::Mixer']]],
-  ['playmusic',['playMusic',['../classflat2d_1_1_mixer.html#a91dc80aad4a2e8cf13b8f1320c492451',1,'flat2d::Mixer']]],
-  ['posthandle',['postHandle',['../classflat2d_1_1_entity.html#a9a998dff7c7ceb41e396b92772a6e10c',1,'flat2d::Entity']]],
-  ['postmove',['postMove',['../classflat2d_1_1_entity.html#a5210fd89359ec34c7dd4ba4c692627e3',1,'flat2d::Entity']]],
-  ['postrender',['postRender',['../classflat2d_1_1_entity.html#abaeba0697f36d51c30b0c595be9e1319',1,'flat2d::Entity']]],
-  ['prehandle',['preHandle',['../classflat2d_1_1_entity.html#a3c12f1a99b35215387fe2095a5bf4264',1,'flat2d::Entity']]],
-  ['premove',['preMove',['../classflat2d_1_1_entity.html#acc3cb904326fd918547f1091db40a7d8',1,'flat2d::Entity']]],
-  ['prerender',['preRender',['../classflat2d_1_1_entity.html#a58d764e0d46d5a37ed61133ed5722cf2',1,'flat2d::Entity']]]
+  ['oncollision',['onCollision',['../classflat2d_1_1_entity.html#ad260a22a22c2930840c2c1d068ac8d36',1,'flat2d::Entity']]],
+  ['onhorizontalcollision',['onHorizontalCollision',['../classflat2d_1_1_entity.html#a9f74969635d9bed090e7871d38f41e06',1,'flat2d::Entity']]],
+  ['onverticalcollision',['onVerticalCollision',['../classflat2d_1_1_entity.html#a35f765b0dd9dedbaab7fe1c48f603222',1,'flat2d::Entity']]],
+  ['operator_21_3d',['operator!=',['../classflat2d_1_1_entity.html#aaf95324c79c37b037ae757bf6f329188',1,'flat2d::Entity::operator!=()'],['../classflat2d_1_1_square.html#a7e6f6847e72cd3f23346b02e31d22c23',1,'flat2d::Square::operator!=()']]],
+  ['operator_3c',['operator&lt;',['../classflat2d_1_1_entity.html#a57f2c6c24d28a1288719ea402d9ff857',1,'flat2d::Entity::operator&lt;()'],['../classflat2d_1_1_square.html#ae9d892337bfc00aa4bde1d73c25a487e',1,'flat2d::Square::operator&lt;()']]],
+  ['operator_3d',['operator=',['../classflat2d_1_1_collision_detector.html#aaeabd267e347d872858f78cf4c965dc7',1,'flat2d::CollisionDetector::operator=()'],['../classflat2d_1_1_entity.html#acb1f26fc6f4ad3d381c34d70b909d225',1,'flat2d::Entity::operator=()']]],
+  ['operator_3d_3d',['operator==',['../classflat2d_1_1_entity.html#a5ba7050dde6d751523640cb76ee33548',1,'flat2d::Entity::operator==()'],['../classflat2d_1_1_square.html#af8b119c912addc4246fd17d170e73cb1',1,'flat2d::Square::operator==()']]]
 ];

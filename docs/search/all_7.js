@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['h',['h',['../structflat2d_1_1_entity_shape.html#afa3cfec5153fbbf4717d0f4fa97f2a82',1,'flat2d::EntityShape::h()'],['../classflat2d_1_1_square.html#a5a092d2662e394329b46a216b71755cc',1,'flat2d::Square::h()']]],
+  ['h',['h',['../classflat2d_1_1_dimension.html#af10fc240ed6cde8045fbd227c3656bc7',1,'flat2d::Dimension::h()'],['../structflat2d_1_1_entity_shape__t.html#ab97e5d225a9657798f577d68b3aca9ad',1,'flat2d::EntityShape_t::h()']]],
   ['handle',['handle',['../classflat2d_1_1ui_1_1_button.html#a53030cf41e1c3a50abd5a7242cd7be2f',1,'flat2d::ui::Button::handle()'],['../classflat2d_1_1_entity.html#a8a6d972f0537e6c2641e8b34a22450cc',1,'flat2d::Entity::handle()']]],
   ['handlecallback',['HandleCallback',['../namespaceflat2d.html#ac65d7fdc0e5f3f917cba5b1182c0b8ef',1,'flat2d']]],
   ['handleobjects',['handleObjects',['../classflat2d_1_1_entity_container.html#aff383d8cceacf47dd0bafe3e08cfe3d0',1,'flat2d::EntityContainer']]],
