@@ -29,37 +29,37 @@ namespace flat2d
         Animation(Clips &c, uint32_t t, bool once = false) : clips(c), timestep(t), runOnce(once) {}
 
         /**
-			 * Run the animation and get the current clip
-			 * @return the current clip represented as an SDL_Rect
-			 */
+         * Run the animation and get the current clip
+         * @return the current clip represented as an SDL_Rect
+         */
         const SDL_Rect *run();
 
         /**
-			 * Start the animation
-			 */
+         * Start the animation
+         */
         void start();
 
         /**
-			 * Stop the animation
-			 */
+         * Stop the animation
+         */
         void stop();
 
         /**
-			 * Check if the animation is running
-			 * @return True or false indicating if the animation is running
-			 */
+         * Check if the animation is running
+         * @return True or false indicating if the animation is running
+         */
         bool isRunning() const;
 
         /**
-             * Reset the animation if it was set to run once 
-             * @param alsoStart start the animation after reset
-             */
+         * Reset the animation if it was set to run once 
+         * @param alsoStart start the animation after reset
+         */
         void reset(bool alsoStart = true);
 
         /**
-             * Set the animation to run once i.e not looping
-             * @param once True to stop the animation from looping
-             */
+         * Set the animation to run once i.e not looping
+         * @param once True to stop the animation from looping
+         */
         void setRunOnce(bool once);
     };
 } // namespace flat2d
