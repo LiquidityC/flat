@@ -27,13 +27,6 @@ namespace flat2d
             return &clips[0];
         }
 
-        // Stay at the last clip, if runs once
-        if (runOnce && clipIndex == clips.size())
-        {
-            animationTimer.stop();
-            return &clips[clipIndex];
-        }
-
         if (animationTimer.getTicks() >= timestep)
         {
             clipIndex++;
@@ -42,6 +35,12 @@ namespace flat2d
         }
 
         clipIndex = clipIndex % clips.size();
+
+        // Stay at the last clip, if runs once
+        if (runOnce && clipIndex == clips.size() - 1)
+        {
+            animationTimer.stop();
+        }
 
         return &clips[clipIndex];
     }

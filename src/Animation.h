@@ -54,7 +54,7 @@ namespace flat2d
              * Reset the animation if it was set to run once 
              * @param alsoStart start the animation after reset
              */
-        void reset(bool alsoStart = false);
+        void reset(bool alsoStart = true);
 
         /**
              * Set the animation to run once i.e not looping
