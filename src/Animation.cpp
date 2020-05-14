@@ -51,7 +51,7 @@ namespace flat2d
         runOnce = once;
     }
 
-    bool Animation::reset(bool alsoStart)
+    void Animation::reset(bool alsoStart)
     {
         clipIndex = 0;
         animationTimer.stop();
