@@ -1,12 +1,12 @@
-#include "catch.hpp"
 #include "../src/DeltatimeMonitor.h"
+#include "catch.hpp"
 
-TEST_CASE( "DeltatimeMonitorTest", "[deltatime]" )
+TEST_CASE("DeltatimeMonitorTest", "[deltatime]")
 {
 	flat2d::DeltatimeMonitor dtMonitor;
 
-	SECTION( "InitTest", "[deltatime]" )
+	SECTION("InitTest", "[deltatime]")
 	{
-		REQUIRE( dtMonitor.getDeltaTime() == 1 );
+		REQUIRE(dtMonitor.getDeltaTime() == 1);
 	}
 }

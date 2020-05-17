@@ -13,6 +13,7 @@ include(cmake/FindSDL2_ttf.cmake)
 include(cmake/FindSDL2_mixer.cmake)
 include(cmake/FindCCache.cmake)
 include(cmake/Findcppcheck.cmake)
+include(cmake/FindCCache.cmake)
 
 include_directories(
 	${PROJECT_BINARY_DIR}

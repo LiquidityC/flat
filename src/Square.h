@@ -3,57 +3,68 @@
 
 #include "Dimension.h"
 
-namespace flat2d
+namespace flat2d {
+/**
+ * An object that represents a square
+ * @author Linus Probert <linus.probert@gmail.com>
+ */
+class Square : public Dimension
 {
+  protected:
+	int x, y;
+
+  public:
+	Square()
+	  : Dimension(0, 0)
+	  , x(0)
+	  , y(0)
+	{}
+	Square(int px, int py, int dim)
+	  : Dimension(dim, dim)
+	  , x(px)
+	  , y(py)
+	{}
+	Square(int px, int py, int pw, int ph)
+	  : Dimension(pw, ph)
+	  , x(px)
+	  , y(py)
+	{}
+
 	/**
-	 * An object that represents a square
-	 * @author Linus Probert <linus.probert@gmail.com>
+	 * Check if the Square contains a given point
+	 * @param px The x position
+	 * @param py The y position
+	 * @return true or false
 	 */
-	class Square : public Dimension
-	{
-		protected:
-			int x, y;
+	bool containsPoint(int, int) const;
 
-		public:
-			Square() : Dimension(0, 0), x(0), y(0) { }
-			Square(int px, int py, int dim) : Dimension(dim, dim), x(px), y(py) { }
-			Square(int px, int py, int pw, int ph) : Dimension(pw, ph), x(px), y(py) { }
+	bool operator<(const Square&) const;
+	bool operator==(const Square&) const;
+	bool operator!=(const Square&) const;
 
-			/**
-			 * Check if the Square contains a given point
-			 * @param px The x position
-			 * @param py The y position
-			 * @return true or false
-			 */
-			bool containsPoint(int, int) const;
+	/**
+	 * Get the Square X position
+	 * @return an integer
+	 */
+	int getXpos() const { return x; }
 
-			bool operator<(const Square&) const;
-			bool operator==(const Square&) const;
-			bool operator!=(const Square&) const;
+	/**
+	 * Get the Square Y position
+	 * @return an integer
+	 */
+	int getYpos() const { return y; }
 
-			/**
-			 * Get the Square X position
-			 * @return an integer
-			 */
-			int getXpos() const { return x; }
+	/**
+	 * Set the Square X position
+	 * @param pos The new position
+	 */
+	virtual void setXpos(int pos) { x = pos; }
 
-			/**
-			 * Get the Square Y position
-			 * @return an integer
-			 */
-			int getYpos() const { return y; }
-
-			/**
-			 * Set the Square X position
-			 * @param pos The new position
-			 */
-			virtual void setXpos(int pos) { x = pos; }
-
-			/**
-			 * Set the Square Y position
-			 * @param pos The new position
-			 */
-			virtual void setYpos(int pos) { y = pos; }
-	};
+	/**
+	 * Set the Square Y position
+	 * @param pos The new position
+	 */
+	virtual void setYpos(int pos) { y = pos; }
+};
 } // namespace flat2d
 #endif // SQUARE_H_

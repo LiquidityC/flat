@@ -3,60 +3,59 @@
 
 #include <SDL.h>
 
-namespace flat2d
+namespace flat2d {
+/**
+ * A Timer object
+ * @author Linus Probert <linus.probert@gmail.com>
+ */
+class Timer
 {
+  public:
+	Timer();
+
 	/**
-	 * A Timer object
-	 * @author Linus Probert <linus.probert@gmail.com>
+	 * Start the timer
 	 */
-	class Timer
-	{
-		public:
-			Timer();
+	void start();
 
-			/**
-			 * Start the timer
-			 */
-			void start();
+	/**
+	 * Stop the timer
+	 */
+	void stop();
 
-			/**
-			 * Stop the timer
-			 */
-			void stop();
+	/**
+	 * Pause the timer
+	 */
+	void pause();
 
-			/**
-			 * Pause the timer
-			 */
-			void pause();
+	/**
+	 * Unpause the timer
+	 */
+	void unpause();
 
-			/**
-			 * Unpause the timer
-			 */
-			void unpause();
+	/**
+	 * Get the time passed since start
+	 * @return Number of ticks (1000 ticks/s)
+	 */
+	Uint32 getTicks() const;
 
-			/**
-			 * Get the time passed since start
-			 * @return Number of ticks (1000 ticks/s)
-			 */
-			Uint32 getTicks() const;
+	/**
+	 * Check if the timer is started
+	 * @return true or false
+	 */
+	bool isStarted() const;
 
-			/**
-			 * Check if the timer is started
-			 * @return true or false
-			 */
-			bool isStarted() const;
+	/**
+	 * Check if the timer is paused
+	 * @return true or false
+	 */
+	bool isPaused() const;
 
-			/**
-			 * Check if the timer is paused
-			 * @return true or false
-			 */
-			bool isPaused() const;
+  private:
+	Uint32 startTicks, pausedTicks;
 
-		private:
-			Uint32 startTicks, pausedTicks;
-
-			bool paused, started;
-	};
+	bool paused, started;
+};
 } // namespace flat2d
 
 #endif // TIMER_H_

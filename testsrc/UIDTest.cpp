@@ -1,13 +1,13 @@
-#include <iostream>
-#include <thread>
-#include <set>
-#include "catch.hpp"
 #include "../src/UID.h"
 #include "../src/SpinLock.h"
+#include "catch.hpp"
+#include <iostream>
+#include <set>
+#include <thread>
 
 using namespace flat2d;
 
-TEST_CASE( "UID Generation sequence test", "[UID]")
+TEST_CASE("UID Generation sequence test", "[UID]")
 {
 	const int thread_count = 20;
 	std::set<int> idSet;
@@ -16,12 +16,12 @@ TEST_CASE( "UID Generation sequence test", "[UID]")
 	auto call_from_thread = [&]() {
 		lock.lock();
 		size_t id = UID::generate();
-		REQUIRE( idSet.find(id) == idSet.end() );
+		REQUIRE(idSet.find(id) == idSet.end());
 		idSet.insert(id);
 		lock.unlock();
 	};
 
-	REQUIRE( idSet.size() == 0 );
+	REQUIRE(idSet.size() == 0);
 
 	std::thread threads[thread_count];
 	for (auto i = 0; i < thread_count; i++) {
@@ -32,5 +32,5 @@ TEST_CASE( "UID Generation sequence test", "[UID]")
 		threads[i].join();
 	}
 
-	REQUIRE( idSet.size() == thread_count );
+	REQUIRE(idSet.size() == thread_count);
 }
