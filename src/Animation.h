@@ -24,7 +24,7 @@ namespace flat2d
 			Clips clips;
 			uint32_t timestep;
 			int clipIndex = 0;
-            bool runOnce = false;
+            		bool runOnce = false;
 
 		public:
 			Animation(Clips &c, uint32_t t, bool once = false) : clips(c), timestep(t), runOnce(once) {}
@@ -51,17 +51,17 @@ namespace flat2d
 			 */
 			bool isRunning() const;
 
-            /**
-             * Reset the animation if it was set to run once 
-             * @param alsoStart start the animation after reset
-             */
-            void reset(bool alsoStart = true);
+            		/**
+             		 * Reset the animation if it was set to run once 
+             		 * @param alsoStart start the animation after reset
+             		 */
+            		void reset(bool alsoStart = true);
 
-            /**
-             * Set the animation to run once i.e not looping
-             * @param once True to stop the animation from looping
-             */
-            void setRunOnce(bool once);
+            		/**
+             		 * Set the animation to run once i.e not looping
+             		 * @param once True to stop the animation from looping
+             		 */
+            		void setRunOnce(bool once);
 	};
 } // namespace flat2d
 
