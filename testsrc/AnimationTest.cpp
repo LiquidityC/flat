@@ -41,4 +41,30 @@ TEST_CASE( "AnimationTest", "[animation]" )
 		REQUIRE(clip->w == 5);
 		REQUIRE(clip->h == 5);
 	}
+
+    	SECTION( "RunOnceTest", "[animation]" )
+	{
+        	animation.setRunOnce(true);
+        	animation.start();
+		animation.run();
+        	animation.run();
+         	// It should stop
+        	REQUIRE(!animation.isRunning());
+	}
+
+    	SECTION( "RunOnceResetTest", "[animation]" )
+	{
+        	animation.setRunOnce(true);
+        	animation.start();
+		animation.run();
+        	animation.run();
+        	// Do reset
+        	animation.reset(false);
+        	const SDL_Rect *clip = animation.run();
+        	// It should start from clip 0
+		REQUIRE(clip->x == 0);
+		REQUIRE(clip->y == 0);
+		REQUIRE(clip->w == 5);
+		REQUIRE(clip->h == 5);
+	}
 }

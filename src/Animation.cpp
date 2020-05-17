@@ -34,6 +34,27 @@ namespace flat2d
 
 		clipIndex = clipIndex % clips.size();
 
+         // Stay at the last clip, if runs once
+        if (runOnce && clipIndex == clips.size() - 1)
+        {
+            animationTimer.stop();
+        }
+
 		return &clips[clipIndex];
 	}
+
+    void Animation::setRunOnce(bool once)
+    {
+        runOnce = once;
+    }
+
+    void Animation::reset(bool alsoStart)
+    {
+        clipIndex = 0;
+        animationTimer.stop();
+        if (alsoStart)
+        {
+            animationTimer.start();
+        }
+    }
 } // namespace flat2d
