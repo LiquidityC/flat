@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <vector>
 #include <cassert>
+#include <stdlib.h>
 
 #include "Entity.h"
 #include "EntityShape.h"
@@ -224,7 +225,7 @@ namespace flat2d
 		if (yvel > 0) {
 			yvel -= 50;
 		}
-		if (std::abs(yvel) <= 300) {
+		if (abs(yvel) <= 300) {
 			yvel = 0;
 		}
 
@@ -239,7 +240,7 @@ namespace flat2d
 		if (xvel > 0) {
 			xvel -= 50;
 		}
-		if (std::abs(xvel) <= 300) {
+		if (abs(xvel) <= 300) {
 			xvel = 0;
 		}
 
