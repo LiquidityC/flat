@@ -3,47 +3,45 @@
 
 namespace flat2d
 {
-    void Animation::start()
-    {
-        animationTimer.start();
-    }
+	void Animation::start()
+	{
+		animationTimer.start();
+	}
 
-    void Animation::stop()
-    {
-        animationTimer.stop();
-    }
+	void Animation::stop()
+	{
+		animationTimer.stop();
+	}
 
-    bool Animation::isRunning() const
-    {
-        return animationTimer.isStarted();
-    }
+	bool Animation::isRunning() const
+	{
+		return animationTimer.isStarted();
+	}
 
-    const SDL_Rect *Animation::run()
-    {
-        assert(!clips.empty());
+	const SDL_Rect* Animation::run()
+	{
+		assert (!clips.empty());
 
-        if (!animationTimer.isStarted())
-        {
-            return &clips[0];
-        }
+		if (!animationTimer.isStarted()) {
+			return &clips[0];
+		}
 
-        if (animationTimer.getTicks() >= timestep)
-        {
-            clipIndex++;
-            animationTimer.stop();
-            animationTimer.start();
-        }
+		if (animationTimer.getTicks() >= timestep) {
+			clipIndex++;
+			animationTimer.stop();
+			animationTimer.start();
+		}
 
-        clipIndex = clipIndex % clips.size();
+		clipIndex = clipIndex % clips.size();
 
-        // Stay at the last clip, if runs once
+         // Stay at the last clip, if runs once
         if (runOnce && clipIndex == clips.size() - 1)
         {
             animationTimer.stop();
         }
 
-        return &clips[clipIndex];
-    }
+		return &clips[clipIndex];
+	}
 
     void Animation::setRunOnce(bool once)
     {
