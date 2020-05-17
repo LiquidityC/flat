@@ -6,79 +6,79 @@
 #include <string>
 
 namespace flat2d {
-/**
- * This is the game mixer. You can load effects and music and then play them
- * @author Linus Probert <linus.probert@gmail.com>
- */
-class Mixer
-{
-  private:
-	std::map<int, Mix_Chunk*> effects;
-	std::map<int, Mix_Music*> music;
-
-  public:
-	~Mixer();
-
 	/**
-	 * Remove all loaded sounds and music
+	 * This is the game mixer. You can load effects and music and then play them
+	 * @author Linus Probert <linus.probert@gmail.com>
 	 */
-	void clearAllSound();
+	class Mixer
+	{
+	  private:
+		std::map<int, Mix_Chunk*> effects;
+		std::map<int, Mix_Music*> music;
 
-	/**
-	 * Load a sound effect
-	 * @param id The id you want to give the sound
-	 * @param path The path to the resource
-	 * @return success or fail
-	 */
-	bool loadEffect(int, std::string);
+	  public:
+		~Mixer();
 
-	/**
-	 * Play a sound effect
-	 * @param effect The id that was given when the sound was loaded
-	 */
-	void playEffect(int effect);
+		/**
+		 * Remove all loaded sounds and music
+		 */
+		void clearAllSound();
 
-	/**
-	 * Load music
-	 * @param id The id you want to give the sound
-	 * @param path The path to the resource
-	 * @return success or fail
-	 */
-	bool loadMusic(int, std::string);
+		/**
+		 * Load a sound effect
+		 * @param id The id you want to give the sound
+		 * @param path The path to the resource
+		 * @return success or fail
+		 */
+		bool loadEffect(int, std::string);
 
-	/**
-	 * Play music
-	 * @param music The id that was given when the sound was loaded
-	 */
-	void playMusic(int music);
+		/**
+		 * Play a sound effect
+		 * @param effect The id that was given when the sound was loaded
+		 */
+		void playEffect(int effect);
 
-	/**
-	 * Check if we are playing music
-	 * @return true or false
-	 */
-	bool playingMusic();
+		/**
+		 * Load music
+		 * @param id The id you want to give the sound
+		 * @param path The path to the resource
+		 * @return success or fail
+		 */
+		bool loadMusic(int, std::string);
 
-	/**
-	 * Pause the music
-	 */
-	void pauseMusic();
+		/**
+		 * Play music
+		 * @param music The id that was given when the sound was loaded
+		 */
+		void playMusic(int music);
 
-	/**
-	 * Check if the music is paused
-	 * @return true or false
-	 */
-	bool pausedMusic();
+		/**
+		 * Check if we are playing music
+		 * @return true or false
+		 */
+		bool playingMusic();
 
-	/**
-	 * Resume music
-	 */
-	void unpauseMusic();
+		/**
+		 * Pause the music
+		 */
+		void pauseMusic();
 
-	/**
-	 * Stop music
-	 */
-	void stopMusic();
-};
+		/**
+		 * Check if the music is paused
+		 * @return true or false
+		 */
+		bool pausedMusic();
+
+		/**
+		 * Resume music
+		 */
+		void unpauseMusic();
+
+		/**
+		 * Stop music
+		 */
+		void stopMusic();
+	};
 } // namespace flat2d
 
 #endif // MIXER_H_
