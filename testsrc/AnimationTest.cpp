@@ -1,27 +1,24 @@
-#include "catch.hpp"
 #include "../src/Animation.h"
+#include "catch.hpp"
 
-TEST_CASE( "AnimationTest", "[animation]" )
+TEST_CASE("AnimationTest", "[animation]")
 {
-	flat2d::Clips clips = {
-		{ 0, 0, 5, 5 },
-		{ 5, 0, 5, 5 }
-	};
+	flat2d::Clips clips = { { 0, 0, 5, 5 }, { 5, 0, 5, 5 } };
 
 	flat2d::Animation animation(clips, 0);
 
-	SECTION( "StartStopTest", "[animation]" )
+	SECTION("StartStopTest", "[animation]")
 	{
-		REQUIRE( !animation.isRunning() );
+		REQUIRE(!animation.isRunning());
 		animation.start();
-		REQUIRE( animation.isRunning() );
+		REQUIRE(animation.isRunning());
 		animation.stop();
-		REQUIRE( !animation.isRunning() );
+		REQUIRE(!animation.isRunning());
 	}
 
-	SECTION( "RunTest", "[animation]" )
+	SECTION("RunTest", "[animation]")
 	{
-		const SDL_Rect *clip = animation.run();
+		const SDL_Rect* clip = animation.run();
 		REQUIRE(clip->x == 0);
 		REQUIRE(clip->y == 0);
 		REQUIRE(clip->w == 5);
@@ -42,26 +39,26 @@ TEST_CASE( "AnimationTest", "[animation]" )
 		REQUIRE(clip->h == 5);
 	}
 
-    	SECTION( "RunOnceTest", "[animation]" )
+	SECTION("RunOnceTest", "[animation]")
 	{
-        	animation.setRunOnce(true);
-        	animation.start();
+		animation.setRunOnce(true);
+		animation.start();
 		animation.run();
-        	animation.run();
-         	// It should stop
-        	REQUIRE(!animation.isRunning());
+		animation.run();
+		// It should stop
+		REQUIRE(!animation.isRunning());
 	}
 
-    	SECTION( "RunOnceResetTest", "[animation]" )
+	SECTION("RunOnceResetTest", "[animation]")
 	{
-        	animation.setRunOnce(true);
-        	animation.start();
+		animation.setRunOnce(true);
+		animation.start();
 		animation.run();
-        	animation.run();
-        	// Do reset
-        	animation.reset(false);
-        	const SDL_Rect *clip = animation.run();
-        	// It should start from clip 0
+		animation.run();
+		// Do reset
+		animation.reset(false);
+		const SDL_Rect* clip = animation.run();
+		// It should start from clip 0
 		REQUIRE(clip->x == 0);
 		REQUIRE(clip->y == 0);
 		REQUIRE(clip->w == 5);

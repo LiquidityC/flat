@@ -1,23 +1,23 @@
-#include <SDL.h>
 #include "DeltatimeMonitor.h"
+#include <SDL.h>
 
-
-namespace flat2d
+namespace flat2d {
+void
+DeltatimeMonitor::updateDeltaTime()
 {
-	void DeltatimeMonitor::updateDeltaTime()
-	{
-		if (currentTime == 0) {
-			currentTime = SDL_GetTicks();
-			return;
-		}
-
-		oldTime = currentTime;
+	if (currentTime == 0) {
 		currentTime = SDL_GetTicks();
-		deltaTime = (currentTime - oldTime) / 1000.0f;
+		return;
 	}
 
-	float DeltatimeMonitor::getDeltaTime() const
-	{
-		return deltaTime;
-	}
+	oldTime = currentTime;
+	currentTime = SDL_GetTicks();
+	deltaTime = (currentTime - oldTime) / 1000.0f;
+}
+
+float
+DeltatimeMonitor::getDeltaTime() const
+{
+	return deltaTime;
+}
 } // namespace flat2d

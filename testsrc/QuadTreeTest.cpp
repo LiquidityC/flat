@@ -1,17 +1,17 @@
-#include <vector>
-#include "catch.hpp"
-#include "EntityImpl.h"
 #include "../src/QuadTree.h"
 #include "../src/Square.h"
+#include "EntityImpl.h"
+#include "catch.hpp"
+#include <vector>
 
-TEST_CASE( "QuadTreeTest", "[animation]" )
+TEST_CASE("QuadTreeTest", "[animation]")
 {
 	flat2d::Square bounds(0, 0, 400, 400);
-	flat2d::QuadTree *tree = new flat2d::QuadTree(bounds);
+	flat2d::QuadTree* tree = new flat2d::QuadTree(bounds);
 
-	SECTION( "Test split one level", "[QuadTree]" )
+	SECTION("Test split one level", "[QuadTree]")
 	{
-		REQUIRE( tree->getDepth() == 0 );
+		REQUIRE(tree->getDepth() == 0);
 
 		std::vector<flat2d::Entity*> objects;
 		for (int i = 0; i < 5; i++) {
@@ -28,19 +28,19 @@ TEST_CASE( "QuadTreeTest", "[animation]" )
 			tree->insert(*it);
 		}
 
-		REQUIRE( tree->getDepth() == 1 );
+		REQUIRE(tree->getDepth() == 1);
 
 		tree->clear();
 		for (auto it = objects.begin(); it != objects.end(); ++it) {
 			delete *it;
 		}
 
-		REQUIRE( tree->getDepth() == 0 );
+		REQUIRE(tree->getDepth() == 0);
 	}
 
-	SECTION( "Test split two levels", "[QuadTree]" )
+	SECTION("Test split two levels", "[QuadTree]")
 	{
-		REQUIRE( tree->getDepth() == 0 );
+		REQUIRE(tree->getDepth() == 0);
 
 		std::vector<flat2d::Entity*> objects;
 		for (int i = 0; i < 5; i++) {
@@ -57,19 +57,19 @@ TEST_CASE( "QuadTreeTest", "[animation]" )
 			tree->insert(*it);
 		}
 
-		REQUIRE( tree->getDepth() == 2 );
+		REQUIRE(tree->getDepth() == 2);
 
 		tree->clear();
 		for (auto it = objects.begin(); it != objects.end(); ++it) {
 			delete *it;
 		}
 
-		REQUIRE( tree->getDepth() == 0 );
+		REQUIRE(tree->getDepth() == 0);
 	}
 
-	SECTION( "Test retrieval", "[QuadTree]" )
+	SECTION("Test retrieval", "[QuadTree]")
 	{
-		CHECK( tree->getDepth() == 0 );
+		CHECK(tree->getDepth() == 0);
 
 		std::vector<flat2d::Entity*> objects;
 		for (int i = 0; i < 5; i++) {
@@ -89,21 +89,21 @@ TEST_CASE( "QuadTreeTest", "[animation]" )
 			tree->insert(*it);
 		}
 
-		CHECK( tree->getDepth() == 1 );
+		CHECK(tree->getDepth() == 1);
 
-		flat2d::Entity *collider = new EntityImpl(10, 10);
+		flat2d::Entity* collider = new EntityImpl(10, 10);
 		std::vector<flat2d::Entity*> collidables;
 		tree->retrieve(&collidables, collider);
 		delete collider;
 
-		REQUIRE ( collidables.size() == 10 );
+		REQUIRE(collidables.size() == 10);
 
 		tree->clear();
 		for (auto it = objects.begin(); it != objects.end(); ++it) {
 			delete *it;
 		}
 
-		CHECK( tree->getDepth() == 0 );
+		CHECK(tree->getDepth() == 0);
 	}
 
 	delete tree;

@@ -1,12 +1,12 @@
-#include "catch.hpp"
 #include "../src/Algorithm.h"
+#include "catch.hpp"
 
-TEST_CASE( "AlgorithmTest", "[algorithm]" )
+TEST_CASE("AlgorithmTest", "[algorithm]")
 {
-	SECTION( "CantorPairingFunction", "[pairing]" )
+	SECTION("CantorPairingFunction", "[pairing]")
 	{
-		REQUIRE( flat2d::Algorithm::cantorPairing(1, 2) == 8 );
-		REQUIRE( flat2d::Algorithm::cantorPairing(2, 1) == 8 );
-		REQUIRE( flat2d::Algorithm::cantorPairing(2, 2) == 12 );
+		REQUIRE(flat2d::Algorithm::cantorPairing(1, 2) == 8);
+		REQUIRE(flat2d::Algorithm::cantorPairing(2, 1) == 8);
+		REQUIRE(flat2d::Algorithm::cantorPairing(2, 2) == 12);
 	}
 }
