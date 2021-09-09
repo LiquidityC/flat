@@ -1,4 +1,5 @@
 # Flat
+[![maintenance](https://img.shields.io/badge/maintenance-passively--maintained-orange)](https://img.shields.io/badge/maintenance-passively--maintained-orange)
 [![Build Status](https://travis-ci.org/LiquidityC/flat.svg?branch=master)](https://travis-ci.org/LiquidityC/flat)
 [![Build status](https://ci.appveyor.com/api/projects/status/h984w3gprbe7eiel?svg=true)](https://ci.appveyor.com/project/LiquidityC/flat)
 [![codecov](https://codecov.io/gh/LiquidityC/flat/branch/master/graph/badge.svg)](https://codecov.io/gh/LiquidityC/flat)
